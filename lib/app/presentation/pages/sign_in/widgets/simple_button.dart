@@ -45,12 +45,14 @@ class SimpleButton extends StatelessWidget {
                     width: screenSize.width * 0.08,
                   ),
                 ),
-              Text(
-                text,
-                style: GoogleFonts.openSans(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w500,
-                  color: isCreateProfile ? Colors.white : Colors.orangeAccent,
+              Flexible(
+                child: Text(
+                  text,
+                  style: GoogleFonts.openSans(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w500,
+                    color: isCreateProfile ? Colors.white : Colors.orangeAccent,
+                  ),
                 ),
               ),
             ],
