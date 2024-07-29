@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/widgets/back_button.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/custom_text_field.dart';
 import 'package:alborada_demo/app/presentation/pages/sign_in/widgets/simple_button.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
@@ -37,9 +38,7 @@ class _LoginBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: screenSize.height * 0.2),
-          IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back)),
+          const CustomBackButton(),
           Text(
             'Je me connecte',
             style:

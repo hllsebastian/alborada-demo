@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AlboradaScaffoldWidget extends StatelessWidget {
   const AlboradaScaffoldWidget({
     required this.body,
@@ -20,6 +19,7 @@ class AlboradaScaffoldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFFBF5),
       bottomNavigationBar: bottomNavigationBar,
       appBar: appBar,
       floatingActionButton: floatingActionButton,

@@ -90,8 +90,14 @@ class CustomTextField extends StatelessWidget {
             suffixIcon: icon,
             contentPadding: const EdgeInsets.all(14),
             filled: true,
-            fillColor: const Color.fromRGBO(228, 237, 244, 0.3),
-            // enabledBorder: outlinedBorderGray,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                borderSide: const BorderSide(color: Colors.red)),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              borderSide: const BorderSide(color: Color(0xffC0C1C9)),
+            ),
             //
             // focusedBorder: outlinedBorderGray,
             // focusedErrorBorder: outlinedBorderGray,
@@ -109,7 +115,6 @@ class CustomTextField extends StatelessWidget {
               textHelp!,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.w400,
-                    // color: Palette.mediumGrey,
                     fontSize: 12,
                   ),
             ),
