@@ -16,8 +16,8 @@ class _AlboradaPageViewState extends State<AlboradaPageView> {
       backgroundColor: Colors.grey.shade200,
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            labelTextStyle: MaterialStateTextStyle.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+            labelTextStyle: WidgetStateTextStyle.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return const TextStyle(
               fontWeight: FontWeight.bold,
             );

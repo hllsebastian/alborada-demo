@@ -7,4 +7,5 @@ class Routes {
   static const forgotPassword = '/forgot-password';
   static const pageView = '/page-view';
   static const home = '/home';
+  static const onboarding = '/onboarding';
 }

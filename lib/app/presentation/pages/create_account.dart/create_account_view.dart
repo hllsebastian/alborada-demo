@@ -37,20 +37,36 @@ class _LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenSize.height * 0.2),
+          SizedBox(height: screenSize.height * 0.1),
           const CustomBackButton(),
           Text(
             'Je créé mon compte',
             style:
                 GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w500),
           ),
-          CustomTextField(onChanged: (value) {}),
-          CustomTextField(onChanged: (value) {}),
-          CustomTextField(onChanged: (value) {}),
+          CustomTextField(
+            hintText: 'Adresse e-mail',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
+          CustomTextField(
+            hintText: 'Mot de passe',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
+          CustomTextField(
+            hintText: 'Confirmer le mot de passe',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
           SimpleButton(
             text: 'Créer un compte',
-            isCreateProfile: true,
-            onPressed: () {},
+            isDarkButton: true,
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.onboarding,
+              (Route<dynamic> route) => false,
+            ),
           ),
           Text(
             'En cliquant sur “Créer un compte, vous acceptez les conditions d’utilisation d’Alborada.',

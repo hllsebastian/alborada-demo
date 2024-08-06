@@ -1,9 +1,7 @@
 part of 'home_view.dart';
 
 class _Appbar extends StatelessWidget {
-  const _Appbar({
-    super.key,
-  });
+  const _Appbar();
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +14,12 @@ class _Appbar extends StatelessWidget {
             color: Colors.black,
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
-          child: const Row(
+          child: Row(
             children: [
-              Text('🪙'),
-              Text('150',
+              // Text('🪙'),
+              Image.asset('assets/images/alborada_coin.png'),
+              const SizedBox(width: 5),
+              const Text('1250',
                   style: TextStyle(
                     color: Colors.white,
                   ))

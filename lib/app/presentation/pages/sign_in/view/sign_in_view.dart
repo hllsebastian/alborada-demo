@@ -36,12 +36,14 @@ class _LoginBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: screenSize.height * 0.3),
-        Image.asset('assets/images/logo.png'),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Image.asset('assets/images/logo.png'),
+        ),
         SimpleButton(
           text: 'C’est parti !',
-          // text: AlboradaTexts.createAccount,
-          isCreateProfile: true,
-          onPressed: () {},
+          isDarkButton: true,
+          onPressed: () => Navigator.pushNamed(context, Routes.createAccount),
         ),
         const SizedBox(height: 30),
         Text(

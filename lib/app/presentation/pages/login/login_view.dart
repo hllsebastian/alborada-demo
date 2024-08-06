@@ -37,20 +37,33 @@ class _LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenSize.height * 0.2),
+          SizedBox(height: screenSize.height * 0.1),
           const CustomBackButton(),
           Text(
             'Je me connecte',
             style:
                 GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w500),
           ),
-          CustomTextField(onChanged: (value) {}),
-          CustomTextField(onChanged: (value) {}),
+          CustomTextField(
+            hintText: 'Adresse e-mail',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
+          CustomTextField(
+            hintText: 'Mot de passe',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
           SimpleButton(
             text: 'Se connecter',
-            isCreateProfile: true,
-            onPressed: () {},
+            isDarkButton: true,
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.pageView,
+              (Route<dynamic> route) => false,
+            ),
           ),
+          SizedBox(height: screenSize.height * 0.01),
           TextButton(
             style: TextButton.styleFrom(
               padding: EdgeInsets.zero,

@@ -36,21 +36,27 @@ class _LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: screenSize.height * 0.2),
+          SizedBox(height: screenSize.height * 0.1),
           const CustomBackButton(),
           Text(
             'Mot de passe oublié',
             style:
                 GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w500),
           ),
+          SizedBox(height: screenSize.height * 0.01),
           Text(
             'Nous vous enverons un e-mail pour réinitialiser votre mot de passe.',
             style: GoogleFonts.outfit(fontSize: 16),
           ),
-          CustomTextField(onChanged: (value) {}),
+          SizedBox(height: screenSize.height * 0.01),
+          CustomTextField(
+            hintText: 'Adresse e-mail',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: screenSize.height * 0.01),
           SimpleButton(
             text: 'Réinitialiser le mot de passe',
-            isCreateProfile: true,
+            isDarkButton: true,
             onPressed: () {},
           ),
         ],

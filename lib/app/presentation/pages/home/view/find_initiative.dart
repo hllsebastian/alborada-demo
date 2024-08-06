@@ -19,7 +19,7 @@ class _FindInitiative extends StatelessWidget {
             ),
             Text(
               AlboradaTexts.findInitiative,
-              style: GoogleFonts.openSans(fontSize: 15),
+              style: GoogleFonts.outfit(fontSize: 14),
             )
           ]),
           // border: OutlineInputBorder(
