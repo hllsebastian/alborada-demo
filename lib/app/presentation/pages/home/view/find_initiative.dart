@@ -1,9 +1,7 @@
 part of 'home_view.dart';
 
 class _FindInitiative extends StatelessWidget {
-  const _FindInitiative({
-    super.key,
-  });
+  const _FindInitiative();
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +12,20 @@ class _FindInitiative extends StatelessWidget {
         decoration: InputDecoration(
           label: Row(children: [
             const Icon(
-              Icons.search,
+              // TODO: the icon it doesn't working out
+              AlboradaIcons.search,
               color: Colors.grey,
             ),
+            const SizedBox(width: 5),
             Text(
               AlboradaTexts.findInitiative,
               style: GoogleFonts.outfit(fontSize: 14),
-            )
+            ),
+            const Spacer(),
+            const Icon(
+              // TODO: the icon it doesn't working out
+              AlboradaIcons.bars,
+            ),
           ]),
           // border: OutlineInputBorder(
           //   borderRadius: BorderRadius.circular(5),

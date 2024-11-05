@@ -1,3 +1,4 @@
+import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
 import 'package:alborada_demo/app/presentation/pages/home/consts.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,7 @@ class _AlboradaPageViewState extends State<AlboradaPageView> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+    return AlboradaScaffoldWidget(
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
             labelTextStyle: WidgetStateTextStyle.resolveWith((states) {
@@ -39,10 +39,7 @@ class _AlboradaPageViewState extends State<AlboradaPageView> {
           destinations: navigationBarItems,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
-        child: bodyWidget[_selectedIndex],
-      ),
+      body: bodyWidget[_selectedIndex],
     );
   }
 }

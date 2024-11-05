@@ -9,7 +9,7 @@ class ExchangeView extends StatelessWidget {
     return ListView.builder(
       itemCount: 1,
       itemBuilder: (context, index) {
-        return ExchangeCard(
+        return const ExchangeCard(
           logo: 'logo',
           description: 'description',
           brand: 'brand',
