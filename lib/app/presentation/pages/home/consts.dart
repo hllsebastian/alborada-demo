@@ -1,3 +1,4 @@
+import 'package:alborada_demo/app/presentation/pages/Map/alborada_map.dart';
 import 'package:alborada_demo/app/presentation/pages/community/view/community_view.dart';
 import 'package:alborada_demo/app/presentation/pages/exchange/view/exchange_view.dart';
 import 'package:alborada_demo/app/presentation/pages/home/view/home_view.dart';
@@ -26,6 +27,7 @@ const navigationBarItems = [
 const bodyWidget = [
   Homeview(),
   ExchangeView(),
-  InitiativesView(),
+  AlboradaMap(),
+  // InitiativesView(),
   CommunityView(),
 ];

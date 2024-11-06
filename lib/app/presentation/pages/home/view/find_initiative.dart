@@ -1,9 +1,7 @@
 part of 'home_view.dart';
 
 class _FindInitiative extends StatelessWidget {
-  const _FindInitiative({
-    super.key,
-  });
+  const _FindInitiative();
 
   @override
   Widget build(BuildContext context) {

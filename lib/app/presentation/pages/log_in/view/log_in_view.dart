@@ -20,16 +20,18 @@ class SignInView extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: screenSize.height * 0.3),
-            Text(
-              AlboradaTexts.welcomeTo,
-              style: GoogleFonts.openSans(
-                  fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              AlboradaTexts.alborada,
-              style: GoogleFonts.openSans(
-                  fontSize: 50, fontWeight: FontWeight.bold),
-            ),
+            // Text(
+            //   AlboradaTexts.welcomeTo,
+            //   style: GoogleFonts.openSans(
+            //       fontSize: 18, fontWeight: FontWeight.w600),
+            // ),
+            SizedBox(child: Image.asset('assets/images/logo.png')),
+            SizedBox(height: screenSize.height * 0.02),
+            // Text(
+            //   AlboradaTexts.alborada,
+            //   style: GoogleFonts.openSans(
+            //       fontSize: 50, fontWeight: FontWeight.bold),
+            // ),
             SimpleButton(
               text: AlboradaTexts.createAccount,
               isCreateProfile: true,

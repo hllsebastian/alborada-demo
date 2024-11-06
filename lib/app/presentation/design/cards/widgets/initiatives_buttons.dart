@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InitiativeButtons extends StatelessWidget {
   const InitiativeButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const separator = SizedBox(width: 7);
-    return const Row(
+    final separator = SizedBox(width: 7.w);
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _SmallButton('📆 16.03'),
+        const _SmallButton('📆 16.03'),
         separator,
-        _SmallButton('🏃‍♂️ 450m'),
+        const _SmallButton('🏃‍♂️ 450m'),
         separator,
-        _SmallButton('🪙 +120'),
+        const _SmallButton('🪙 +120'),
         separator,
-        _SmallButton('👨‍👩‍👧‍👦 6/15'),
+        const _SmallButton('👨‍👩‍👧‍👦 6/15'),
       ],
     );
   }

@@ -1,9 +1,7 @@
 part of 'home_view.dart';
 
 class _Appbar extends StatelessWidget {
-  const _Appbar({
-    super.key,
-  });
+  const _Appbar();
 
   @override
   Widget build(BuildContext context) {

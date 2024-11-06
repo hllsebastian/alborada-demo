@@ -1,9 +1,7 @@
 part of 'home_view.dart';
 
 class _FindInitiativeBy extends StatefulWidget {
-  const _FindInitiativeBy({
-    super.key,
-  });
+  const _FindInitiativeBy();
 
   @override
   State<_FindInitiativeBy> createState() => _FindInitiativeByState();

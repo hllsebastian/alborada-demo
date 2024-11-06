@@ -12,7 +12,7 @@ class InitiativesView extends StatelessWidget {
         child: const ColoredBox(
           color: Colors.purple,
           child: Center(
-            child: const Text('Initiatives Exchange Page'),
+            child: Text('Initiatives Exchange Page'),
           ),
         ),
       ),
