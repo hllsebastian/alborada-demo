@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/icons/svg_icon.dart';
 import 'package:flutter/material.dart';
 
 class InitiativeActionCard extends StatelessWidget {
@@ -26,7 +26,7 @@ class InitiativeActionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         image: const DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/arbolito.jpg'),
+          image: AssetImage('assets/images/png/arbolito.jpg'),
         ),
       ),
       child: Column(
@@ -66,13 +66,13 @@ class InitiativeActionCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  _buildIconText(AlboradaIcons.deseos, '100'),
-                  // const SizedBox(width: 8),
-                  _buildIconText(AlboradaIcons.deseos, '100'),
-                  // const SizedBox(width: 8),
-                  _buildIconText(AlboradaIcons.social, '100'),
-                  // const SizedBox(width: 8),
-                  _buildIconText(AlboradaIcons.deseos, '100'),
+                  _buildIconWidget('deseos.svg', '100'),
+                  _buildIconWidget('pin.svg', '100m'),
+                  _buildIconWidget('social.svg', '100'),
+                  _buildIconWidget('calendar.svg', '100'),
+                  // _buildIconText(AlboradaIcons.deseos, '100'),
+                  // _buildIconText(MyFlutterApp.pin, '100'),
+                  // _buildIconText(AlboradaIcons.social, '100'),
                   // _buildIconText(AlboradaIcons.deseos, '100'),
                 ],
               ),
@@ -97,8 +97,35 @@ class InitiativeActionCard extends StatelessWidget {
         children: [
           Icon(
             icon,
-            // size: 20,
             color: const Color(0xffffec574),
+          ),
+          const SizedBox(width: 1),
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconWidget(String nameImage, String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 2),
+      decoration: BoxDecoration(
+        color: const Color(0xfff222222),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgIcon(
+            nameImage,
+            // color: const Color(0xffffec574),
           ),
           const SizedBox(width: 1),
           Text(

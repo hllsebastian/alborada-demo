@@ -5,15 +5,13 @@ class InitiativesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height,
-        child: const ColoredBox(
-          color: Colors.purple,
-          child: Center(
-            child: Text('Initiatives Exchange Page'),
-          ),
+    return SizedBox(
+      height: MediaQuery.sizeOf(context)
+          .height, // height: MediaQuery.sizeOf(context).height * 0.8,
+      child: const ColoredBox(
+        color: Colors.purple,
+        child: Center(
+          child: Text('Initiatives Exchange Page'),
         ),
       ),
     );

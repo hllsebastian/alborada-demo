@@ -38,7 +38,7 @@ class _LoginBody extends StatelessWidget {
         SizedBox(height: screenSize.height * 0.3),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
-          child: Image.asset('assets/images/logo.png'),
+          child: Image.asset('assets/images/png/logo.png'),
         ),
         SimpleButton(
           text: 'C’est parti !',

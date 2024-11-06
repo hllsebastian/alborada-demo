@@ -23,7 +23,7 @@ class ReapRewardPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 30, bottom: 30),
             child: Image.asset(
                 height: screenHeight * 0.35,
-                'assets/images/onboarding_reap_reward.png'),
+                'assets/images/png/onboarding_reap_reward.png'),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),

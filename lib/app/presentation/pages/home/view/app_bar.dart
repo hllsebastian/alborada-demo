@@ -17,7 +17,7 @@ class _Appbar extends StatelessWidget {
           child: Row(
             children: [
               // Text('🪙'),
-              Image.asset('assets/images/alborada_coin.png'),
+              Image.asset('assets/images/png/alborada_coin.png'),
               const SizedBox(width: 5),
               const Text('1250',
                   style: TextStyle(
@@ -32,7 +32,7 @@ class _Appbar extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: const DecorationImage(
-              image: AssetImage('assets/images/saitama_poker_face.png'),
+              image: AssetImage('assets/images/png/saitama_poker_face.png'),
               fit: BoxFit.cover,
             ),
             border: Border.all(

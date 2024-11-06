@@ -33,7 +33,7 @@ class ExchangeCard extends StatelessWidget {
             width: screenSize.width * 0.9,
             // height: screenSize.height * 0.2,
             child: Image.asset(
-              'assets/images/arbolito.jpg',
+              'assets/images/png/arbolito.jpg',
             ),
           ),
           // Flexible(

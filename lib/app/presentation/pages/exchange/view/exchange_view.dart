@@ -6,16 +6,19 @@ class ExchangeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 1,
-      itemBuilder: (context, index) {
-        return const ExchangeCard(
-          logo: 'logo',
-          description: 'description',
-          brand: 'brand',
-          image: 'image',
-        );
-      },
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height,
+      child: ListView.builder(
+        itemCount: 1,
+        itemBuilder: (context, index) {
+          return const ExchangeCard(
+            logo: 'logo',
+            description: 'description',
+            brand: 'brand',
+            image: 'image',
+          );
+        },
+      ),
     );
   }
 }
