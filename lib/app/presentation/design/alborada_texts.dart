@@ -5,5 +5,5 @@ class AlboradaTexts {
   static String createAccount = 'Créer un compte';
   static String googleLogin = 'Se connecter avec Google';
   static String fbookLogin = 'Se connecter avec Facebook';
-  static String findInitiative = 'Rechearcher une initiative';
+  static String findInitiative = 'Que recherches-tu ?';
 }

@@ -14,10 +14,12 @@ class _Appbar extends StatelessWidget {
             color: Colors.black,
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
-          child: const Row(
+          child: Row(
             children: [
-              Text('🪙'),
-              Text('150',
+              // Text('🪙'),
+              Image.asset('assets/images/png/alborada_coin.png'),
+              const SizedBox(width: 5),
+              const Text('1250',
                   style: TextStyle(
                     color: Colors.white,
                   ))
@@ -30,7 +32,7 @@ class _Appbar extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: const DecorationImage(
-              image: AssetImage('assets/images/saitama_poker_face.png'),
+              image: AssetImage('assets/images/png/saitama_poker_face.png'),
               fit: BoxFit.cover,
             ),
             border: Border.all(

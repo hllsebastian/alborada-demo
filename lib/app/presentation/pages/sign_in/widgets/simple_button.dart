@@ -6,12 +6,12 @@ class SimpleButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.isCreateProfile = false,
+    this.isDarkButton = false,
     this.imagePath,
   });
   final String text;
   final VoidCallback onPressed;
-  final bool isCreateProfile;
+  final bool isDarkButton;
   final String? imagePath;
 
   @override
@@ -24,7 +24,7 @@ class SimpleButton extends StatelessWidget {
         width: screenSize.width * 0.9,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: isCreateProfile
+            backgroundColor: isDarkButton
                 ? Colors.black.withOpacity(0.85)
                 : const Color.fromRGBO(254, 235, 235, 1),
             shape: RoundedRectangleBorder(
@@ -45,12 +45,14 @@ class SimpleButton extends StatelessWidget {
                     width: screenSize.width * 0.08,
                   ),
                 ),
-              Text(
-                text,
-                style: GoogleFonts.openSans(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w500,
-                  color: isCreateProfile ? Colors.white : Colors.orangeAccent,
+              Flexible(
+                child: Text(
+                  text,
+                  style: GoogleFonts.openSans(
+                    fontSize: 19,
+                    fontWeight: FontWeight.w500,
+                    color: isDarkButton ? Colors.white : Colors.orangeAccent,
+                  ),
                 ),
               ),
             ],

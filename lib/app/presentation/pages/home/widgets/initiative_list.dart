@@ -37,19 +37,19 @@ class InitiativeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: listOfInitiatives.length,
-        itemBuilder: (context, index) {
-          final initiativeItem = listOfInitiatives[index];
-          return InitiativeActionCard(
-            type: initiativeItem.type,
-            description: initiativeItem.description,
-            phrase: initiativeItem.phrase,
-          );
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
+      itemCount: listOfInitiatives.length,
+      itemBuilder: (context, index) {
+        final initiativeItem = listOfInitiatives[index];
+        return InitiativeActionCard(
+          type: initiativeItem.type,
+          initiativeName: 'Titre de l’initiative',
+          associationName: 'Nom de l’association',
+        );
+      },
     );
   }
 }

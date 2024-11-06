@@ -12,13 +12,20 @@ class _FindInitiative extends StatelessWidget {
         decoration: InputDecoration(
           label: Row(children: [
             const Icon(
-              Icons.search,
+              // TODO: the icon it doesn't working out
+              AlboradaIcons.search,
               color: Colors.grey,
             ),
+            const SizedBox(width: 5),
             Text(
               AlboradaTexts.findInitiative,
-              style: GoogleFonts.openSans(fontSize: 15),
-            )
+              style: GoogleFonts.outfit(fontSize: 14),
+            ),
+            const Spacer(),
+            const Icon(
+              // TODO: the icon it doesn't working out
+              AlboradaIcons.bars,
+            ),
           ]),
           // border: OutlineInputBorder(
           //   borderRadius: BorderRadius.circular(5),

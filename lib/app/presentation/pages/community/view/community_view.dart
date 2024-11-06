@@ -5,15 +5,12 @@ class CommunityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height,
-        child: const ColoredBox(
-          color: Colors.blue,
-          child: Center(
-            child: Text('Community Communinty Page'),
-          ),
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height,
+      child: const ColoredBox(
+        color: Colors.blue,
+        child: Center(
+          child: Text('Community Communinty Page'),
         ),
       ),
     );
