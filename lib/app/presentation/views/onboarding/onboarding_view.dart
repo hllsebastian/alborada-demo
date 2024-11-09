@@ -1,7 +1,7 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
-import 'package:alborada_demo/app/presentation/pages/onboarding/pages/choise_initiative_page.dart';
-import 'package:alborada_demo/app/presentation/pages/onboarding/pages/reap_reward_page.dart';
-import 'package:alborada_demo/app/presentation/pages/onboarding/pages/take_action_page.dart';
+import 'package:alborada_demo/app/presentation/views/onboarding/pages/choise_initiative_page.dart';
+import 'package:alborada_demo/app/presentation/views/onboarding/pages/reap_reward_page.dart';
+import 'package:alborada_demo/app/presentation/views/onboarding/pages/take_action_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

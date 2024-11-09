@@ -1,28 +1,27 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
-import 'package:alborada_demo/app/presentation/pages/Map/alborada_map.dart';
-import 'package:alborada_demo/app/presentation/pages/community/view/community_view.dart';
-import 'package:alborada_demo/app/presentation/pages/exchange/view/exchange_view.dart';
-import 'package:alborada_demo/app/presentation/pages/home/view/home_view.dart';
-import 'package:flutter/material.dart' show Icon, Icons, NavigationDestination;
+import 'package:alborada_demo/app/presentation/views/Map/alborada_map.dart';
+import 'package:alborada_demo/app/presentation/views/exchange/view/exchange_view.dart';
+import 'package:alborada_demo/app/presentation/views/home/view/home_view.dart';
+import 'package:flutter/material.dart' show Icon, NavigationDestination;
 
 const navigationBarItems = [
   NavigationDestination(
     icon: Icon(AlboradaIcons.compass),
-    label: 'Découverte',
+    label: 'Causas' /* 'Découverte' */,
+  ),
+  NavigationDestination(
+    icon: Icon(AlboradaIcons.list),
+    label: 'Mapa' /* 'Initiatives' */,
   ),
   NavigationDestination(
     // TODO: Icon doesnt looks as the design
     icon: Icon(size: 30, AlboradaIcons.deseos),
-    label: 'cagnotte',
+    label: 'Deseos' /* 'cagnotte' */,
   ),
-  NavigationDestination(
-    icon: Icon(AlboradaIcons.list),
-    label: 'Initiatives',
-  ),
-  NavigationDestination(
-    icon: Icon(AlboradaIcons.social),
-    label: 'Communaute',
-  ),
+  // NavigationDestination(
+  //   icon: Icon(AlboradaIcons.social),
+  //   label: 'Communaute',
+  // ),
 ];
 const tabItems = [
   NavigationDestination(
@@ -45,8 +44,8 @@ const tabItems = [
 
 const bodyWidget = [
   Homeview(),
-  ExchangeView(),
   AlboradaMap(),
+  ExchangeView(),
   // InitiativesView(),
-  CommunityView(),
+  // CommunityView(),
 ];

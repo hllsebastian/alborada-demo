@@ -8,4 +8,5 @@ class Routes {
   static const pageView = '/page-view';
   static const home = '/home';
   static const onboarding = '/onboarding';
+  static const initiativeDetails = '/initiativeDetails';
 }

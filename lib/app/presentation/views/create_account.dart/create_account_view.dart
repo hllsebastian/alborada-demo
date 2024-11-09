@@ -1,13 +1,13 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/back_button.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/custom_text_field.dart';
-import 'package:alborada_demo/app/presentation/pages/sign_in/widgets/simple_button.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
+import 'package:alborada_demo/app/presentation/views/sign_in/widgets/simple_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class CreateAccountView extends StatelessWidget {
+  const CreateAccountView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _LoginBody extends StatelessWidget {
           SizedBox(height: screenSize.height * 0.1),
           const CustomBackButton(),
           Text(
-            'Je me connecte',
+            'Je créé mon compte',
             style:
                 GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w500),
           ),
@@ -54,33 +54,29 @@ class _LoginBody extends StatelessWidget {
             onChanged: (value) {},
           ),
           SizedBox(height: screenSize.height * 0.01),
-          SimpleButton(
-            text: 'Se connecter',
-            isDarkButton: true,
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context,
-              Routes.pageView,
-              (Route<dynamic> route) => false,
-            ),
+          CustomTextField(
+            hintText: 'Confirmer le mot de passe',
+            onChanged: (value) {},
           ),
           SizedBox(height: screenSize.height * 0.01),
-          TextButton(
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-              minimumSize: const Size(0, 0),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          SimpleButton(
+            text: 'Créer un compte',
+            isDarkButton: true,
+            onPressed: () => Navigator.pushNamed(
+              context,
+              Routes.onboarding,
+              // (Route<dynamic> route) => false,
             ),
-            onPressed: () => goTo(Routes.forgotPassword),
-            child: Text(
-              'Mot de passe oublié ?',
-              style: GoogleFonts.outfit(fontSize: 16, color: Colors.black),
-            ),
+          ),
+          Text(
+            'En cliquant sur “Créer un compte, vous acceptez les conditions d’utilisation d’Alborada.',
+            style: GoogleFonts.outfit(fontSize: 16),
           ),
           const Spacer(),
           Align(
             alignment: Alignment.center,
             child: Text(
-              'Tu n’as pas encore de compte ?',
+              'Tu as déjà un compte ?',
               style: GoogleFonts.outfit(fontSize: 16),
             ),
           ),
@@ -92,9 +88,9 @@ class _LoginBody extends StatelessWidget {
                 minimumSize: const Size(0, 0),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              onPressed: () => goTo(Routes.createAccount),
+              onPressed: () => goTo(Routes.login),
               child: Text(
-                'Je créé mon compte',
+                'Je me connecte',
                 style: GoogleFonts.outfit(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

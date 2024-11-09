@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/pages/sign_in/widgets/simple_button.dart';
+import 'package:alborada_demo/app/presentation/views/sign_in/widgets/simple_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -8,11 +8,17 @@ class SimpleButton extends StatelessWidget {
     required this.onPressed,
     this.isDarkButton = false,
     this.imagePath,
+    this.buttonColor = const Color.fromRGBO(254, 235, 235, 1),
+    this.textColor = Colors.orangeAccent,
+    this.icon,
   });
   final String text;
   final VoidCallback onPressed;
   final bool isDarkButton;
   final String? imagePath;
+  final Color? buttonColor;
+  final Color? textColor;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +30,8 @@ class SimpleButton extends StatelessWidget {
         width: screenSize.width * 0.9,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: isDarkButton
-                ? Colors.black.withOpacity(0.85)
-                : const Color.fromRGBO(254, 235, 235, 1),
+            backgroundColor:
+                isDarkButton ? Colors.black.withOpacity(0.85) : buttonColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -46,13 +51,24 @@ class SimpleButton extends StatelessWidget {
                   ),
                 ),
               Flexible(
-                child: Text(
-                  text,
-                  style: GoogleFonts.openSans(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w500,
-                    color: isDarkButton ? Colors.white : Colors.orangeAccent,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (icon != null)
+                      Icon(
+                        Icons.qr_code,
+                        color: Colors.white,
+                      ),
+                    SizedBox(width: 6),
+                    Text(
+                      text,
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        color: isDarkButton ? Colors.white : textColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

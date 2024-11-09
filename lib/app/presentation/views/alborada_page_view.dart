@@ -1,7 +1,8 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
-import 'package:alborada_demo/app/presentation/pages/home/consts.dart';
+import 'package:alborada_demo/app/presentation/views/home/consts.dart';
 import 'package:flutter/material.dart';
 
+// This page display the home pages
 class AlboradaPageView extends StatefulWidget {
   const AlboradaPageView({super.key});
 

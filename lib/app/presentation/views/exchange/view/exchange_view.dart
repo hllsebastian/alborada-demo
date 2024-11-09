@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/pages/exchange/widgets/exchange_card.dart';
+import 'package:alborada_demo/app/presentation/views/exchange/widgets/exchange_card.dart';
 import 'package:flutter/material.dart';
 
 class ExchangeView extends StatelessWidget {
