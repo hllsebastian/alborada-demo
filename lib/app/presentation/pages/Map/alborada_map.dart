@@ -1,4 +1,3 @@
-import 'package:alborada_demo/app/presentation/design/alborada_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -20,16 +19,31 @@ class AlboradaMapState extends State<AlboradaMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AlboradaTexts.findInitiative),
-      ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
-        ),
+    return SizedBox(
+      width: double.infinity,
+      height: MediaQuery.sizeOf(context).height * 0.9,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              // Text(AlboradaTexts.findInitiative),
+              // Container(
+              //   height: MediaQuery.sizeOf(context).width * 4,
+              //   width: MediaQuery.sizeOf(context).width * 0.7,
+              //   color: Colors.amber,
+              // )
+              Flexible(
+                child: GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: _center,
+                    zoom: 11.0,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
