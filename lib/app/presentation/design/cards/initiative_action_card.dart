@@ -16,70 +16,43 @@ class InitiativeActionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
 
-    return Container(
-      width: screenSize.width * 0.85,
-      height: screenSize.height * 0.35,
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(15),
-        image: const DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage('assets/images/png/arbolito.jpg'),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // ElevatedButton(
-          //   style: ElevatedButton.styleFrom(
-          //     padding: const EdgeInsets.symmetric(horizontal: 10),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(10),
-          //     ),
-          //   ),
-          //   child: Text(
-          //     '🌱  $type',
-          //     style: const TextStyle(color: Colors.amber),
-          //   ),
-          //   onPressed: () {},
-          // ),
-          const Spacer(),
-          Text(
-            initiativeName,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+    return Column(
+      children: [
+        Container(
+          width: screenSize.width * 0.85,
+          height: screenSize.height * 0.35,
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(15),
+            image: const DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/png/arbolito.jpg'),
             ),
           ),
-          Text(
-            associationName,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-              color: Colors.amber,
-            ),
-          ),
-          Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Spacer(),
+              SizedBox(height: 10),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildIconWidget('deseos.svg', '100'),
                   _buildIconWidget('pin.svg', '100m'),
-                  _buildIconWidget('social.svg', '100'),
                   _buildIconWidget('calendar.svg', '100'),
-                  // _buildIconText(AlboradaIcons.deseos, '100'),
-                  // _buildIconText(MyFlutterApp.pin, '100'),
-                  // _buildIconText(AlboradaIcons.social, '100'),
-                  // _buildIconText(AlboradaIcons.deseos, '100'),
+                  _buildIconWidget('deseos.svg', '100'),
+                  // _buildIconWidget('social.svg', '100'),
                 ],
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        _InitiativeDescription(
+          initiativeName: initiativeName,
+          associationName: associationName,
+        ),
+      ],
     );
   }
 
@@ -116,17 +89,12 @@ class InitiativeActionCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       margin: const EdgeInsets.symmetric(horizontal: 2),
       decoration: BoxDecoration(
-        color: const Color(0xfff222222),
-        borderRadius: BorderRadius.circular(30),
+        color: Colors.black26.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-        // mainAxisSize: MainAxisSize.min,
         children: [
-          SvgIcon(
-            nameImage,
-            // color: const Color(0xffffec574),
-          ),
+          SvgIcon(nameImage),
           const SizedBox(width: 1),
           Text(
             text,
@@ -135,6 +103,50 @@ class InitiativeActionCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _InitiativeDescription extends StatelessWidget {
+  const _InitiativeDescription({
+    super.key,
+    required this.initiativeName,
+    required this.associationName,
+  });
+
+  final String initiativeName;
+  final String associationName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 10,
+          bottom: 20,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              initiativeName,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              associationName,
+              style: const TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

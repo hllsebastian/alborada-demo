@@ -1,10 +1,11 @@
-import 'package:alborada_demo/app/presentation/pages/alborada_page_view.dart';
-import 'package:alborada_demo/app/presentation/pages/create_account.dart/create_account_view.dart';
-import 'package:alborada_demo/app/presentation/pages/forgot_password/forgot_password.dart';
-import 'package:alborada_demo/app/presentation/pages/login/login_view.dart';
-import 'package:alborada_demo/app/presentation/pages/onboarding/onboarding_view.dart';
-import 'package:alborada_demo/app/presentation/pages/sign_in/view/sign_in_view.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
+import 'package:alborada_demo/app/presentation/views/alborada_page_view.dart';
+import 'package:alborada_demo/app/presentation/views/create_account.dart/create_account_view.dart';
+import 'package:alborada_demo/app/presentation/views/forgot_password/forgot_password.dart';
+import 'package:alborada_demo/app/presentation/views/initiative_details/initiative_details_view.dart';
+import 'package:alborada_demo/app/presentation/views/login/login_view.dart';
+import 'package:alborada_demo/app/presentation/views/onboarding/onboarding_view.dart';
+import 'package:alborada_demo/app/presentation/views/sign_in/view/sign_in_view.dart';
 import 'package:flutter/material.dart';
 
 class AlboradaApp extends StatelessWidget {
@@ -32,6 +33,9 @@ class AlboradaApp extends StatelessWidget {
             case Routes.onboarding:
               return MaterialPageRoute(
                   builder: (context) => const OnboardingView());
+            case Routes.initiativeDetails:
+              return MaterialPageRoute(
+                  builder: (context) => const InitiativeDetailsView());
             default:
               return MaterialPageRoute(
                   // builder: (context) => const OnboardingPageController());

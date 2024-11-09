@@ -41,6 +41,8 @@ dependencies:
   provider: ^6.1.2
   smooth_page_indicator: ^1.2.0+3
   flutter_svg: ^2.0.13
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
 
 
 dev_dependencies:
