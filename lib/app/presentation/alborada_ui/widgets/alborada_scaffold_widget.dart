@@ -1,3 +1,4 @@
+import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:flutter/material.dart';
 
 class AlboradaScaffoldWidget extends StatelessWidget {
@@ -19,7 +20,7 @@ class AlboradaScaffoldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFBF5),
+      backgroundColor: Palette.white,
       bottomNavigationBar: bottomNavigationBar,
       appBar: appBar,
       floatingActionButton: floatingActionButton,

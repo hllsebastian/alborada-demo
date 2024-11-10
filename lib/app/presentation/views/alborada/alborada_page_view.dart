@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
+import 'package:alborada_demo/app/presentation/views/alborada/widget/alborada_app_bar.dart';
 import 'package:alborada_demo/app/presentation/views/home/consts.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class _AlboradaPageViewState extends State<AlboradaPageView> {
   @override
   Widget build(BuildContext context) {
     return AlboradaScaffoldWidget(
+      appBar: AlboradaAppbar(),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
             labelTextStyle: WidgetStateTextStyle.resolveWith((states) {

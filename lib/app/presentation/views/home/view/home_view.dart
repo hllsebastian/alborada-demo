@@ -4,7 +4,6 @@ import 'package:alborada_demo/app/presentation/views/home/widgets/Initiative_lis
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-part 'app_bar.dart';
 part 'find_initiative.dart';
 part 'find_initiative_by.dart';
 
@@ -20,7 +19,6 @@ class Homeview extends StatelessWidget {
       child: const Column(
         children: [
           SizedBox(height: 10),
-          _Appbar(),
           Divider(
             thickness: 0.5,
           ),

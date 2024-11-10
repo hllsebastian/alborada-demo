@@ -8,18 +8,26 @@ class ButtonIconWidget extends StatelessWidget {
     required this.imagePath,
     this.buttonColor,
     this.width,
+    this.height,
+    this.padding,
+    this.margin,
   });
   final String text;
   final String imagePath;
   final Color? buttonColor;
   final double? width;
+  final double? height;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-      margin: const EdgeInsets.symmetric(horizontal: 2),
+      height: height,
+      padding:
+          padding ?? const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 2),
       decoration: BoxDecoration(
         color: buttonColor ?? Colors.black26.withOpacity(0.2),
         borderRadius: BorderRadius.circular(10),
