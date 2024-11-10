@@ -15,19 +15,22 @@ class Homeview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SizedBox(height: 10),
-        _Appbar(),
-        Divider(
-          thickness: 0.5,
-        ),
-        // TODO: add in next phase
-        // _FindInitiative(),
-        // Tabs(),
-        // _FindInitiativeBy(),
-        InitiativeList(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: const Column(
+        children: [
+          SizedBox(height: 10),
+          _Appbar(),
+          Divider(
+            thickness: 0.5,
+          ),
+          // TODO: add in next phase
+          // _FindInitiative(),
+          // Tabs(),
+          // _FindInitiativeBy(),
+          InitiativeList(),
+        ],
+      ),
     );
   }
 }
