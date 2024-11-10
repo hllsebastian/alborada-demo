@@ -1,8 +1,8 @@
-import 'package:alborada_demo/app/presentation/views/exchange/widgets/exchange_card.dart';
+import 'package:alborada_demo/app/presentation/views/whishes/widgets/exchange_card.dart';
 import 'package:flutter/material.dart';
 
-class ExchangeView extends StatelessWidget {
-  const ExchangeView({super.key});
+class WishesView extends StatelessWidget {
+  const WishesView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
 import 'package:alborada_demo/app/presentation/views/Map/alborada_map.dart';
-import 'package:alborada_demo/app/presentation/views/exchange/view/exchange_view.dart';
 import 'package:alborada_demo/app/presentation/views/home/view/home_view.dart';
+import 'package:alborada_demo/app/presentation/views/whishes/view/wishes_view.dart';
 import 'package:flutter/material.dart' show Icon, NavigationDestination;
 
 const navigationBarItems = [
@@ -45,7 +45,7 @@ const tabItems = [
 const bodyWidget = [
   Homeview(),
   AlboradaMap(),
-  ExchangeView(),
+  WishesView(),
   // InitiativesView(),
   // CommunityView(),
 ];

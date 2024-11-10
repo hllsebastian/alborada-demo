@@ -193,12 +193,14 @@ class _HowWorks extends StatelessWidget {
             'Anima actividades, distribuye alimentos y regalos, y disfruta de experiencia con el equipo de voluntarios',
             Icons.handshake_outlined,
           ),
+          SizedBox(height: 16),
           _HowWorksItem(
             screenSize,
             'Haz una donación economica',
             'Apoya la causa y contribuye a proporcionar alimentos, materiales escolares y regalos para los niños de la escula',
             Icons.attach_money_rounded,
           ),
+          SizedBox(height: 16),
           _HowWorksItem(
             screenSize,
             'Dona artículos en buen estado',
