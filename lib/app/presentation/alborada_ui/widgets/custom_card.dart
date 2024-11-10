@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TMCustomCard extends StatefulWidget {
-  const TMCustomCard({
+class CustomCard extends StatefulWidget {
+  const CustomCard({
     required this.child,
     this.borderRadius,
     super.key,
@@ -32,10 +32,10 @@ class TMCustomCard extends StatefulWidget {
   final Clip clipBehavior;
 
   @override
-  State<TMCustomCard> createState() => _TMCustomCardState();
+  State<CustomCard> createState() => _CustomCardState();
 }
 
-class _TMCustomCardState extends State<TMCustomCard>
+class _CustomCardState extends State<CustomCard>
     with SingleTickerProviderStateMixin {
   late final AnimationController controller = AnimationController(
     vsync: this,
