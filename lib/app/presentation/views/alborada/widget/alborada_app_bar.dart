@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
+import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -27,19 +28,22 @@ class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
               imagePath: 'deseos.svg'),
         ),
         Spacer(),
-        Container(
-          width: 46,
-          height: 46,
-          margin: EdgeInsets.only(right: 20),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: const DecorationImage(
-              image: AssetImage('assets/images/png/saitama_poker_face.png'),
-              fit: BoxFit.cover,
-            ),
-            border: Border.all(
-              color: Colors.black12,
-              width: 1.0,
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, Routes.profile),
+          child: Container(
+            width: 46,
+            height: 46,
+            margin: EdgeInsets.only(right: 20),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/png/saitama_poker_face.png'),
+                fit: BoxFit.cover,
+              ),
+              border: Border.all(
+                color: Colors.black12,
+                width: 1.0,
+              ),
             ),
           ),
         ),

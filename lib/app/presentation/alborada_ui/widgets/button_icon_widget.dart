@@ -11,6 +11,7 @@ class ButtonIconWidget extends StatelessWidget {
     this.height,
     this.padding,
     this.margin,
+    this.onTap,
   });
   final String text;
   final String imagePath;
@@ -19,30 +20,34 @@ class ButtonIconWidget extends StatelessWidget {
   final double? height;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      padding:
-          padding ?? const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-      margin: margin ?? const EdgeInsets.symmetric(horizontal: 2),
-      decoration: BoxDecoration(
-        color: buttonColor ?? Colors.black26.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          SvgIcon(imagePath),
-          const SizedBox(width: 1),
-          Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
+    return GestureDetector(
+      onTap: () => onTap,
+      child: Container(
+        width: width,
+        height: height,
+        padding:
+            padding ?? const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+        margin: margin ?? const EdgeInsets.symmetric(horizontal: 2),
+        decoration: BoxDecoration(
+          color: buttonColor ?? Colors.black26.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            SvgIcon(imagePath),
+            const SizedBox(width: 1),
+            Text(
+              text,
+              style: const TextStyle(
+                color: Colors.white,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
