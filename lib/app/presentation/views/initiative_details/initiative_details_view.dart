@@ -1,6 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/button_icon_widget.dart';
-import 'package:alborada_demo/app/presentation/views/sign_in/widgets/simple_button.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class InitiativeDetailsView extends StatelessWidget {

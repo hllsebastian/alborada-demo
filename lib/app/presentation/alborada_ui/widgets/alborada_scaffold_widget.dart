@@ -27,7 +27,7 @@ class AlboradaScaffoldWidget extends StatelessWidget {
           FloatingActionButtonLocation.centerDocked,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          // padding: const EdgeInsets.symmetric(horizontal: 25),
           physics: scrollPhysics,
           child: body,
         ),
