@@ -13,8 +13,10 @@ class SvgIcon extends StatelessWidget {
     return Center(
       child: SvgPicture.asset(
         'assets/images/svg/$svgName',
-        colorFilter:
-            ColorFilter.mode(const Color(0xffffec574), BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          const Color(0xffffec574),
+          BlendMode.srcIn,
+        ),
         width: 20,
         height: 20,
       ),

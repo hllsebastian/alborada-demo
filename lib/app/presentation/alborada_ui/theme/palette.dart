@@ -5,6 +5,7 @@ class Palette {
   // Black
   static const Color black = Color(0xFF222222);
   // Grey
+  static const Color grey3 = Color(0xFF62667D);
   static const Color darkGrey = Color(0xFF383838);
   static const Color coldGrey = Color(0xFF62667D);
   static const Color midGrey = Color(0xFFC0C1C9);

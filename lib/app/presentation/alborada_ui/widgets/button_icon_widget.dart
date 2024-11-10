@@ -7,14 +7,17 @@ class ButtonIconWidget extends StatelessWidget {
     required this.text,
     required this.imagePath,
     this.buttonColor,
+    this.width,
   });
   final String text;
   final String imagePath;
   final Color? buttonColor;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       margin: const EdgeInsets.symmetric(horizontal: 2),
       decoration: BoxDecoration(
