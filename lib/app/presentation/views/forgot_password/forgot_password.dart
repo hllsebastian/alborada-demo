@@ -29,35 +29,38 @@ class _LoginBody extends StatelessWidget {
     //   Navigator.pushNamed(context, route);
     // }
 
-    return SizedBox(
-      height: screenSize.height * 0.85,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: screenSize.height * 0.1),
-          const CustomBackButton(),
-          Text(
-            'Mot de passe oublié',
-            style:
-                GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w500),
-          ),
-          SizedBox(height: screenSize.height * 0.01),
-          Text(
-            'Nous vous enverons un e-mail pour réinitialiser votre mot de passe.',
-            style: GoogleFonts.outfit(fontSize: 16),
-          ),
-          SizedBox(height: screenSize.height * 0.01),
-          CustomTextField(
-            hintText: 'Adresse e-mail',
-            onChanged: (value) {},
-          ),
-          SizedBox(height: screenSize.height * 0.01),
-          SimpleButton(
-            text: 'Réinitialiser le mot de passe',
-            isDarkButton: true,
-            onPressed: () {},
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: SizedBox(
+        height: screenSize.height * 0.85,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: screenSize.height * 0.1),
+            const CustomBackButton(),
+            Text(
+              'Mot de passe oublié',
+              style: GoogleFonts.openSans(
+                  fontSize: 30, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            Text(
+              'Nous vous enverons un e-mail pour réinitialiser votre mot de passe.',
+              style: GoogleFonts.outfit(fontSize: 16),
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            CustomTextField(
+              hintText: 'Adresse e-mail',
+              onChanged: (value) {},
+            ),
+            SizedBox(height: screenSize.height * 0.01),
+            SimpleButton(
+              text: 'Réinitialiser le mot de passe',
+              isDarkButton: true,
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
