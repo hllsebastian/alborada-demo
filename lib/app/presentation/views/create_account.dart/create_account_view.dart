@@ -1,4 +1,3 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/custom_text_field.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/widgets.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class _LoginBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: screenSize.height * 0.1),
-            const CustomBackButton(),
+            const BackButton(),
             Text(
               'Je créé mon compte',
               style: GoogleFonts.openSans(

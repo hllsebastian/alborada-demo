@@ -61,12 +61,10 @@ class _ImageHeader extends StatelessWidget {
     return Stack(
       children: [
         Image.asset('assets/images/png/arbolito.jpg'),
-        IconButton(
-          iconSize: 50,
-          color: Colors.white,
-          icon: Icon(Icons.keyboard_arrow_left_rounded),
-          onPressed: () => Navigator.pop(context),
-        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: HomeBackButton(),
+        )
       ],
     );
   }

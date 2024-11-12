@@ -1,4 +1,3 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/custom_text_field.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +36,7 @@ class _LoginBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: screenSize.height * 0.1),
-            const CustomBackButton(),
+            const BackButton(),
             Text(
               'Mot de passe oublié',
               style: GoogleFonts.openSans(

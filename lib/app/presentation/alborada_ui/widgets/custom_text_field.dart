@@ -18,6 +18,13 @@ class CustomTextField extends StatelessWidget {
     this.required = false,
     this.keyboardType,
     this.inputFormatters,
+    this.textStyle = const TextStyle(
+      fontFamily: 'outfit',
+      fontSize: 14,
+      letterSpacing: 0.03,
+      height: 1.3,
+    ),
+    this.maxLines,
   });
 
   final ValueChanged<String>? onChanged;
@@ -34,6 +41,8 @@ class CustomTextField extends StatelessWidget {
   final bool required;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final TextStyle textStyle;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +79,11 @@ class CustomTextField extends StatelessWidget {
           ),
         const SizedBox(height: 12),
         TextFormField(
+          maxLines: maxLines,
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
           obscureText: obscureText,
+          style: textStyle,
           initialValue: initialValue,
           controller: textEditingController,
           validator: (String? value) {
@@ -104,7 +115,6 @@ class CustomTextField extends StatelessWidget {
             // errorBorder: outlinedBorderRed,
             errorText: errorText,
           ),
-          style: const TextStyle(fontSize: 20),
           onChanged: onChanged,
           key: Key(initialValue.toString()),
         ),

@@ -13,6 +13,7 @@ class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Palette.white,
       elevation: 0,
       bottomOpacity: 0,
