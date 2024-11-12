@@ -1,6 +1,7 @@
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/alborada/alborada_page_view.dart';
 import 'package:alborada_demo/app/presentation/views/create_account.dart/create_account_view.dart';
+import 'package:alborada_demo/app/presentation/views/edit_profile/edit_profile_view.dart';
 import 'package:alborada_demo/app/presentation/views/forgot_password/forgot_password.dart';
 import 'package:alborada_demo/app/presentation/views/initiative_details/initiative_details_view.dart';
 import 'package:alborada_demo/app/presentation/views/login/login_view.dart';
@@ -47,6 +48,9 @@ class AlboradaApp extends StatelessWidget {
             case Routes.profile:
               return MaterialPageRoute(
                   builder: (context) => const ProfileView());
+            case Routes.editProfile:
+              return MaterialPageRoute(
+                  builder: (context) => const EditProfileView());
             default:
               return MaterialPageRoute(
                   // builder: (context) => const OnboardingPageController());

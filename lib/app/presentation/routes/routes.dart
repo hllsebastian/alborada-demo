@@ -10,4 +10,5 @@ class Routes {
   static const onboarding = '/onboarding';
   static const initiativeDetails = '/initiativeDetails';
   static const profile = '/profile';
+  static const editProfile = '/editProfile';
 }
