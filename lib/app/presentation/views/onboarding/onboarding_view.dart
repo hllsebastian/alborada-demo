@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/alborada_scaffold_widget.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/choise_initiative_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/reap_reward_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/take_action_page.dart';
@@ -51,19 +51,40 @@ class _OnboardingViewState extends State<OnboardingView> {
                 }),
           ),
           Positioned(
-              bottom: MediaQuery.sizeOf(context).height * 0.19,
-              child: Center(
-                child: SmoothPageIndicator(
-                  controller: _pageController,
-                  count: onboardingPages.length,
-                  effect: const ExpandingDotsEffect(
-                    dotHeight: 10,
-                    dotWidth: 20,
-                    expansionFactor: 2,
-                    activeDotColor: Color(0xfffEC574),
-                    dotColor: Color(0xfffCD586),
+              bottom: MediaQuery.sizeOf(context).height * 0.09,
+              child: Column(
+                children: [
+                  SmoothPageIndicator(
+                    controller: _pageController,
+                    count: onboardingPages.length,
+                    effect: const ExpandingDotsEffect(
+                      dotHeight: 10,
+                      dotWidth: 20,
+                      expansionFactor: 2,
+                      activeDotColor: Color(0xfffEC574),
+                      dotColor: Color(0xfffCD586),
+                    ),
                   ),
-                ),
+                  SizedBox(height: 10),
+                  SimpleButton(
+                    isDarkButton: true,
+                    text: _currentPage == 2 ? 'C’est compris!' : 'Suivant',
+                    onPressed: () {
+                      if (_currentPage == onboardingPages.length - 1) {
+                        _pageController.animateToPage(
+                          0,
+                          duration: Durations.extralong3,
+                          curve: Curves.easeInOut,
+                        );
+                        return;
+                      }
+                      _pageController.nextPage(
+                        duration: Durations.extralong3,
+                        curve: Cubic(0.68, -0.55, 0.27, 1.55),
+                      );
+                    },
+                  ),
+                ],
               ))
         ],
       ),

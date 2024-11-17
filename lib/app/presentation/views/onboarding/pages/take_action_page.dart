@@ -1,4 +1,3 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/simple_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,15 +33,15 @@ class TakeActionPage extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            child: SimpleButton(
-              isDarkButton: true,
-              text: 'Suivant',
-              onPressed: () {},
-            ),
-          ),
-          SizedBox(height: screenHeight * 0.09),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 14),
+          //   child: SimpleButton(
+          //     isDarkButton: true,
+          //     text: 'Suivant',
+          //     onPressed: () {},
+          //   ),
+          // ),
+          // SizedBox(height: screenHeight * 0.09),
         ],
       ),
     );
