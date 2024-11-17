@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
+import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/edit_profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,18 @@ class ProfileView extends StatelessWidget {
             'Perfil',
             style: AlboradaTextStyle.heading3,
           ),
-          Spacer()
+          Spacer(),
+          Padding(
+            padding: edgeInsetsR10,
+            child: TextButton(
+              child: Text(
+                'Logout',
+                style: AlboradaTextStyle.bodyText,
+              ),
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context, Routes.signIn, (a) => false),
+            ),
+          ),
         ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(10.0),
@@ -35,7 +47,7 @@ class ProfileView extends StatelessWidget {
         child: ColoredBox(
           color: Palette.yellow5,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+            padding: edgeInsetsH26V30,
             child: Column(
               children: [
                 Row(
@@ -122,7 +134,7 @@ class _EditeButton extends StatelessWidget {
     return ButtonIconWidget(
       height: 32,
       margin: EdgeInsets.zero,
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: edgeInsetsH8,
       buttonColor: Palette.white,
       text: 'Editar',
       imagePath: 'deseos.svg',
