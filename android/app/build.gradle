@@ -60,6 +60,25 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "environment"
+    productFlavors {
+        dev {
+            dimension "environment"
+            resValue "String", "app_name", "dev alborada"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        stg {
+            dimension "environment"
+            resValue "String", "app_name", "stg alborada"
+            applicationIdSuffix ".stg"
+            versionNameSuffix "-stg"
+        }
+        prod {
+            dimension "environment"
+        }
+    }
 }
 
 flutter {
