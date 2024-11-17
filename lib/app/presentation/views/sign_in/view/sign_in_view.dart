@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/widgets.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +33,7 @@ class _LoginBody extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: edgeInsetsH25,
       child: Column(
         children: [
           SizedBox(height: screenSize.height * 0.3),

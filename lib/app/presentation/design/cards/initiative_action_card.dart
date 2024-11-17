@@ -42,7 +42,6 @@ class InitiativeActionCard extends StatelessWidget {
                   _buildIconWidget('pin.svg', '100m'),
                   _buildIconWidget('calendar.svg', '100'),
                   _buildIconWidget('deseos.svg', '100'),
-                  // _buildIconWidget('social.svg', '100'),
                 ],
               ),
             ],

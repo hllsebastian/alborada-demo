@@ -21,7 +21,7 @@ class AlboradaMapState extends State<AlboradaMap> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: MediaQuery.sizeOf(context).height * 0.9,
+      height: MediaQuery.sizeOf(context).height * 0.6,
       child: Stack(
         children: [
           Column(

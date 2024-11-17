@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/design/alborada_texts.dart';
 import 'package:alborada_demo/app/presentation/views/home/widgets/Initiative_list.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class Homeview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: edgeInsetsH25,
       child: const Column(
         children: [
           SizedBox(height: 10),

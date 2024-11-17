@@ -16,7 +16,7 @@ class EditProfileView extends StatelessWidget {
           child: ColoredBox(color: Palette.white),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 26),
+          padding: edgeInsetsH26,
           child: Column(
             children: [
               _ImageAndName(),
