@@ -21,9 +21,8 @@ class AlboradaApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
-            backgroundColor:
-                Colors.white, // Color constante para todo el AppBar
-            elevation: 0, // Elimina la sombra en todos los AppBar
+            backgroundColor: Colors.white,
+            elevation: 0,
           ),
         ),
         onGenerateRoute: (settings) {
