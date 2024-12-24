@@ -28,7 +28,7 @@ class CustomTextField extends StatelessWidget {
   });
 
   final ValueChanged<String>? onChanged;
-  final String? validatorText;
+  final String? Function(String?)? validatorText;
   final String? text;
   final bool obscureText;
   final Widget? icon;
@@ -86,12 +86,13 @@ class CustomTextField extends StatelessWidget {
           style: textStyle,
           initialValue: initialValue,
           controller: textEditingController,
-          validator: (String? value) {
-            if (value != null && value.isEmpty) {
-              return validatorText;
-            }
-            return null;
-          },
+          validator: validatorText,
+          // validator: (String? value) {
+          //   if (value != null && value.isEmpty) {
+          //     return validatorText;
+          //   }
+          //   return null;
+          // },
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: const TextStyle(
