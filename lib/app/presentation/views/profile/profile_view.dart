@@ -1,6 +1,6 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
-import 'package:alborada_demo/app/presentation/views/edit_profile/edit_profile_view.dart';
+import 'package:alborada_demo/app/presentation/views/profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {

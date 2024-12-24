@@ -1,4 +1,4 @@
-import 'package:alborada_demo/app/data/data_sources/auth_remote_data_source.dart';
+import 'package:alborada_demo/app/data/data_sources/remote/auth_remote_data_source.dart';
 import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/domain/repositories/auth_repository.dart';
 

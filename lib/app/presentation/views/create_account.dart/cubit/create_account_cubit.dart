@@ -1,5 +1,5 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
-import 'package:alborada_demo/app/domain/use_cases/signin_use_case.dart';
+import 'package:alborada_demo/app/domain/use_cases/create_account_use_case.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -10,7 +10,7 @@ part 'create_account_state.dart';
 @injectable
 class CreateAccountCubit extends Cubit<CreateAccountState> {
   CreateAccountCubit(this.signinUseCase) : super(CreateAccountState.initial());
-  final SigninUseCase signinUseCase;
+  final CreateAccountUseCase signinUseCase;
 
   Future<void> createAccount(String email, String password) async {
     emit(CreateAccountState.loading());
