@@ -1,5 +1,4 @@
 import 'package:alborada_demo/app/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -7,7 +6,11 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
 
   @override
-  Future<AlboradaUser> singinUser(String email, String password) {
-    return remoteDataSource.signinUser(email, password);
+  Future<void> singinUser(String email, String password) async {
+    try {
+      await remoteDataSource.signinUser(email, password);
+    } catch (e) {
+      throw Exception('Repository error: $e');
+    }
   }
 }

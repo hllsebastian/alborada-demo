@@ -1,11 +1,10 @@
-import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/domain/repositories/auth_repository.dart';
 
 class CreateAccountUseCase {
   CreateAccountUseCase(this.repository);
   final AuthRepository repository;
 
-  Future<AlboradaUser> call(String email, String password) {
+  Future<void> call(String email, String password) async {
     return repository.singinUser(email, password);
   }
 }
