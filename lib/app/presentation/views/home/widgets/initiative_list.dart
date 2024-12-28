@@ -1,5 +1,5 @@
 import 'package:alborada_demo/app/domain/models/initiative_info.dart';
-import 'package:alborada_demo/app/presentation/design/cards/initiative_action_card.dart';
+import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+const edgeInsetZero = EdgeInsets.zero;
 const edgeInsetsH8 = EdgeInsets.symmetric(horizontal: 8);
 const edgeInsetsH25 = EdgeInsets.symmetric(horizontal: 25);
 const edgeInsetsH26 = EdgeInsets.symmetric(horizontal: 26);

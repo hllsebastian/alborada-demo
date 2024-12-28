@@ -1,3 +1,4 @@
+import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,7 @@ class SimpleButton extends StatelessWidget {
     this.buttonColor = const Color.fromRGBO(254, 235, 235, 1),
     this.textColor = Colors.orangeAccent,
     this.icon,
+    this.isLoading = false,
   });
   final String text;
   final VoidCallback onPressed;
@@ -19,6 +21,7 @@ class SimpleButton extends StatelessWidget {
   final Color? buttonColor;
   final Color? textColor;
   final IconData? icon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class SimpleButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          onPressed: onPressed,
+          onPressed: isLoading ? () {} : onPressed,
           child: Row(
             mainAxisAlignment: imagePath == null
                 ? MainAxisAlignment.center
@@ -60,14 +63,18 @@ class SimpleButton extends StatelessWidget {
                         color: Colors.white,
                       ),
                     SizedBox(width: 6),
-                    Text(
-                      text,
-                      style: GoogleFonts.openSans(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                        color: isDarkButton ? Colors.white : textColor,
-                      ),
-                    ),
+                    isLoading
+                        ? CircularProgressIndicator.adaptive(
+                            backgroundColor: Palette.yellow100,
+                          )
+                        : Text(
+                            text,
+                            style: GoogleFonts.openSans(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w500,
+                              color: isDarkButton ? Colors.white : textColor,
+                            ),
+                          ),
                   ],
                 ),
               ),
