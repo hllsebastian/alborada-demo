@@ -18,7 +18,10 @@ class LoginUserCubit extends Cubit<LoginUserState> {
     emit(LoginUserState.loading());
     try {
       final user = await useruseCase.login(email, password);
-      emit(LoginUserState.loginSuccess(user, SuccessType.loginSuccess));
+
+      emit(
+        LoginUserState.loginSuccess(user, SuccessType.loginSuccess),
+      );
     } on AuthApiException catch (e) {
       emit(LoginUserState.error(e.message));
     } catch (e) {

@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
+import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/choise_initiative_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/reap_reward_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/take_action_page.dart';
@@ -14,7 +15,6 @@ class OnboardingView extends StatefulWidget {
 
 class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController = PageController();
-  // ignore: unused_field
   int _currentPage = 0;
 
   @override
@@ -70,6 +70,13 @@ class _OnboardingViewState extends State<OnboardingView> {
                     isDarkButton: true,
                     text: _currentPage == 2 ? 'C’est compris!' : 'Suivant',
                     onPressed: () {
+                      if (_currentPage == 2) {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          Routes.pageView,
+                          (route) => false,
+                        );
+                      }
                       if (_currentPage == onboardingPages.length - 1) {
                         _pageController.animateToPage(
                           0,

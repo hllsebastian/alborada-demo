@@ -102,6 +102,14 @@ class _LoginBodyState extends State<_LoginBody> {
               AlboradaSnackBar.of(context)
                   .warning('The email ${user.email} is alredy exist');
             }
+            // TODO: Verify email before continue the onboarding
+            if (sucessType == SuccessType.confirmEmail && user.id.isNotEmpty) {
+              return Navigator.pushNamedAndRemoveUntil(
+                context,
+                Routes.onboarding,
+                (route) => false,
+              );
+            }
           },
           error: (error) =>
               AlboradaSnackBar.of(context).warning('Something went wrong'),

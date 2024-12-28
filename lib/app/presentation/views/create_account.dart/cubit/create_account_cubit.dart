@@ -20,9 +20,13 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
       emit(
         CreateAccountState.createAccountSuccess(
           user,
-          user.confirmationSentAt == null
+          user.id.isNotEmpty
               ? SuccessType.confirmEmail
               : SuccessType.accountAlreadyExists,
+          // TODO: Verify email before continue the onboarding
+          // user.confirmationSentAt == null
+          //     ? SuccessType.confirmEmail
+          //     : SuccessType.accountAlreadyExists,
         ),
       );
     } catch (e) {
