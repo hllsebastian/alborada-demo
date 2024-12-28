@@ -22,13 +22,13 @@ AlboradaUser _$AlboradaUserFromJson(Map<String, dynamic> json) {
 mixin _$AlboradaUser {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   String? get biography => throw _privateConstructorUsedError;
+  String? get confirmationSentAt => throw _privateConstructorUsedError;
 
   /// Serializes this AlboradaUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,13 +49,13 @@ abstract class $AlboradaUserCopyWith<$Res> {
   $Res call(
       {String id,
       String email,
-      String? password,
       String? name,
       String? lastName,
       String? profileImage,
       String? country,
       String? city,
-      String? biography});
+      String? biography,
+      String? confirmationSentAt});
 }
 
 /// @nodoc
@@ -75,13 +75,13 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? password = freezed,
     Object? name = freezed,
     Object? lastName = freezed,
     Object? profileImage = freezed,
     Object? country = freezed,
     Object? city = freezed,
     Object? biography = freezed,
+    Object? confirmationSentAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,10 +92,6 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,6 +116,10 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.biography
           : biography // ignore: cast_nullable_to_non_nullable
               as String?,
+      confirmationSentAt: freezed == confirmationSentAt
+          ? _value.confirmationSentAt
+          : confirmationSentAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -135,13 +135,13 @@ abstract class _$$AlboradaUserImplCopyWith<$Res>
   $Res call(
       {String id,
       String email,
-      String? password,
       String? name,
       String? lastName,
       String? profileImage,
       String? country,
       String? city,
-      String? biography});
+      String? biography,
+      String? confirmationSentAt});
 }
 
 /// @nodoc
@@ -159,13 +159,13 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? password = freezed,
     Object? name = freezed,
     Object? lastName = freezed,
     Object? profileImage = freezed,
     Object? country = freezed,
     Object? city = freezed,
     Object? biography = freezed,
+    Object? confirmationSentAt = freezed,
   }) {
     return _then(_$AlboradaUserImpl(
       id: null == id
@@ -176,10 +176,6 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -204,6 +200,10 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.biography
           : biography // ignore: cast_nullable_to_non_nullable
               as String?,
+      confirmationSentAt: freezed == confirmationSentAt
+          ? _value.confirmationSentAt
+          : confirmationSentAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -214,13 +214,13 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   _$AlboradaUserImpl(
       {required this.id,
       required this.email,
-      this.password,
       this.name,
       this.lastName,
       this.profileImage,
       this.country,
       this.city,
-      this.biography});
+      this.biography,
+      this.confirmationSentAt});
 
   factory _$AlboradaUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlboradaUserImplFromJson(json);
@@ -229,8 +229,6 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   final String id;
   @override
   final String email;
-  @override
-  final String? password;
   @override
   final String? name;
   @override
@@ -243,10 +241,12 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   final String? city;
   @override
   final String? biography;
+  @override
+  final String? confirmationSentAt;
 
   @override
   String toString() {
-    return 'AlboradaUser(id: $id, email: $email, password: $password, name: $name, lastName: $lastName, profileImage: $profileImage, country: $country, city: $city, biography: $biography)';
+    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, profileImage: $profileImage, country: $country, city: $city, biography: $biography, confirmationSentAt: $confirmationSentAt)';
   }
 
   @override
@@ -256,8 +256,6 @@ class _$AlboradaUserImpl implements _AlboradaUser {
             other is _$AlboradaUserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
@@ -266,13 +264,15 @@ class _$AlboradaUserImpl implements _AlboradaUser {
             (identical(other.country, country) || other.country == country) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.biography, biography) ||
-                other.biography == biography));
+                other.biography == biography) &&
+            (identical(other.confirmationSentAt, confirmationSentAt) ||
+                other.confirmationSentAt == confirmationSentAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, password, name,
-      lastName, profileImage, country, city, biography);
+  int get hashCode => Object.hash(runtimeType, id, email, name, lastName,
+      profileImage, country, city, biography, confirmationSentAt);
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.
@@ -294,13 +294,13 @@ abstract class _AlboradaUser implements AlboradaUser {
   factory _AlboradaUser(
       {required final String id,
       required final String email,
-      final String? password,
       final String? name,
       final String? lastName,
       final String? profileImage,
       final String? country,
       final String? city,
-      final String? biography}) = _$AlboradaUserImpl;
+      final String? biography,
+      final String? confirmationSentAt}) = _$AlboradaUserImpl;
 
   factory _AlboradaUser.fromJson(Map<String, dynamic> json) =
       _$AlboradaUserImpl.fromJson;
@@ -309,8 +309,6 @@ abstract class _AlboradaUser implements AlboradaUser {
   String get id;
   @override
   String get email;
-  @override
-  String? get password;
   @override
   String? get name;
   @override
@@ -323,6 +321,8 @@ abstract class _AlboradaUser implements AlboradaUser {
   String? get city;
   @override
   String? get biography;
+  @override
+  String? get confirmationSentAt;
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.

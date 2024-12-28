@@ -5,7 +5,8 @@ import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<AlboradaUser> signinUser(String email, String password);
+  Future<AlboradaUser> createUser(String email, String password);
+  Future<User> loginUser(String email, String password);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -13,20 +14,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient client;
 
   @override
-  Future<AlboradaUser> signinUser(String email, String password) async {
+  Future<AlboradaUser> createUser(String email, String password) async {
     Logger.info('Creating account for email: $email');
     try {
       final response =
           await client.auth.signUp(email: email, password: password);
       if (response.user != null) {
-        // Logger.info('Registro exitoso para usuario: ${response.user!.email}');
-        Logger.info('${response.user}.');
-
         final userData = AlboradaUser(
           email: email,
           id: response.user!.id,
+          confirmationSentAt: response.user!.confirmationSentAt,
         );
-
         final formattedData = JsonEncoder.withIndent(' ').convert(userData);
         Logger.info('Status code $response');
         Logger.info('User ${userData.email} succesful created');
@@ -37,6 +35,34 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       }
     } catch (e) {
       Logger.error('Error creating user: $e');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<User> loginUser(String email, String password) async {
+    try {
+      final response = await client.auth
+          .signInWithPassword(email: email, password: password);
+
+      if (response.user != null) {
+        final userData = response.user!;
+        final formattedData = JsonEncoder.withIndent(' ').convert(userData);
+        Logger.info('Status code $response');
+        Logger.info('User ${userData.email} succesful login');
+        Logger.info(formattedData);
+        return userData;
+      } else {
+        Logger.info('Status code $response');
+        // Logger.info(response.session.);
+        throw Exception('Incorrect credentials');
+      }
+    } on AuthApiException catch (e) {
+      Logger.error(e.statusCode ?? '');
+      Logger.error(e.message);
+      rethrow;
+    } catch (e) {
+      Logger.error('Something went wrong');
       rethrow;
     }
   }

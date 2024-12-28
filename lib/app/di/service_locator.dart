@@ -2,8 +2,9 @@ import 'package:alborada_demo/app/core/core.dart';
 import 'package:alborada_demo/app/data/data_sources/remote/auth_remote_data_source.dart';
 import 'package:alborada_demo/app/data/repositories/auth_repository_impl.dart';
 import 'package:alborada_demo/app/domain/repositories/auth_repository.dart';
-import 'package:alborada_demo/app/domain/use_cases/create_account_use_case.dart';
+import 'package:alborada_demo/app/domain/use_cases/user_use_cases.dart';
 import 'package:alborada_demo/app/presentation/views/create_account.dart/cubit/create_account_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/login/cubit/login_user_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -28,11 +29,13 @@ void setupServiceLocator() {
       () => AuthRepositoryImpl(getIt<AuthRemoteDataSource>()));
 
 // Use Case
-  getIt.registerLazySingleton<CreateAccountUseCase>(
-      () => CreateAccountUseCase(getIt<AuthRepository>()));
+  getIt.registerLazySingleton<UserUseCases>(
+      () => UserUseCases(getIt<AuthRepository>()));
 
 // Cubits
   // getIt.registerFactory<SigninCubit>(() => SigninCubit(getIt<SigninUseCase>()));
   getIt.registerFactory<CreateAccountCubit>(
-      () => CreateAccountCubit(getIt<CreateAccountUseCase>()));
+      () => CreateAccountCubit(getIt<UserUseCases>()));
+  getIt.registerFactory<LoginUserCubit>(
+      () => LoginUserCubit(getIt<UserUseCases>()));
 }
