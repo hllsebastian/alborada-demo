@@ -1,5 +1,6 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
-import 'package:alborada_demo/app/domain/use_cases/create_account_use_case.dart';
+import 'package:alborada_demo/app/domain/use_cases/user_use_cases.dart';
+import 'package:alborada_demo/app/presentation/enums/enums.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -10,13 +11,20 @@ part 'create_account_state.dart';
 @injectable
 class CreateAccountCubit extends Cubit<CreateAccountState> {
   CreateAccountCubit(this.signinUseCase) : super(CreateAccountState.initial());
-  final CreateAccountUseCase signinUseCase;
+  final UserUseCases signinUseCase;
 
   Future<void> createAccount(String email, String password) async {
     emit(CreateAccountState.loading());
     try {
-      final user = await signinUseCase(email, password);
-      emit(CreateAccountState.success(user));
+      final user = await signinUseCase.create(email, password);
+      emit(
+        CreateAccountState.createAccountSuccess(
+          user,
+          user.confirmationSentAt == null
+              ? SuccessType.confirmEmail
+              : SuccessType.accountAlreadyExists,
+        ),
+      );
     } catch (e) {
       emit(CreateAccountState.error(e.toString()));
     }

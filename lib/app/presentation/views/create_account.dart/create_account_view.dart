@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
+import 'package:alborada_demo/app/presentation/enums/enums.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +55,7 @@ class _LoginBodyState extends State<_LoginBody> {
   void _onSubmit(BuildContext context) {
     if (_formKey.currentState?.validate() ?? false) {
       final email = _emailController.text;
-      final password = _emailController.text;
+      final password = _passwordController.text;
 
       context.read<CreateAccountCubit>().createAccount(email, password);
     }
@@ -93,119 +94,149 @@ class _LoginBodyState extends State<_LoginBody> {
 
   @override
   Widget build(BuildContext context) {
-    void goTo(String route) {
-      Navigator.pushNamed(context, route);
-    }
-
-    return Padding(
-      padding: edgeInsetsH25,
-      child: SizedBox(
-        height: widget.screenSize.height * 0.85,
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: widget.screenSize.height * 0.1),
-              const BackButton(),
-              Text(
-                'Je créé mon compte',
-                style: GoogleFonts.openSans(
-                    fontSize: 30, fontWeight: FontWeight.w500),
-              ),
-              CustomTextField(
-                textEditingController: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                validatorText: _validateEmail,
-                hintText: 'Adresse e-mail',
-                onChanged: (value) {
-                  _validateEmail(value);
-                },
-              ),
-              SizedBox(height: widget.screenSize.height * 0.01),
-              CustomTextField(
-                textEditingController: _passwordController,
-                obscureText: !_passwordVisible,
-                hintText: 'Mot de passe',
-                maxLines: 1,
-                validatorText: _validatePassword,
-                icon: IconButton(
-                  icon: Icon(_passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(() {
-                      _passwordVisible = !_passwordVisible;
-                    });
+    return BlocConsumer<CreateAccountCubit, CreateAccountState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          createAccountSuccess: (user, sucessType) {
+            if (sucessType == SuccessType.accountAlreadyExists) {
+              AlboradaSnackBar.of(context)
+                  .warning('The email ${user.email} is alredy exist');
+            }
+          },
+          error: (error) =>
+              AlboradaSnackBar.of(context).warning('Something went wrong'),
+        );
+      },
+      builder: (context, state) => Padding(
+        padding: edgeInsetsH25,
+        child: SizedBox(
+          height: widget.screenSize.height * 0.85,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: widget.screenSize.height * 0.1),
+                const BackButton(),
+                Text(
+                  'Je créé mon compte',
+                  style: GoogleFonts.openSans(
+                      fontSize: 30, fontWeight: FontWeight.w500),
+                ),
+                CustomTextField(
+                  readOnly: state.isLoading,
+                  textEditingController: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  validatorText: _validateEmail,
+                  hintText: 'Adresse e-mail',
+                  onChanged: (value) {
+                    _validateEmail(value);
                   },
                 ),
-                onChanged: (value) {},
-              ),
-              SizedBox(height: widget.screenSize.height * 0.01),
-              CustomTextField(
-                textEditingController: _confirmPasswordController,
-                obscureText: !_confirmPasswordVisible,
-                hintText: 'Confirmer le mot de passe',
-                maxLines: 1,
-                validatorText: _validateConfirmPassword,
-                icon: IconButton(
-                  icon: Icon(_confirmPasswordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(() {
-                      _confirmPasswordVisible = !_confirmPasswordVisible;
-                    });
-                  },
+                SizedBox(height: widget.screenSize.height * 0.01),
+                CustomTextField(
+                  readOnly: state.isLoading,
+                  textEditingController: _passwordController,
+                  obscureText: !_passwordVisible,
+                  hintText: 'Mot de passe',
+                  maxLines: 1,
+                  validatorText: _validatePassword,
+                  icon: IconButton(
+                    icon: Icon(_passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
+                  onChanged: (value) {},
                 ),
-                onChanged: (value) {},
-              ),
-              SizedBox(height: widget.screenSize.height * 0.01),
-              SimpleButton(
-                text: 'Créer un compte',
-                isDarkButton: true,
-                onPressed: () {
-                  _onSubmit(context);
-                  //   Navigator.pushNamed(
-                  //   context,
-                  //   Routes.onboarding,
-                  //   // (Route<dynamic> route) => false,
-                  // );
-                },
-              ),
-              Text(
-                'En cliquant sur “Créer un compte, vous acceptez les conditions d’utilisation d’Alborada.',
-                style: GoogleFonts.outfit(fontSize: 16),
-              ),
-              const Spacer(),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Tu as déjà un compte ?',
+                SizedBox(height: widget.screenSize.height * 0.01),
+                CustomTextField(
+                  readOnly: state.isLoading,
+                  textEditingController: _confirmPasswordController,
+                  obscureText: !_confirmPasswordVisible,
+                  hintText: 'Confirmer le mot de passe',
+                  maxLines: 1,
+                  validatorText: _validateConfirmPassword,
+                  icon: IconButton(
+                    icon: Icon(_confirmPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _confirmPasswordVisible = !_confirmPasswordVisible;
+                      });
+                    },
+                  ),
+                  onChanged: (value) {},
+                ),
+                gap20,
+                SimpleButton(
+                  isLoading: state.isLoading,
+                  text: 'Créer un compte',
+                  isDarkButton: true,
+                  onPressed: () => _onSubmit(context),
+                ),
+                Text(
+                  'En cliquant sur “Créer un compte, vous acceptez les conditions d’utilisation d’Alborada.',
                   style: GoogleFonts.outfit(fontSize: 16),
                 ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(0, 0),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  onPressed: () => goTo(Routes.login),
-                  child: Text(
-                    'Je me connecte',
-                    style: GoogleFonts.outfit(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                ),
-              ),
-            ],
+                const Spacer(),
+                _LoginTextButton(state.isLoading),
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _LoginTextButton extends StatelessWidget {
+  const _LoginTextButton(this.isLoading);
+  final bool isLoading;
+
+  @override
+  Widget build(BuildContext context) {
+    void goTo(String route) {
+      // Navigator.pushNamedAndRemoveUntil(
+      //   context,
+      //   route,
+      //   (r) => false,
+      // );
+      Navigator.popAndPushNamed(
+        context,
+        route,
+      );
+    }
+
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          Text(
+            'Tu as déjà un compte ?',
+            style: GoogleFonts.outfit(fontSize: 16),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: const Size(0, 0),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            onPressed: () => goTo(Routes.login),
+            child: Text(
+              'Je me connecte',
+              style: GoogleFonts.outfit(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'create_account_cubit.dart';
+part of 'login_user_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,13 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CreateAccountState {
+mixin _$LoginUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, SuccessType sucessType)
-        createAccountSuccess,
+    required TResult Function(User user, SuccessType sucessType) loginSuccess,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,8 +28,7 @@ mixin _$CreateAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult? Function(User user, SuccessType sucessType)? loginSuccess,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,8 +36,7 @@ mixin _$CreateAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult Function(User user, SuccessType sucessType)? loginSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -48,7 +45,7 @@ mixin _$CreateAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_CreateAccountSuccess value) createAccountSuccess,
+    required TResult Function(LoginSuccess value) loginSuccess,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +53,7 @@ mixin _$CreateAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult? Function(LoginSuccess value)? loginSuccess,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +61,7 @@ mixin _$CreateAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult Function(LoginSuccess value)? loginSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -72,23 +69,23 @@ mixin _$CreateAccountState {
 }
 
 /// @nodoc
-abstract class $CreateAccountStateCopyWith<$Res> {
-  factory $CreateAccountStateCopyWith(
-          CreateAccountState value, $Res Function(CreateAccountState) then) =
-      _$CreateAccountStateCopyWithImpl<$Res, CreateAccountState>;
+abstract class $LoginUserStateCopyWith<$Res> {
+  factory $LoginUserStateCopyWith(
+          LoginUserState value, $Res Function(LoginUserState) then) =
+      _$LoginUserStateCopyWithImpl<$Res, LoginUserState>;
 }
 
 /// @nodoc
-class _$CreateAccountStateCopyWithImpl<$Res, $Val extends CreateAccountState>
-    implements $CreateAccountStateCopyWith<$Res> {
-  _$CreateAccountStateCopyWithImpl(this._value, this._then);
+class _$LoginUserStateCopyWithImpl<$Res, $Val extends LoginUserState>
+    implements $LoginUserStateCopyWith<$Res> {
+  _$LoginUserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -101,13 +98,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$CreateAccountStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$LoginUserStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -118,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'CreateAccountState.initial()';
+    return 'LoginUserState.initial()';
   }
 
   @override
@@ -135,8 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, SuccessType sucessType)
-        createAccountSuccess,
+    required TResult Function(User user, SuccessType sucessType) loginSuccess,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -147,8 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult? Function(User user, SuccessType sucessType)? loginSuccess,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -159,8 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult Function(User user, SuccessType sucessType)? loginSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -175,7 +169,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_CreateAccountSuccess value) createAccountSuccess,
+    required TResult Function(LoginSuccess value) loginSuccess,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -186,7 +180,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult? Function(LoginSuccess value)? loginSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -197,7 +191,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult Function(LoginSuccess value)? loginSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -208,7 +202,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements CreateAccountState {
+abstract class _Initial implements LoginUserState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -221,13 +215,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CreateAccountStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$LoginUserStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -238,7 +232,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'CreateAccountState.loading()';
+    return 'LoginUserState.loading()';
   }
 
   @override
@@ -255,8 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, SuccessType sucessType)
-        createAccountSuccess,
+    required TResult Function(User user, SuccessType sucessType) loginSuccess,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -267,8 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult? Function(User user, SuccessType sucessType)? loginSuccess,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -279,8 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult Function(User user, SuccessType sucessType)? loginSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -295,7 +286,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_CreateAccountSuccess value) createAccountSuccess,
+    required TResult Function(LoginSuccess value) loginSuccess,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -306,7 +297,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult? Function(LoginSuccess value)? loginSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -317,7 +308,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult Function(LoginSuccess value)? loginSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -328,30 +319,28 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements CreateAccountState {
+abstract class _Loading implements LoginUserState {
   const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$CreateAccountSuccessImplCopyWith<$Res> {
-  factory _$$CreateAccountSuccessImplCopyWith(_$CreateAccountSuccessImpl value,
-          $Res Function(_$CreateAccountSuccessImpl) then) =
-      __$$CreateAccountSuccessImplCopyWithImpl<$Res>;
+abstract class _$$LoginSuccessImplCopyWith<$Res> {
+  factory _$$LoginSuccessImplCopyWith(
+          _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
+      __$$LoginSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlboradaUser user, SuccessType sucessType});
-
-  $AlboradaUserCopyWith<$Res> get user;
+  $Res call({User user, SuccessType sucessType});
 }
 
 /// @nodoc
-class __$$CreateAccountSuccessImplCopyWithImpl<$Res>
-    extends _$CreateAccountStateCopyWithImpl<$Res, _$CreateAccountSuccessImpl>
-    implements _$$CreateAccountSuccessImplCopyWith<$Res> {
-  __$$CreateAccountSuccessImplCopyWithImpl(_$CreateAccountSuccessImpl _value,
-      $Res Function(_$CreateAccountSuccessImpl) _then)
+class __$$LoginSuccessImplCopyWithImpl<$Res>
+    extends _$LoginUserStateCopyWithImpl<$Res, _$LoginSuccessImpl>
+    implements _$$LoginSuccessImplCopyWith<$Res> {
+  __$$LoginSuccessImplCopyWithImpl(
+      _$LoginSuccessImpl _value, $Res Function(_$LoginSuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -359,49 +348,39 @@ class __$$CreateAccountSuccessImplCopyWithImpl<$Res>
     Object? user = null,
     Object? sucessType = null,
   }) {
-    return _then(_$CreateAccountSuccessImpl(
+    return _then(_$LoginSuccessImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as AlboradaUser,
+              as User,
       null == sucessType
           ? _value.sucessType
           : sucessType // ignore: cast_nullable_to_non_nullable
               as SuccessType,
     ));
   }
-
-  /// Create a copy of CreateAccountState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AlboradaUserCopyWith<$Res> get user {
-    return $AlboradaUserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
-  const _$CreateAccountSuccessImpl(this.user, this.sucessType);
+class _$LoginSuccessImpl implements LoginSuccess {
+  const _$LoginSuccessImpl(this.user, this.sucessType);
 
   @override
-  final AlboradaUser user;
+  final User user;
   @override
   final SuccessType sucessType;
 
   @override
   String toString() {
-    return 'CreateAccountState.createAccountSuccess(user: $user, sucessType: $sucessType)';
+    return 'LoginUserState.loginSuccess(user: $user, sucessType: $sucessType)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateAccountSuccessImpl &&
+            other is _$LoginSuccessImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.sucessType, sucessType) ||
                 other.sucessType == sucessType));
@@ -410,26 +389,23 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   @override
   int get hashCode => Object.hash(runtimeType, user, sucessType);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateAccountSuccessImplCopyWith<_$CreateAccountSuccessImpl>
-      get copyWith =>
-          __$$CreateAccountSuccessImplCopyWithImpl<_$CreateAccountSuccessImpl>(
-              this, _$identity);
+  _$$LoginSuccessImplCopyWith<_$LoginSuccessImpl> get copyWith =>
+      __$$LoginSuccessImplCopyWithImpl<_$LoginSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, SuccessType sucessType)
-        createAccountSuccess,
+    required TResult Function(User user, SuccessType sucessType) loginSuccess,
     required TResult Function(String error) error,
   }) {
-    return createAccountSuccess(user, sucessType);
+    return loginSuccess(user, sucessType);
   }
 
   @override
@@ -437,11 +413,10 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult? Function(User user, SuccessType sucessType)? loginSuccess,
     TResult? Function(String error)? error,
   }) {
-    return createAccountSuccess?.call(user, sucessType);
+    return loginSuccess?.call(user, sucessType);
   }
 
   @override
@@ -449,13 +424,12 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult Function(User user, SuccessType sucessType)? loginSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (createAccountSuccess != null) {
-      return createAccountSuccess(user, sucessType);
+    if (loginSuccess != null) {
+      return loginSuccess(user, sucessType);
     }
     return orElse();
   }
@@ -465,10 +439,10 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_CreateAccountSuccess value) createAccountSuccess,
+    required TResult Function(LoginSuccess value) loginSuccess,
     required TResult Function(_Error value) error,
   }) {
-    return createAccountSuccess(this);
+    return loginSuccess(this);
   }
 
   @override
@@ -476,10 +450,10 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult? Function(LoginSuccess value)? loginSuccess,
     TResult? Function(_Error value)? error,
   }) {
-    return createAccountSuccess?.call(this);
+    return loginSuccess?.call(this);
   }
 
   @override
@@ -487,30 +461,29 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult Function(LoginSuccess value)? loginSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (createAccountSuccess != null) {
-      return createAccountSuccess(this);
+    if (loginSuccess != null) {
+      return loginSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateAccountSuccess implements CreateAccountState {
-  const factory _CreateAccountSuccess(
-          final AlboradaUser user, final SuccessType sucessType) =
-      _$CreateAccountSuccessImpl;
+abstract class LoginSuccess implements LoginUserState {
+  const factory LoginSuccess(final User user, final SuccessType sucessType) =
+      _$LoginSuccessImpl;
 
-  AlboradaUser get user;
+  User get user;
   SuccessType get sucessType;
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateAccountSuccessImplCopyWith<_$CreateAccountSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$LoginSuccessImplCopyWith<_$LoginSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -524,13 +497,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$CreateAccountStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$LoginUserStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -556,7 +529,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'CreateAccountState.error(error: $error)';
+    return 'LoginUserState.error(error: $error)';
   }
 
   @override
@@ -570,7 +543,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -583,8 +556,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, SuccessType sucessType)
-        createAccountSuccess,
+    required TResult Function(User user, SuccessType sucessType) loginSuccess,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -595,8 +567,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult? Function(User user, SuccessType sucessType)? loginSuccess,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -607,8 +578,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, SuccessType sucessType)?
-        createAccountSuccess,
+    TResult Function(User user, SuccessType sucessType)? loginSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -623,7 +593,7 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_CreateAccountSuccess value) createAccountSuccess,
+    required TResult Function(LoginSuccess value) loginSuccess,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -634,7 +604,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult? Function(LoginSuccess value)? loginSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -645,7 +615,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_CreateAccountSuccess value)? createAccountSuccess,
+    TResult Function(LoginSuccess value)? loginSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -656,12 +626,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements CreateAccountState {
+abstract class _Error implements LoginUserState {
   const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;
 
-  /// Create a copy of CreateAccountState
+  /// Create a copy of LoginUserState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
