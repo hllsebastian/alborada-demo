@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+
+const sizedBoxShrink = SizedBox.shrink();
+const gap2 = SizedBox(height: 2);
+const gap4 = SizedBox(height: 4);
+const gap8 = SizedBox(height: 8);
+const gap10 = SizedBox(height: 10);
+const gap12 = SizedBox(height: 12);
+const gap15 = SizedBox(height: 15);
+const gap16 = SizedBox(height: 16);
+const gap20 = SizedBox(height: 20);
+const gap22 = SizedBox(height: 22);
+const gap24 = SizedBox(height: 24);
+const gap28 = SizedBox(height: 28);
+const gap30 = SizedBox(height: 30);
+const gap38 = SizedBox(height: 38);
+const gap40 = SizedBox(height: 40);
+const gap50 = SizedBox(height: 50);
+const gap52 = SizedBox(height: 52);
+const gap60 = SizedBox(height: 60);
+const gap61 = SizedBox(height: 61);
+const gap80 = SizedBox(height: 80);
+const gap84 = SizedBox(height: 84);
+const gap100 = SizedBox(height: 100);
+const gap120 = SizedBox(height: 120);
+const gap200 = SizedBox(height: 200);
+const gap210 = SizedBox(height: 210);
+const gap250 = SizedBox(height: 250);
