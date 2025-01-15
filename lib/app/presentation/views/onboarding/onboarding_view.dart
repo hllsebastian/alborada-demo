@@ -1,10 +1,18 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
-import 'package:alborada_demo/app/presentation/routes/routes.dart';
+import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/onboarding/cubit/onboarding_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/choise_initiative_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/reap_reward_page.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/take_action_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class OnboardingViewArguments {
+  final User user;
+  OnboardingViewArguments({required this.user});
+}
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
@@ -71,11 +79,15 @@ class _OnboardingViewState extends State<OnboardingView> {
                     text: _currentPage == 2 ? 'C’est compris!' : 'Suivant',
                     onPressed: () {
                       if (_currentPage == 2) {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          Routes.pageView,
-                          (route) => false,
-                        );
+                        final user = context.read<UserCubit>().state;
+                        if (user != null) {
+                          context.read<OnboardingCubit>().createUser(user);
+                        }
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //   context,
+                        //   Routes.pageView,
+                        //   (route) => false,
+                        // );
                       }
                       if (_currentPage == onboardingPages.length - 1) {
                         _pageController.animateToPage(

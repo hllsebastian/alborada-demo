@@ -1,5 +1,6 @@
 import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
+import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/login/cubit/login_user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +14,12 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
 
-    return BlocProvider(
-      create: (context) => GetIt.I.get<LoginUserCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetIt.I.get<LoginUserCubit>(),
+        ),
+      ],
       child: AlboradaScaffoldWidget(
         body: _LoginBody(screenSize: screenSize),
       ),
@@ -36,7 +41,15 @@ class _LoginBody extends StatelessWidget {
         state.whenOrNull(
           error: (error) => AlboradaSnackBar.of(context).warning(error),
           loginSuccess: (user, sucessType) {
-            if (sucessType == SuccessType.loginSuccess) {
+            if (user != null && sucessType == LoginType.onBoarding) {
+              context.read<UserCubit>().setUser(user);
+              return Navigator.pushNamedAndRemoveUntil(
+                context,
+                Routes.onboarding,
+                (route) => false,
+              );
+            }
+            if (sucessType == LoginType.loginSuccess) {
               return Navigator.pushNamedAndRemoveUntil(
                 context,
                 Routes.pageView,
@@ -47,31 +60,36 @@ class _LoginBody extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return Padding(
-          padding: edgeInsetsH25,
-          child: SizedBox(
-            height: screenSize.height * 0.85,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: context.height * 0.1,
+        return Stack(
+          children: [
+            Padding(
+              padding: edgeInsetsH25,
+              child: SizedBox(
+                height: screenSize.height * 0.85,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: context.height * 0.1,
+                    ),
+                    const BackButton(),
+                    Text(
+                      'Je me connecte',
+                      style: GoogleFonts.openSans(
+                          fontSize: 30, fontWeight: FontWeight.w500),
+                    ),
+                    gap10,
+                    _LoginForm(isLoading: state.isLoading),
+                    gap20,
+                    _FogotPasswordTextButton(),
+                    const Spacer(),
+                    _CreateAccountButton(),
+                  ],
                 ),
-                const BackButton(),
-                Text(
-                  'Je me connecte',
-                  style: GoogleFonts.openSans(
-                      fontSize: 30, fontWeight: FontWeight.w500),
-                ),
-                gap10,
-                _LoginForm(isLoading: state.isLoading),
-                gap20,
-                _FogotPasswordTextButton(),
-                const Spacer(),
-                _CreateAccountButton(),
-              ],
+              ),
             ),
-          ),
+            if (state.isLoading) AlboradaLoader(),
+          ],
         );
       },
     );
@@ -198,7 +216,7 @@ class _LoginFormState extends State<_LoginForm> {
             maxLines: 1,
             readOnly: widget.isLoading,
             textEditingController: _passwordController,
-            obscureText: _passwordVisible,
+            obscureText: !_passwordVisible,
             keyboardType: TextInputType.emailAddress,
             validatorText: _validatePassword,
             hintText: 'Mot de passe',

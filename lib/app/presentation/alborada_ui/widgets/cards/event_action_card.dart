@@ -1,16 +1,19 @@
+import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/svg_icon.dart';
 import 'package:flutter/material.dart';
 
-class InitiativeActionCard extends StatelessWidget {
-  const InitiativeActionCard({
+class EventActionCard extends StatelessWidget {
+  const EventActionCard({
     super.key,
     required this.type,
     required this.initiativeName,
     required this.associationName,
+    required this.event,
   });
   final String type;
   final String initiativeName;
   final String associationName;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +112,6 @@ class InitiativeActionCard extends StatelessWidget {
 
 class _InitiativeDescription extends StatelessWidget {
   const _InitiativeDescription({
-    super.key,
     required this.initiativeName,
     required this.associationName,
   });

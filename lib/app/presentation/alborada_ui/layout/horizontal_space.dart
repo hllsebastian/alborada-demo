@@ -8,6 +8,7 @@ const space12 = SizedBox(width: 12);
 const space16 = SizedBox(width: 16);
 const space20 = SizedBox(width: 20);
 const space24 = SizedBox(width: 24);
+const space30 = SizedBox(width: 30);
 const space28 = SizedBox(width: 28);
 const space39 = SizedBox(width: 39);
 const space46 = SizedBox(width: 46);

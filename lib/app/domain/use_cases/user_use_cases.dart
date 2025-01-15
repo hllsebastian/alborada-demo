@@ -1,16 +1,11 @@
-import 'package:alborada_demo/app/domain/entities/alborada_user.dart';
-import 'package:alborada_demo/app/domain/repositories/auth_repository.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:alborada_demo/app/domain/entities/entities.dart';
+import 'package:alborada_demo/app/domain/repositories/repositories.dart';
 
 class UserUseCases {
   UserUseCases(this.repo);
-  final AuthRepository repo;
+  final IUserRepository repo;
 
-  Future<AlboradaUser> create(String email, String password) async {
-    return repo.createUser(email, password);
-  }
-
-  Future<User> login(String email, String password) async {
-    return await repo.loginUser(email, password);
+  Future<List<Event>> getEvents() {
+    return repo.getEvents();
   }
 }

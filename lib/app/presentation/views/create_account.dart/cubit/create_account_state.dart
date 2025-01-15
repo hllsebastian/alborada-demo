@@ -6,7 +6,7 @@ class CreateAccountState with _$CreateAccountState {
   const factory CreateAccountState.loading() = _Loading;
   const factory CreateAccountState.createAccountSuccess(
     AlboradaUser user,
-    SuccessType sucessType,
+    LoginType sucessType,
   ) = _CreateAccountSuccess;
   const factory CreateAccountState.error(String error) = _Error;
 }

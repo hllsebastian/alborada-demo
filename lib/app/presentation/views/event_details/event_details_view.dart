@@ -1,15 +1,13 @@
-import 'package:alborada_demo/app/presentation/alborada_ui/icons/alborada_icons.dart';
-import 'package:alborada_demo/app/presentation/alborada_ui/widgets/widgets.dart';
+import 'package:alborada_demo/app/domain/entities/event.dart';
+import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 
-class InitiativeDetailsView extends StatelessWidget {
-  const InitiativeDetailsView({
-    super.key,
-  });
+class EventDetailsView extends StatelessWidget {
+  const EventDetailsView(this.event, {super.key});
+  final Event? event;
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -23,9 +21,12 @@ class InitiativeDetailsView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _Description(),
+                    _Description(
+                      eventName: event!.name,
+                      description: event!.description,
+                    ),
                     Divider(),
-                    _Address(screenSize: screenSize),
+                    _Address(event!.address),
                     Divider(),
                     _HowWorks(),
                     SimpleButton(
@@ -52,9 +53,7 @@ class InitiativeDetailsView extends StatelessWidget {
 }
 
 class _ImageHeader extends StatelessWidget {
-  const _ImageHeader({
-    super.key,
-  });
+  const _ImageHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -72,25 +71,30 @@ class _ImageHeader extends StatelessWidget {
 
 class _Description extends StatelessWidget {
   const _Description({
-    super.key,
+    required this.eventName,
+    required this.description,
   });
+  final String eventName;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: edgeInsetsV20,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Magica Vispera de Navidad #2',
+            // 'Magica Vispera de Navidad #2',
+            eventName,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Text(
-            'Comparte un día magico y apoya a los niños que más lo necesitan esta Navidad @alborada',
+            // 'Comparte un día magico y apoya a los niños que más lo necesitan esta Navidad @alborada',
+            description,
             style: TextStyle(fontSize: 18),
           ),
-          SizedBox(height: 16),
+          gap16,
           Row(
             children: [
               ButtonIconWidget(
@@ -98,13 +102,13 @@ class _Description extends StatelessWidget {
                 imagePath: 'pin.svg',
                 buttonColor: Colors.black,
               ),
-              SizedBox(width: 8),
+              gap8,
               ButtonIconWidget(
                 text: '14/12',
                 imagePath: 'calendar.svg',
                 buttonColor: Colors.black,
               ),
-              SizedBox(width: 8),
+              gap8,
               ButtonIconWidget(
                 text: '+5',
                 imagePath: 'deseos.svg',
@@ -119,17 +123,13 @@ class _Description extends StatelessWidget {
 }
 
 class _Address extends StatelessWidget {
-  const _Address({
-    super.key,
-    required this.screenSize,
-  });
-
-  final Size screenSize;
+  const _Address(this.address);
+  final String address;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: edgeInsetsV16,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -138,7 +138,7 @@ class _Address extends StatelessWidget {
             color: Colors.amber,
             size: 40,
           ),
-          SizedBox(width: 20),
+          gap20,
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +151,8 @@ class _Address extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Cl. 125 # 51 D 12, Playon de los Comuneros, Santa Cruz, Medellin',
+                  address,
+                  // 'Cl. 125 # 51 D 12, Playon de los Comuneros, Santa Cruz, Medellin',
                   style: TextStyle(fontSize: 16),
                 ),
               ],
@@ -164,14 +165,12 @@ class _Address extends StatelessWidget {
 }
 
 class _HowWorks extends StatelessWidget {
-  const _HowWorks({
-    super.key,
-  });
+  const _HowWorks();
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: edgeInsetsV20,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -183,21 +182,21 @@ class _HowWorks extends StatelessWidget {
               color: Colors.orange.shade200,
             ),
           ),
-          SizedBox(height: 20),
+          gap20,
           _HowWorksItem(
             screenSize,
             'Hazte voluntario',
             'Anima actividades, distribuye alimentos y regalos, y disfruta de experiencia con el equipo de voluntarios',
             Icons.handshake_outlined,
           ),
-          SizedBox(height: 16),
+          gap16,
           _HowWorksItem(
             screenSize,
             'Haz una donación economica',
             'Apoya la causa y contribuye a proporcionar alimentos, materiales escolares y regalos para los niños de la escula',
             Icons.attach_money_rounded,
           ),
-          SizedBox(height: 16),
+          gap16,
           _HowWorksItem(
             screenSize,
             'Dona artículos en buen estado',
@@ -222,7 +221,7 @@ class _HowWorks extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8, left: 8),
           child: Icon(icon),
         ),
-        SizedBox(width: 30),
+        space30,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -235,7 +234,7 @@ class _HowWorks extends StatelessWidget {
                   color: Colors.black87,
                 ),
               ),
-              SizedBox(height: 4),
+              gap4,
               Text(
                 description,
                 style: TextStyle(

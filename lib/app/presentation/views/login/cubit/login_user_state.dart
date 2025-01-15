@@ -5,8 +5,8 @@ class LoginUserState with _$LoginUserState {
   const factory LoginUserState.initial() = _Initial;
   const factory LoginUserState.loading() = _Loading;
   const factory LoginUserState.loginSuccess(
-    User user,
-    SuccessType sucessType,
+    User? user,
+    LoginType sucessType,
   ) = LoginSuccess;
   const factory LoginUserState.error(String error) = _Error;
 }

@@ -2,6 +2,7 @@ import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -29,8 +30,12 @@ class ProfileView extends StatelessWidget {
                 'Logout',
                 style: AlboradaTextStyle.bodyText,
               ),
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context, Routes.signIn, (a) => false),
+              onPressed: () {
+                Supabase.instance.client.auth.signOut();
+                print('Sesión cerrada correctamente');
+                Navigator.pushNamedAndRemoveUntil(
+                    context, Routes.signIn, (a) => false);
+              },
             ),
           ),
         ],
@@ -110,7 +115,7 @@ class _NameAndCity extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Saitama Seiyū	Makoto Furukawa',
+            'Saitama Se˚iyū	Makoto Furukawa',
             style: AlboradaTextStyle.bodyText
                 .copyWith(fontWeight: FontWeight.bold, color: Palette.black),
           ),

@@ -5,8 +5,10 @@ import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<AlboradaUser> createUser(String email, String password);
+  Future<AlboradaUser> createAccount(String email, String password);
+  Future<dynamic> createUser(AlboradaUser user);
   Future<User> loginUser(String email, String password);
+  Future<List<Map<String, dynamic>>> getUser(String email);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -14,7 +16,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient client;
 
   @override
-  Future<AlboradaUser> createUser(String email, String password) async {
+  Future<AlboradaUser> createAccount(String email, String password) async {
     Logger.info('Creating account for email: $email');
     try {
       final response =
@@ -23,7 +25,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         final userData = AlboradaUser(
           email: email,
           id: response.user!.id,
-          confirmationSentAt: response.user!.confirmationSentAt,
+          // confirmationSentAt: response.user!.confirmationSentAt,
         );
         final formattedData = JsonEncoder.withIndent(' ').convert(userData);
         Logger.info('Status code $response');
@@ -63,6 +65,59 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       rethrow;
     } catch (e) {
       Logger.error('Something went wrong');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getUser(String email) async {
+    try {
+      final response = await client.from('a_users').select().eq('email', email);
+      // final response = await client.schema('auth').from('users').select('*');
+      // final a = await response.ilike('email', email);
+      // final userData = response.user!;
+      // final formattedData = JsonEncoder.withIndent(' ').convert(userData);
+      Logger.info('RESPONSE $response');
+      // Logger.info('User ${userData.email} succesful login');
+      // Logger.info(formattedData);
+      return response;
+    } on AuthApiException catch (e) {
+      Logger.error(e.statusCode ?? '');
+      Logger.error(e.message);
+      rethrow;
+    } on PostgrestException catch (e) {
+      if (e.details == 'Not Found') return [];
+      Logger.error(e.details.toString());
+      rethrow;
+    } catch (e) {
+      Logger.error(e.toString());
+      rethrow;
+    }
+  }
+
+  @override
+  Future<dynamic> createUser(AlboradaUser user) async {
+    try {
+      final newUser = user.copyWith(onboardingComplete: true);
+      final response = await client.from('a_users').insert([
+        {
+          'id': newUser.id,
+          'email': newUser.email,
+          'created_at': newUser.createdAt,
+          'onboarding_complete': newUser.onboardingComplete
+        }
+      ]);
+      return response;
+    } on AuthApiException catch (e) {
+      Logger.error(e.statusCode ?? '');
+      Logger.error(e.message);
+      rethrow;
+    } on PostgrestException catch (e) {
+      if (e.details == 'Not Found') return [];
+      Logger.error(e.details.toString());
+      rethrow;
+    } catch (e) {
+      Logger.error(e.toString());
       rethrow;
     }
   }

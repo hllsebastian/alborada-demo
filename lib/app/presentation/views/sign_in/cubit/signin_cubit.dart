@@ -1,5 +1,5 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
-import 'package:alborada_demo/app/domain/use_cases/user_use_cases.dart';
+import 'package:alborada_demo/app/domain/use_cases/auth_and_login_use_cases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -11,7 +11,7 @@ part 'signin_state.dart';
 class SigninCubit extends Cubit<SigninState> {
   SigninCubit(this.signinUseCase) : super(SigninState.initial());
 
-  final UserUseCases signinUseCase;
+  final AuthAndLoginUseCases signinUseCase;
 
   Future<void> signinUser(String email, String password) async {
     emit(SigninState.loading());

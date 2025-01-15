@@ -43,7 +43,7 @@ class AlboradaSnackBar {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [content],
           ),
-          padding: edgeInsetZero,
+          padding: edgeInsetsZero,
           backgroundColor: Colors.transparent,
           elevation: 0,
           behavior: SnackBarBehavior.floating,

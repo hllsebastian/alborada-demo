@@ -97,18 +97,31 @@ class _LoginBodyState extends State<_LoginBody> {
     return BlocConsumer<CreateAccountCubit, CreateAccountState>(
       listener: (context, state) {
         state.whenOrNull(
-          createAccountSuccess: (user, sucessType) {
-            if (sucessType == SuccessType.accountAlreadyExists) {
+          createAccountSuccess: (user, sucessType) async {
+            if (sucessType == LoginType.accountAlreadyExists) {
               AlboradaSnackBar.of(context)
                   .warning('The email ${user.email} is alredy exist');
             }
             // TODO: Verify email before continue the onboarding
-            if (sucessType == SuccessType.confirmEmail && user.id.isNotEmpty) {
-              return Navigator.pushNamedAndRemoveUntil(
-                context,
-                Routes.onboarding,
-                (route) => false,
+            // if (sucessType == SuccessType.confirmEmail && user.id.isNotEmpty) {
+            if (sucessType == LoginType.confirmEmail) {
+              print('CONFIRM EMAIL');
+              CustomDialog.show(
+                context: context,
+                info:
+                    'Please confirm your registered email address in your inbox to log in',
+                textButton: 'Ok',
+                navigateTo: () => Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Routes.login,
+                  (route) => false,
+                ),
               );
+              // return Navigator.pushNamedAndRemoveUntil(
+              //   context,
+              //   Routes.onboarding,
+              //   (route) => false,
+              // );
             }
           },
           error: (error) =>
