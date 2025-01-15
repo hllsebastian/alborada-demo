@@ -1,6 +1,6 @@
 # alborada_demo
 
-On developed
+On develope
 
 ## Getting Started
 
