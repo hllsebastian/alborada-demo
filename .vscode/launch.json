@@ -20,6 +20,15 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "Flutter",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=GOOGLE_MAPS_API_KEY=AIzaSyBwgj-gWspi_26IVPlDv6Ae_gtZ7S_97vA"
+            ]
         }
     ]
 }
