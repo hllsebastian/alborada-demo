@@ -12,9 +12,7 @@ import GoogleMaps
            let keys = NSDictionary(contentsOfFile: path),
            let apiKey = keys["GoogleMapsApiKey"] as? String {
             GMSServices.provideAPIKey(apiKey)
-            print("Google Maps API Key: \(apiKey)")
         } else {
-            print("Keys.plist not found or GoogleMapsApiKey missing")
             fatalError("Google Maps API Key not found in Keys.plist")
         }
 
