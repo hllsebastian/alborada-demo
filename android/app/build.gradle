@@ -6,6 +6,7 @@ plugins {
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
+def keystoreFile = rootProject.file("keys.properties")
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
@@ -20,6 +21,12 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
+}
+
+if (keystoreFile.exists()) {
+    localProperties.load(new FileInputStream(keystoreFile))
+} else {
+    throw new GradleException("keys.properties file not found. Please create it in the root folder.")
 }
 
 android {
@@ -46,12 +53,12 @@ android {
         applicationId "com.example.alborada_demo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 20
+        minSdkVersion flutter.minSdkVersion
         // minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        resValue "string", "google_maps_api_key", localProperties.getProperty("GOOGLE_MAPS_API_KEY", "")
+        resValue "string", "google_maps_api_key", localProperties['googleMapsApiKey'] ?: ""
     }
 
     buildTypes {

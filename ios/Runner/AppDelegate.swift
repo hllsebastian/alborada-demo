@@ -4,23 +4,18 @@ import GoogleMaps
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
-    var googleMapsApiKey: String?
-
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-        let channel = FlutterMethodChannel(name: "com.example.app/env", binaryMessenger: controller.binaryMessenger)
-
-        channel.setMethodCallHandler { [weak self] (call, result) in
-            if call.method == "setApiKey", let args = call.arguments as? [String: String], let apiKey = args["apiKey"] {
-                self?.googleMapsApiKey = apiKey
-                GMSServices.provideAPIKey(apiKey)
-                result(nil)
-            } else {
-                result(FlutterMethodNotImplemented)
-            }
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+           let keys = NSDictionary(contentsOfFile: path),
+           let apiKey = keys["GoogleMapsApiKey"] as? String {
+            GMSServices.provideAPIKey(apiKey)
+            print("Google Maps API Key: \(apiKey)")
+        } else {
+            print("Keys.plist not found or GoogleMapsApiKey missing")
+            fatalError("Google Maps API Key not found in Keys.plist")
         }
 
         GeneratedPluginRegistrant.register(with: self)
