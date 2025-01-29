@@ -10,6 +10,7 @@ import 'package:alborada_demo/app/presentation/views/create_account.dart/cubit/c
 import 'package:alborada_demo/app/presentation/views/home/cubit/home_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/login/cubit/login_user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/cubit/onboarding_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/profile/cubit/edit_profile_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -56,4 +57,6 @@ Future<void> setupServiceLocator() async {
       () => OnboardingCubit(getIt<AuthAndLoginUseCases>()));
   getIt.registerFactory<UserCubit>(() => UserCubit());
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<UserUseCases>()));
+  getIt.registerFactory<EditProfileCubit>(
+      () => EditProfileCubit(getIt<UserUseCases>()));
 }

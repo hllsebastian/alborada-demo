@@ -23,13 +23,10 @@ mixin _$AlboradaUser {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get lastName =>
-      throw _privateConstructorUsedError; // String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  String? get lastName => throw _privateConstructorUsedError;
+  String? get biography => throw _privateConstructorUsedError;
+  String? get interests => throw _privateConstructorUsedError;
+  int? get totalPoints => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   bool? get onboardingComplete => throw _privateConstructorUsedError;
 
@@ -54,6 +51,9 @@ abstract class $AlboradaUserCopyWith<$Res> {
       String email,
       String? name,
       String? lastName,
+      String? biography,
+      String? interests,
+      int? totalPoints,
       String? createdAt,
       bool? onboardingComplete});
 }
@@ -77,6 +77,9 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
     Object? email = null,
     Object? name = freezed,
     Object? lastName = freezed,
+    Object? biography = freezed,
+    Object? interests = freezed,
+    Object? totalPoints = freezed,
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
   }) {
@@ -97,6 +100,18 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      biography: freezed == biography
+          ? _value.biography
+          : biography // ignore: cast_nullable_to_non_nullable
+              as String?,
+      interests: freezed == interests
+          ? _value.interests
+          : interests // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalPoints: freezed == totalPoints
+          ? _value.totalPoints
+          : totalPoints // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -122,6 +137,9 @@ abstract class _$$AlboradaUserImplCopyWith<$Res>
       String email,
       String? name,
       String? lastName,
+      String? biography,
+      String? interests,
+      int? totalPoints,
       String? createdAt,
       bool? onboardingComplete});
 }
@@ -143,6 +161,9 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = freezed,
     Object? lastName = freezed,
+    Object? biography = freezed,
+    Object? interests = freezed,
+    Object? totalPoints = freezed,
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
   }) {
@@ -163,6 +184,18 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      biography: freezed == biography
+          ? _value.biography
+          : biography // ignore: cast_nullable_to_non_nullable
+              as String?,
+      interests: freezed == interests
+          ? _value.interests
+          : interests // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalPoints: freezed == totalPoints
+          ? _value.totalPoints
+          : totalPoints // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -183,6 +216,9 @@ class _$AlboradaUserImpl implements _AlboradaUser {
       required this.email,
       this.name,
       this.lastName,
+      this.biography,
+      this.interests,
+      this.totalPoints = 0,
       this.createdAt,
       this.onboardingComplete});
 
@@ -197,12 +233,13 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   final String? name;
   @override
   final String? lastName;
-// String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  @override
+  final String? biography;
+  @override
+  final String? interests;
+  @override
+  @JsonKey()
+  final int? totalPoints;
   @override
   final String? createdAt;
   @override
@@ -210,7 +247,7 @@ class _$AlboradaUserImpl implements _AlboradaUser {
 
   @override
   String toString() {
-    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, createdAt: $createdAt, onboardingComplete: $onboardingComplete)';
+    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, biography: $biography, interests: $interests, totalPoints: $totalPoints, createdAt: $createdAt, onboardingComplete: $onboardingComplete)';
   }
 
   @override
@@ -223,6 +260,12 @@ class _$AlboradaUserImpl implements _AlboradaUser {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
+            (identical(other.biography, biography) ||
+                other.biography == biography) &&
+            (identical(other.interests, interests) ||
+                other.interests == interests) &&
+            (identical(other.totalPoints, totalPoints) ||
+                other.totalPoints == totalPoints) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.onboardingComplete, onboardingComplete) ||
@@ -231,8 +274,8 @@ class _$AlboradaUserImpl implements _AlboradaUser {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, email, name, lastName, createdAt, onboardingComplete);
+  int get hashCode => Object.hash(runtimeType, id, email, name, lastName,
+      biography, interests, totalPoints, createdAt, onboardingComplete);
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.
@@ -256,6 +299,9 @@ abstract class _AlboradaUser implements AlboradaUser {
       required final String email,
       final String? name,
       final String? lastName,
+      final String? biography,
+      final String? interests,
+      final int? totalPoints,
       final String? createdAt,
       final bool? onboardingComplete}) = _$AlboradaUserImpl;
 
@@ -269,12 +315,13 @@ abstract class _AlboradaUser implements AlboradaUser {
   @override
   String? get name;
   @override
-  String? get lastName; // String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  String? get lastName;
+  @override
+  String? get biography;
+  @override
+  String? get interests;
+  @override
+  int? get totalPoints;
   @override
   String? get createdAt;
   @override

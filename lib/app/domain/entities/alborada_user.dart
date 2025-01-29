@@ -10,14 +10,16 @@ class AlboradaUser with _$AlboradaUser {
     required String email,
     String? name,
     String? lastName,
+    String? biography,
+    String? interests,
+    @Default(0) int? totalPoints,
+    String? createdAt,
+    bool? onboardingComplete,
     // String? profileImage,
     // String? country,
     // String? city,
-    // String? biography,
     // String? confirmationSentAt,
     // bool? appFirstLogin,
-    String? createdAt,
-    bool? onboardingComplete,
   }) = _AlboradaUser;
 
   factory AlboradaUser.fromJson(Map<String, dynamic> json) =>
