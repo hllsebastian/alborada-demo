@@ -1,4 +1,5 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
+import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/cubit/onboarding_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/pages/choise_initiative_page.dart';
@@ -83,11 +84,11 @@ class _OnboardingViewState extends State<OnboardingView> {
                         if (user != null) {
                           context.read<OnboardingCubit>().createUser(user);
                         }
-                        // Navigator.pushNamedAndRemoveUntil(
-                        //   context,
-                        //   Routes.pageView,
-                        //   (route) => false,
-                        // );
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          Routes.pageView,
+                          (route) => false,
+                        );
                       }
                       if (_currentPage == onboardingPages.length - 1) {
                         _pageController.animateToPage(

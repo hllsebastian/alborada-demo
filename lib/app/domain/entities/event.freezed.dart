@@ -25,6 +25,7 @@ mixin _$Event {
   String get description => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
 
   /// Serializes this Event to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,12 @@ abstract class $EventCopyWith<$Res> {
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
   $Res call(
-      {String id, String name, String description, String address, int points});
+      {String id,
+      String name,
+      String description,
+      String address,
+      int points,
+      DateTime? date});
 }
 
 /// @nodoc
@@ -64,6 +70,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? description = null,
     Object? address = null,
     Object? points = null,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +93,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -98,7 +109,12 @@ abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id, String name, String description, String address, int points});
+      {String id,
+      String name,
+      String description,
+      String address,
+      int points,
+      DateTime? date});
 }
 
 /// @nodoc
@@ -119,6 +135,7 @@ class __$$EventImplCopyWithImpl<$Res>
     Object? description = null,
     Object? address = null,
     Object? points = null,
+    Object? date = freezed,
   }) {
     return _then(_$EventImpl(
       id: null == id
@@ -141,6 +158,10 @@ class __$$EventImplCopyWithImpl<$Res>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -153,7 +174,8 @@ class _$EventImpl implements _Event {
       this.name = '',
       this.description = '',
       this.address = '',
-      this.points = 0});
+      this.points = 0,
+      this.date});
 
   factory _$EventImpl.fromJson(Map<String, dynamic> json) =>
       _$$EventImplFromJson(json);
@@ -173,10 +195,12 @@ class _$EventImpl implements _Event {
   @override
   @JsonKey()
   final int points;
+  @override
+  final DateTime? date;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, description: $description, address: $address, points: $points)';
+    return 'Event(id: $id, name: $name, description: $description, address: $address, points: $points, date: $date)';
   }
 
   @override
@@ -189,13 +213,14 @@ class _$EventImpl implements _Event {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.points, points) || other.points == points));
+            (identical(other.points, points) || other.points == points) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, description, address, points);
+      Object.hash(runtimeType, id, name, description, address, points, date);
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
@@ -219,7 +244,8 @@ abstract class _Event implements Event {
       final String name,
       final String description,
       final String address,
-      final int points}) = _$EventImpl;
+      final int points,
+      final DateTime? date}) = _$EventImpl;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$EventImpl.fromJson;
 
@@ -233,6 +259,8 @@ abstract class _Event implements Event {
   String get address;
   @override
   int get points;
+  @override
+  DateTime? get date;
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
