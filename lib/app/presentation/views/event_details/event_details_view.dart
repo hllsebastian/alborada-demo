@@ -1,6 +1,7 @@
 import 'package:alborada_demo/app/domain/entities/event.dart';
 import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventDetailsView extends StatelessWidget {
   const EventDetailsView(this.event, {super.key});
@@ -8,6 +9,9 @@ class EventDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final eventDate = event?.date != null && event!.date.toString().isNotEmpty
+        ? DateFormat('d/MM').format(event!.date!)
+        : '';
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -24,10 +28,13 @@ class EventDetailsView extends StatelessWidget {
                     _Description(
                       eventName: event!.name,
                       description: event!.description,
+                      date: eventDate,
+                      points: event?.points.toString() ?? '',
                     ),
                     Divider(),
                     _Address(event!.address),
                     Divider(),
+                    // TODO: how is going to save the 'Como funciona'
                     _HowWorks(),
                     SimpleButton(
                       isDarkButton: true,
@@ -73,9 +80,13 @@ class _Description extends StatelessWidget {
   const _Description({
     required this.eventName,
     required this.description,
+    required this.date,
+    required this.points,
   });
   final String eventName;
   final String description;
+  final String date;
+  final String points;
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +108,7 @@ class _Description extends StatelessWidget {
           gap16,
           Row(
             children: [
+              // TODO: how is going to save the place in DB
               ButtonIconWidget(
                 text: 'Santa Cruz',
                 imagePath: 'pin.svg',
@@ -104,13 +116,13 @@ class _Description extends StatelessWidget {
               ),
               gap8,
               ButtonIconWidget(
-                text: '14/12',
+                text: date,
                 imagePath: 'calendar.svg',
                 buttonColor: Colors.black,
               ),
               gap8,
               ButtonIconWidget(
-                text: '+5',
+                text: '+$points',
                 imagePath: 'deseos.svg',
                 buttonColor: Colors.black,
               ),
@@ -144,6 +156,7 @@ class _Address extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  // TODO: place name
                   'E.I. El Playon',
                   style: TextStyle(
                     fontSize: 20,

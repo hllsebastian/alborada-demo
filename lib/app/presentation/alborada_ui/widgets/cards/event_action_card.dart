@@ -1,6 +1,7 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/svg_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventActionCard extends StatelessWidget {
   const EventActionCard({
@@ -18,6 +19,10 @@ class EventActionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
+
+    final eventDate = event.date != null && event.date.toString().isNotEmpty
+        ? DateFormat('d/MM').format(event.date!)
+        : '';
 
     return Column(
       children: [
@@ -42,9 +47,10 @@ class EventActionCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // TODO: display distance
                   _buildIconWidget('pin.svg', '100m'),
-                  _buildIconWidget('calendar.svg', '100'),
-                  _buildIconWidget('deseos.svg', '100'),
+                  _buildIconWidget('calendar.svg', eventDate),
+                  _buildIconWidget('deseos.svg', event.points.toString()),
                 ],
               ),
             ],

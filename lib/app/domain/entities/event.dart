@@ -11,6 +11,7 @@ class Event with _$Event {
     @Default('') String description,
     @Default('') String address,
     @Default(0) int points,
+    DateTime? date,
   }) = _Event;
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);

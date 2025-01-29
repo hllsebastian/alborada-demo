@@ -17,7 +17,7 @@ import '../presentation/views/cubit/user_cubit/user_cubit.dart';
 
 final getIt = GetIt.instance;
 
-void setupServiceLocator() {
+Future<void> setupServiceLocator() async {
 // Supabase client
   getIt.registerLazySingleton<SupabaseClient>(
     () => Supabase.instance.client,
