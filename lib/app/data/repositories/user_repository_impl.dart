@@ -7,6 +7,11 @@ class UserRepositoryImpl implements IUserRepository {
   final UserRemoteDataSource remoteDataSource;
 
   @override
+  Future<AlboradaUser> getUser(String id) async {
+    return await remoteDataSource.getUser(id);
+  }
+
+  @override
   Future<List<Event>> getEvents() async {
     try {
       return await remoteDataSource.getEvents();
@@ -16,16 +21,18 @@ class UserRepositoryImpl implements IUserRepository {
   }
 
   @override
-  Future<void> editUserProfile(
-      {required String userId,
-      String? biography,
-      List<String>? interests,
-      int? totalPoints}) async {
-    await remoteDataSource.updateUserProfile(
+  Future<AlboradaUser> editUserProfile({
+    required String userId,
+    String? biography,
+    String? name,
+    String? lastName,
+  }) async {
+    final response = await remoteDataSource.updateUserProfile(
       userId: userId,
       biography: biography,
-      interests: interests,
-      totalPoints: totalPoints,
+      name: name,
+      lastName: lastName,
     );
+    return response;
   }
 }

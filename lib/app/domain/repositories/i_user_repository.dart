@@ -1,11 +1,12 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
 
 abstract class IUserRepository {
+  Future<AlboradaUser> getUser(String id);
   Future<List<Event>> getEvents();
-  Future<void> editUserProfile({
+  Future<AlboradaUser> editUserProfile({
     required String userId,
     String? biography,
-    List<String>? interests,
-    int? totalPoints,
+    String? name,
+    String? lastName,
   });
 }

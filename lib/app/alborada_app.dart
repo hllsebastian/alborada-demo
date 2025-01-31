@@ -21,11 +21,13 @@ class AlboradaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sessionActive = Supabase.instance.client.auth.currentSession != null;
+    final currentUser = Supabase.instance.client.auth.currentUser;
+    // final sessionActive = Supabase.instance.client.auth.currentSession != null;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: BlocProvider(
-        create: (context) => UserCubit(),
+        create: (context) =>
+            GetIt.I.get<UserCubit>()..fetchUser(currentUser?.id),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -35,7 +37,7 @@ class AlboradaApp extends StatelessWidget {
               elevation: 0, // Elimina la sombra en todos los AppBar
             ),
           ),
-          initialRoute: sessionActive ? Routes.pageView : Routes.signIn,
+          initialRoute: currentUser != null ? Routes.pageView : Routes.signIn,
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case Routes.pageView:
