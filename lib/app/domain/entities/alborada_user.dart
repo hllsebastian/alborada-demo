@@ -9,10 +9,10 @@ class AlboradaUser with _$AlboradaUser {
     required String id,
     required String email,
     String? name,
-    String? lastName,
+    @JsonKey(name: 'last_name') String? lastName,
     String? biography,
     String? interests,
-    @Default(0) int? totalPoints,
+    @JsonKey(name: 'total_points') @Default(0) int totalPoints,
     String? createdAt,
     bool? onboardingComplete,
     // String? profileImage,
@@ -21,6 +21,18 @@ class AlboradaUser with _$AlboradaUser {
     // String? confirmationSentAt,
     // bool? appFirstLogin,
   }) = _AlboradaUser;
+
+  factory AlboradaUser.empty() => AlboradaUser(
+        id: '',
+        email: '',
+        name: '',
+        lastName: '',
+        biography: '',
+        interests: '',
+        totalPoints: 0,
+        createdAt: '',
+        onboardingComplete: false,
+      );
 
   factory AlboradaUser.fromJson(Map<String, dynamic> json) =>
       _$AlboradaUserFromJson(json);
