@@ -1,7 +1,11 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
+import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/profile/cubit/edit_profile_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/edit_profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileView extends StatelessWidget {
@@ -9,6 +13,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userState = context.watch<UserCubit>().state;
     return Scaffold(
       backgroundColor: Palette.white,
       appBar: AppBar(
@@ -66,8 +71,10 @@ class ProfileView extends StatelessWidget {
                 ),
                 SizedBox(height: 18),
                 // Byo
-                Text(
-                    'Apasionada por el cambio social y el trabajo comunitario. Creyente de que cada pequq;a acción puede transformar vidas. 🌎✨')
+                Text(userState?.biography ?? '',
+                    style: AlboradaTextStyle.bodyText),
+                // Text(
+                //     'Apasionada por el cambio social y el trabajo comunitario. Creyente de que cada pequq;a acción puede transformar vidas. 🌎✨')
               ],
             ),
           ),
@@ -110,12 +117,14 @@ class _NameAndCity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userState = context.watch<UserCubit>().state;
     return Flexible(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Saitama Se˚iyū	Makoto Furukawa',
+            '${userState?.name ?? ''} ${userState?.lastName ?? ''}',
+            // 'Saitama Se˚iyū	Makoto Furukawa',
             style: AlboradaTextStyle.bodyText
                 .copyWith(fontWeight: FontWeight.bold, color: Palette.black),
           ),
@@ -149,7 +158,13 @@ class _EditeButton extends StatelessWidget {
             backgroundColor: Palette.yellow5,
             isScrollControlled: true,
             context: context,
-            builder: (context) => EditProfileView());
+            builder: (context) => BlocProvider(
+                  create: (context) => GetIt.I.get<EditProfileCubit>()
+                    ..updateState(
+                      context.read<UserCubit>().state,
+                    ),
+                  child: EditProfileView(),
+                ));
       },
     );
   }
