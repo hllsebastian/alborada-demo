@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:alborada_demo/app/domain/entities/alborada_user.dart';
 import 'package:alborada_demo/app/domain/use_cases/use_cases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
 part 'edit_profile_cubit.freezed.dart';
@@ -40,12 +43,16 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     String? name,
     String? lastName,
     String? biography,
+    ImageSource? image,
   }) async {
     final user = state.mapOrNull(updated: (a) => a.user);
     if (user == null) {
       emit(EditProfiletState.error('User not found'));
       return;
     }
+
+    // if (image != null) pickImage(image);
+
     emit(EditProfiletState.updated(
       user.copyWith(
         biography: biography ?? user.biography,
@@ -54,5 +61,15 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
       ),
       false,
     ));
+  }
+
+  Future<File?> pickImage(ImageSource source) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      return File(pickedFile.path);
+    }
+    return null;
   }
 }

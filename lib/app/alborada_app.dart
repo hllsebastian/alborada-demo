@@ -5,8 +5,8 @@ import 'package:alborada_demo/app/presentation/views/forgot_password/forgot_pass
 import 'package:alborada_demo/app/presentation/views/login/login_view.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/cubit/onboarding_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/onboarding/onboarding_view.dart';
-import 'package:alborada_demo/app/presentation/views/profile/edit_profile_view.dart';
-import 'package:alborada_demo/app/presentation/views/profile/profile_view.dart';
+import 'package:alborada_demo/app/presentation/views/profile/views/edit_profile_view.dart';
+import 'package:alborada_demo/app/presentation/views/profile/views/profile_view.dart';
 import 'package:alborada_demo/app/presentation/views/sign_in/view/sign_in_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

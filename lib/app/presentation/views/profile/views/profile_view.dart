@@ -1,8 +1,8 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/cubit/edit_profile_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/edit_profile_view.dart';
+import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/profile/views/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';

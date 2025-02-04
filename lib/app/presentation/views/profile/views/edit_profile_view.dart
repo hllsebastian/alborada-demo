@@ -1,8 +1,10 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/cubit/edit_profile_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:alborada_demo/app/presentation/views/profile/widgets/profile_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
@@ -87,21 +89,49 @@ class _ImageAndName extends StatelessWidget {
     return Row(
       children: [
         // Image profile
-        Container(
-          width: 80,
-          height: 80,
-          margin: EdgeInsets.only(right: 20),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: const DecorationImage(
-              image: AssetImage('assets/images/png/saitama_poker_face.png'),
-              fit: BoxFit.cover,
-            ),
-            border: Border.all(
-              color: Colors.black12,
-              width: 1.0,
-            ),
-          ),
+        Column(
+          children: [
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     final image = await context
+            //         .read<EditProfileCubit>()
+            //         .pickImage(ImageSource.gallery);
+            //     if (image != null) {
+            //       print('IMAGGEENNNN');
+            //       // context.read<EditProfileCubit>().updateUserImage(image);
+            //     }
+            //   },
+            //   child: Text("Seleccionar Imagen"),
+            // ),
+            // Container(
+            //   width: 80,
+            //   height: 80,
+            //   margin: EdgeInsets.only(right: 20),
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     image: const DecorationImage(
+            //       image: AssetImage('assets/images/png/saitama_poker_face.png'),
+            //       fit: BoxFit.cover,
+            //     ),
+            //     border: Border.all(
+            //       color: Colors.black12,
+            //       width: 1.0,
+            //     ),
+            //   ),
+            // ),
+            ProfileImageWidget(
+              imageUrl: null,
+              onPickImage: () async {
+                final image = await context
+                    .read<EditProfileCubit>()
+                    .pickImage(ImageSource.gallery);
+                if (image != null) {
+                  print('IMAGGEENNNN');
+                  // context.read<EditProfileCubit>().updateUserImage(image);
+                }
+              },
+            )
+          ],
         ),
         Flexible(
           child: Column(
