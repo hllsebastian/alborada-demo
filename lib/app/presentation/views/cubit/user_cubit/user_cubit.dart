@@ -27,6 +27,7 @@ class UserCubit extends Cubit<AlboradaUser?> {
       print('NOT LOGED IN');
       return;
     }
+
     await _useCase.getUser(id).then((user) {
       emit(user);
     }).catchError((e) {

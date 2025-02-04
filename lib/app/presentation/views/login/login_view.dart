@@ -50,6 +50,7 @@ class _LoginBody extends StatelessWidget {
               );
             }
             if (sucessType == LoginType.loginSuccess) {
+              context.read<UserCubit>().fetchUser(state.user?.id);
               return Navigator.pushNamedAndRemoveUntil(
                 context,
                 Routes.pageView,
