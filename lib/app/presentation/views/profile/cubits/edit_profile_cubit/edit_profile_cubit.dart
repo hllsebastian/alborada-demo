@@ -16,13 +16,20 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
   final UserUseCases _useCase;
 
   Future<void> updateUserProfile(AlboradaUser user) async {
-    emit(EditProfiletState.loading());
+    // emit(EditProfiletState.loading());
     try {
+      // final image =
+      //     state.maybeMap(updated: (u) => u.selectedImage, orElse: () => null);
+      String? imageUrl = '';
+      // if (state.selectedImage != null) {
+      imageUrl = await updateUserImage();
+      // }
       final response = await _useCase.editProfileUser(
         userId: user.id,
         biography: user.biography,
         name: user.name,
         lastName: user.lastName,
+        imageUrl: imageUrl,
       );
       emit(EditProfiletState.updated(response, true));
       return;
@@ -31,12 +38,20 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     }
   }
 
-  Future<void> updateState(AlboradaUser? user) async {
+  Future<void> updateUserState(AlboradaUser? user) async {
     if (user == null) {
       emit(EditProfiletState.error('User not found'));
       return;
     }
     emit(EditProfiletState.updated(user, false));
+  }
+
+  Future<void> updateImageState(File? image) async {
+    if (state.user == null || image == null) {
+      emit(EditProfiletState.error('Something went wrong uploading the image'));
+      return;
+    }
+    emit(EditProfiletState.updated(state.user!, false, selectedImage: image));
   }
 
   Future<void> updateFields({
@@ -63,13 +78,33 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     ));
   }
 
-  Future<File?> pickImage(ImageSource source) async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? pickedFile = await picker.pickImage(source: source);
-
-    if (pickedFile != null) {
-      return File(pickedFile.path);
+  Future<String?> updateUserImage() async {
+    final userId = state.user?.id;
+    final image =
+        state.maybeMap(updated: (u) => u.selectedImage, orElse: () => null);
+    if (userId == null || image == null) {
+      emit(EditProfiletState.error('Something went wrong uploading the image'));
+      return null;
     }
-    return null;
+
+    emit(EditProfiletState.loading());
+
+    try {
+      // Subir imagen al repositorio
+      final imageUrl = await _useCase.updateUserImage(
+        state.user?.id ?? '',
+        image,
+      );
+
+      if (imageUrl == null) {
+        emit(EditProfiletState.error('Error al subir la imagen.'));
+        return null;
+      }
+      print('UPDATINGG USER ${state.user}');
+      return imageUrl;
+    } catch (e) {
+      emit(EditProfiletState.error('Error: $e'));
+      return null;
+    }
   }
 }

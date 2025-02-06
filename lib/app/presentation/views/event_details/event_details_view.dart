@@ -36,6 +36,7 @@ class EventDetailsView extends StatelessWidget {
                     Divider(),
                     // TODO: how is going to save the 'Como funciona'
                     _HowWorks(),
+                    // TODO: this buttons is going to be hiden
                     SimpleButton(
                       isDarkButton: true,
                       text: 'Reserva',
@@ -97,6 +98,7 @@ class _Description extends StatelessWidget {
         children: [
           Text(
             // 'Magica Vispera de Navidad #2',
+            // TODO: change font
             eventName,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),

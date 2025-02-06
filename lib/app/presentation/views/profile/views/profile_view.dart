@@ -160,7 +160,7 @@ class _EditeButton extends StatelessWidget {
             context: context,
             builder: (context) => BlocProvider(
                   create: (context) => GetIt.I.get<EditProfileCubit>()
-                    ..updateState(
+                    ..updateUserState(
                       context.read<UserCubit>().state,
                     ),
                   child: EditProfileView(),

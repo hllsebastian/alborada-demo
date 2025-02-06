@@ -56,6 +56,7 @@ dependencies:
   responsive_builder: ^0.7.1
   shared_preferences: ^2.3.5
   intl: ^0.20.1
+  image_picker: ^1.1.2
 
 
 dev_dependencies:

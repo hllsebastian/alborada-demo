@@ -20,7 +20,9 @@ mixin _$EditProfiletState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, bool isUserUpdated) updated,
+    required TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)
+        updated,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$EditProfiletState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult? Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$EditProfiletState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -132,7 +138,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, bool isUserUpdated) updated,
+    required TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)
+        updated,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -143,7 +151,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult? Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -154,7 +164,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -249,7 +261,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, bool isUserUpdated) updated,
+    required TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)
+        updated,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -260,7 +274,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult? Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -271,7 +287,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -329,7 +347,7 @@ abstract class _$$UpdatedImplCopyWith<$Res> {
           _$UpdatedImpl value, $Res Function(_$UpdatedImpl) then) =
       __$$UpdatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlboradaUser user, bool isUserUpdated});
+  $Res call({AlboradaUser user, bool isUserUpdated, File? selectedImage});
 
   $AlboradaUserCopyWith<$Res> get user;
 }
@@ -349,6 +367,7 @@ class __$$UpdatedImplCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? isUserUpdated = null,
+    Object? selectedImage = freezed,
   }) {
     return _then(_$UpdatedImpl(
       null == user
@@ -359,6 +378,10 @@ class __$$UpdatedImplCopyWithImpl<$Res>
           ? _value.isUserUpdated
           : isUserUpdated // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectedImage: freezed == selectedImage
+          ? _value.selectedImage
+          : selectedImage // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 
@@ -376,16 +399,18 @@ class __$$UpdatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdatedImpl implements _Updated {
-  const _$UpdatedImpl(this.user, this.isUserUpdated);
+  const _$UpdatedImpl(this.user, this.isUserUpdated, {this.selectedImage});
 
   @override
   final AlboradaUser user;
   @override
   final bool isUserUpdated;
+  @override
+  final File? selectedImage;
 
   @override
   String toString() {
-    return 'EditProfiletState.updated(user: $user, isUserUpdated: $isUserUpdated)';
+    return 'EditProfiletState.updated(user: $user, isUserUpdated: $isUserUpdated, selectedImage: $selectedImage)';
   }
 
   @override
@@ -395,11 +420,14 @@ class _$UpdatedImpl implements _Updated {
             other is _$UpdatedImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isUserUpdated, isUserUpdated) ||
-                other.isUserUpdated == isUserUpdated));
+                other.isUserUpdated == isUserUpdated) &&
+            (identical(other.selectedImage, selectedImage) ||
+                other.selectedImage == selectedImage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isUserUpdated);
+  int get hashCode =>
+      Object.hash(runtimeType, user, isUserUpdated, selectedImage);
 
   /// Create a copy of EditProfiletState
   /// with the given fields replaced by the non-null parameter values.
@@ -414,10 +442,12 @@ class _$UpdatedImpl implements _Updated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, bool isUserUpdated) updated,
+    required TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)
+        updated,
     required TResult Function(String message) error,
   }) {
-    return updated(user, isUserUpdated);
+    return updated(user, isUserUpdated, selectedImage);
   }
 
   @override
@@ -425,10 +455,12 @@ class _$UpdatedImpl implements _Updated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult? Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult? Function(String message)? error,
   }) {
-    return updated?.call(user, isUserUpdated);
+    return updated?.call(user, isUserUpdated, selectedImage);
   }
 
   @override
@@ -436,12 +468,14 @@ class _$UpdatedImpl implements _Updated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (updated != null) {
-      return updated(user, isUserUpdated);
+      return updated(user, isUserUpdated, selectedImage);
     }
     return orElse();
   }
@@ -485,11 +519,12 @@ class _$UpdatedImpl implements _Updated {
 }
 
 abstract class _Updated implements EditProfiletState {
-  const factory _Updated(final AlboradaUser user, final bool isUserUpdated) =
-      _$UpdatedImpl;
+  const factory _Updated(final AlboradaUser user, final bool isUserUpdated,
+      {final File? selectedImage}) = _$UpdatedImpl;
 
   AlboradaUser get user;
   bool get isUserUpdated;
+  File? get selectedImage;
 
   /// Create a copy of EditProfiletState
   /// with the given fields replaced by the non-null parameter values.
@@ -568,7 +603,9 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, bool isUserUpdated) updated,
+    required TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)
+        updated,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -579,7 +616,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult? Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -590,7 +629,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, bool isUserUpdated)? updated,
+    TResult Function(
+            AlboradaUser user, bool isUserUpdated, File? selectedImage)?
+        updated,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

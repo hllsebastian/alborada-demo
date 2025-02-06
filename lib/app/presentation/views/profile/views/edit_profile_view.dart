@@ -1,10 +1,9 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/widgets/profile_image_picker.dart';
+import 'package:alborada_demo/app/presentation/views/profile/widgets/profile_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
@@ -15,7 +14,7 @@ class EditProfileView extends StatelessWidget {
     return BlocListener<EditProfileCubit, EditProfiletState>(
       listener: (context, state) {
         state.maybeWhen(
-          updated: (user, isUpdated) {
+          updated: (user, isUpdated, selectedImage) {
             if (isUpdated) {
               context.read<UserCubit>().emitUser(user);
               context.showSnackBar(SnackBar(content: Text('Profile updated')));
@@ -121,15 +120,6 @@ class _ImageAndName extends StatelessWidget {
             // ),
             ProfileImageWidget(
               imageUrl: null,
-              onPickImage: () async {
-                final image = await context
-                    .read<EditProfileCubit>()
-                    .pickImage(ImageSource.gallery);
-                if (image != null) {
-                  print('IMAGGEENNNN');
-                  // context.read<EditProfileCubit>().updateUserImage(image);
-                }
-              },
             )
           ],
         ),

@@ -4,11 +4,21 @@ part of 'edit_profile_cubit.dart';
 class EditProfiletState with _$EditProfiletState {
   const factory EditProfiletState.initial() = _Initial;
   const factory EditProfiletState.loading() = _Loading;
-  const factory EditProfiletState.updated(
-      AlboradaUser user, bool isUserUpdated) = _Updated;
+  const factory EditProfiletState.updated(AlboradaUser user, bool isUserUpdated,
+      {File? selectedImage}) = _Updated;
   const factory EditProfiletState.error(String message) = _Error;
 }
 
 extension EditProfileStateX on EditProfiletState {
   bool get isUserUpdated => this is _Updated;
+
+  AlboradaUser? get user => switch (this) {
+        _Updated(user: final user) => user,
+        _ => null,
+      };
+
+  File? get selectedImage => switch (this) {
+        _Updated(selectedImage: final selectedImage) => selectedImage,
+        _ => null,
+      };
 }

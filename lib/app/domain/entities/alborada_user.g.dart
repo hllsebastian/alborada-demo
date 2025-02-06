@@ -17,6 +17,7 @@ _$AlboradaUserImpl _$$AlboradaUserImplFromJson(Map<String, dynamic> json) =>
       totalPoints: (json['total_points'] as num?)?.toInt() ?? 0,
       createdAt: json['createdAt'] as String?,
       onboardingComplete: json['onboardingComplete'] as bool?,
+      profileImage: json['profileImage'] as String?,
     );
 
 Map<String, dynamic> _$$AlboradaUserImplToJson(_$AlboradaUserImpl instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$AlboradaUserImplToJson(_$AlboradaUserImpl instance) =>
       'total_points': instance.totalPoints,
       'createdAt': instance.createdAt,
       'onboardingComplete': instance.onboardingComplete,
+      'profileImage': instance.profileImage,
     };
