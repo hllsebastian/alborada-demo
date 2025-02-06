@@ -23,15 +23,15 @@ mixin _$AlboradaUser {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get lastName =>
-      throw _privateConstructorUsedError; // String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  @JsonKey(name: 'last_name')
+  String? get lastName => throw _privateConstructorUsedError;
+  String? get biography => throw _privateConstructorUsedError;
+  String? get interests => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_points')
+  int get totalPoints => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   bool? get onboardingComplete => throw _privateConstructorUsedError;
+  String? get profileImage => throw _privateConstructorUsedError;
 
   /// Serializes this AlboradaUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,9 +53,13 @@ abstract class $AlboradaUserCopyWith<$Res> {
       {String id,
       String email,
       String? name,
-      String? lastName,
+      @JsonKey(name: 'last_name') String? lastName,
+      String? biography,
+      String? interests,
+      @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
-      bool? onboardingComplete});
+      bool? onboardingComplete,
+      String? profileImage});
 }
 
 /// @nodoc
@@ -77,8 +81,12 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
     Object? email = null,
     Object? name = freezed,
     Object? lastName = freezed,
+    Object? biography = freezed,
+    Object? interests = freezed,
+    Object? totalPoints = null,
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
+    Object? profileImage = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,6 +105,18 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      biography: freezed == biography
+          ? _value.biography
+          : biography // ignore: cast_nullable_to_non_nullable
+              as String?,
+      interests: freezed == interests
+          ? _value.interests
+          : interests // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalPoints: null == totalPoints
+          ? _value.totalPoints
+          : totalPoints // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -105,6 +125,10 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.onboardingComplete
           : onboardingComplete // ignore: cast_nullable_to_non_nullable
               as bool?,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -121,9 +145,13 @@ abstract class _$$AlboradaUserImplCopyWith<$Res>
       {String id,
       String email,
       String? name,
-      String? lastName,
+      @JsonKey(name: 'last_name') String? lastName,
+      String? biography,
+      String? interests,
+      @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
-      bool? onboardingComplete});
+      bool? onboardingComplete,
+      String? profileImage});
 }
 
 /// @nodoc
@@ -143,8 +171,12 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = freezed,
     Object? lastName = freezed,
+    Object? biography = freezed,
+    Object? interests = freezed,
+    Object? totalPoints = null,
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
+    Object? profileImage = freezed,
   }) {
     return _then(_$AlboradaUserImpl(
       id: null == id
@@ -163,6 +195,18 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      biography: freezed == biography
+          ? _value.biography
+          : biography // ignore: cast_nullable_to_non_nullable
+              as String?,
+      interests: freezed == interests
+          ? _value.interests
+          : interests // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalPoints: null == totalPoints
+          ? _value.totalPoints
+          : totalPoints // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -171,6 +215,10 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.onboardingComplete
           : onboardingComplete // ignore: cast_nullable_to_non_nullable
               as bool?,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -182,9 +230,13 @@ class _$AlboradaUserImpl implements _AlboradaUser {
       {required this.id,
       required this.email,
       this.name,
-      this.lastName,
+      @JsonKey(name: 'last_name') this.lastName,
+      this.biography,
+      this.interests,
+      @JsonKey(name: 'total_points') this.totalPoints = 0,
       this.createdAt,
-      this.onboardingComplete});
+      this.onboardingComplete,
+      this.profileImage});
 
   factory _$AlboradaUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlboradaUserImplFromJson(json);
@@ -196,21 +248,25 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   @override
   final String? name;
   @override
+  @JsonKey(name: 'last_name')
   final String? lastName;
-// String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  @override
+  final String? biography;
+  @override
+  final String? interests;
+  @override
+  @JsonKey(name: 'total_points')
+  final int totalPoints;
   @override
   final String? createdAt;
   @override
   final bool? onboardingComplete;
+  @override
+  final String? profileImage;
 
   @override
   String toString() {
-    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, createdAt: $createdAt, onboardingComplete: $onboardingComplete)';
+    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, biography: $biography, interests: $interests, totalPoints: $totalPoints, createdAt: $createdAt, onboardingComplete: $onboardingComplete, profileImage: $profileImage)';
   }
 
   @override
@@ -223,16 +279,34 @@ class _$AlboradaUserImpl implements _AlboradaUser {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
+            (identical(other.biography, biography) ||
+                other.biography == biography) &&
+            (identical(other.interests, interests) ||
+                other.interests == interests) &&
+            (identical(other.totalPoints, totalPoints) ||
+                other.totalPoints == totalPoints) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.onboardingComplete, onboardingComplete) ||
-                other.onboardingComplete == onboardingComplete));
+                other.onboardingComplete == onboardingComplete) &&
+            (identical(other.profileImage, profileImage) ||
+                other.profileImage == profileImage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, email, name, lastName, createdAt, onboardingComplete);
+      runtimeType,
+      id,
+      email,
+      name,
+      lastName,
+      biography,
+      interests,
+      totalPoints,
+      createdAt,
+      onboardingComplete,
+      profileImage);
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.
@@ -255,9 +329,13 @@ abstract class _AlboradaUser implements AlboradaUser {
       {required final String id,
       required final String email,
       final String? name,
-      final String? lastName,
+      @JsonKey(name: 'last_name') final String? lastName,
+      final String? biography,
+      final String? interests,
+      @JsonKey(name: 'total_points') final int totalPoints,
       final String? createdAt,
-      final bool? onboardingComplete}) = _$AlboradaUserImpl;
+      final bool? onboardingComplete,
+      final String? profileImage}) = _$AlboradaUserImpl;
 
   factory _AlboradaUser.fromJson(Map<String, dynamic> json) =
       _$AlboradaUserImpl.fromJson;
@@ -269,16 +347,21 @@ abstract class _AlboradaUser implements AlboradaUser {
   @override
   String? get name;
   @override
-  String? get lastName; // String? profileImage,
-// String? country,
-// String? city,
-// String? biography,
-// String? confirmationSentAt,
-// bool? appFirstLogin,
+  @JsonKey(name: 'last_name')
+  String? get lastName;
+  @override
+  String? get biography;
+  @override
+  String? get interests;
+  @override
+  @JsonKey(name: 'total_points')
+  int get totalPoints;
   @override
   String? get createdAt;
   @override
   bool? get onboardingComplete;
+  @override
+  String? get profileImage;
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.

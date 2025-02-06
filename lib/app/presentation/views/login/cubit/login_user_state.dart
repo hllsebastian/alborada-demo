@@ -14,6 +14,11 @@ class LoginUserState with _$LoginUserState {
 extension LoginUserStateX on LoginUserState {
   bool get isLoading => this is _Loading;
 
+  User? get user => switch (this) {
+        LoginSuccess(user: final user) => user,
+        _ => null,
+      };
+
   String? get errorMessage => switch (this) {
         _Error(error: final message) => message,
         _ => null,
