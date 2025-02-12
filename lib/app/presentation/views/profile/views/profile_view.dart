@@ -85,28 +85,40 @@ class ProfileView extends StatelessWidget {
 }
 
 class _ProfileImage extends StatelessWidget {
-  const _ProfileImage({
-    super.key,
-  });
+  const _ProfileImage();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      height: 80,
-      margin: EdgeInsets.only(right: 20),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        image: const DecorationImage(
-          image: AssetImage('assets/images/png/saitama_poker_face.png'),
-          fit: BoxFit.cover,
-        ),
-        border: Border.all(
-          color: Colors.black12,
-          width: 1.0,
-        ),
-      ),
+    final userState = context.watch<UserCubit>().state;
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: CircleAvatar(
+          radius: 40,
+          backgroundImage: userState != null &&
+                  userState.profileImage != null &&
+                  userState.profileImage!.isNotEmpty
+              ? NetworkImage(userState.profileImage!) as ImageProvider
+// TODO: change default profile image fromo backend
+              : AssetImage('assets/images/png/star.png')),
     );
+    // return Container(
+    //   width: 80,
+    //   height: 80,
+    //   margin: EdgeInsets.only(right: 20),
+    //   decoration: BoxDecoration(
+    //     shape: BoxShape.circle,
+    //     image: const DecorationImage(
+    //       image: AssetImage('assets/images/png/saitama_poker_face.png'),
+    //       // image: AssetImage('assets/images/png/saitama_poker_face.png'),
+    //       fit: BoxFit.cover,
+    //     ),
+    //     border: Border.all(
+    //       color: Colors.black12,
+    //       width: 1.0,
+    //     ),
+    //   ),
+    // );
   }
 }
 
@@ -139,9 +151,7 @@ class _NameAndCity extends StatelessWidget {
 }
 
 class _EditeButton extends StatelessWidget {
-  const _EditeButton({
-    super.key,
-  });
+  const _EditeButton();
 
   @override
   Widget build(BuildContext context) {

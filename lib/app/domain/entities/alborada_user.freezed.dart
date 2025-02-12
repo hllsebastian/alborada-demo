@@ -31,6 +31,7 @@ mixin _$AlboradaUser {
   int get totalPoints => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   bool? get onboardingComplete => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_image_url')
   String? get profileImage => throw _privateConstructorUsedError;
 
   /// Serializes this AlboradaUser to a JSON map.
@@ -59,7 +60,7 @@ abstract class $AlboradaUserCopyWith<$Res> {
       @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
       bool? onboardingComplete,
-      String? profileImage});
+      @JsonKey(name: 'profile_image_url') String? profileImage});
 }
 
 /// @nodoc
@@ -151,7 +152,7 @@ abstract class _$$AlboradaUserImplCopyWith<$Res>
       @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
       bool? onboardingComplete,
-      String? profileImage});
+      @JsonKey(name: 'profile_image_url') String? profileImage});
 }
 
 /// @nodoc
@@ -236,7 +237,7 @@ class _$AlboradaUserImpl implements _AlboradaUser {
       @JsonKey(name: 'total_points') this.totalPoints = 0,
       this.createdAt,
       this.onboardingComplete,
-      this.profileImage});
+      @JsonKey(name: 'profile_image_url') this.profileImage});
 
   factory _$AlboradaUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlboradaUserImplFromJson(json);
@@ -262,6 +263,7 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   @override
   final bool? onboardingComplete;
   @override
+  @JsonKey(name: 'profile_image_url')
   final String? profileImage;
 
   @override
@@ -326,16 +328,17 @@ class _$AlboradaUserImpl implements _AlboradaUser {
 
 abstract class _AlboradaUser implements AlboradaUser {
   factory _AlboradaUser(
-      {required final String id,
-      required final String email,
-      final String? name,
-      @JsonKey(name: 'last_name') final String? lastName,
-      final String? biography,
-      final String? interests,
-      @JsonKey(name: 'total_points') final int totalPoints,
-      final String? createdAt,
-      final bool? onboardingComplete,
-      final String? profileImage}) = _$AlboradaUserImpl;
+          {required final String id,
+          required final String email,
+          final String? name,
+          @JsonKey(name: 'last_name') final String? lastName,
+          final String? biography,
+          final String? interests,
+          @JsonKey(name: 'total_points') final int totalPoints,
+          final String? createdAt,
+          final bool? onboardingComplete,
+          @JsonKey(name: 'profile_image_url') final String? profileImage}) =
+      _$AlboradaUserImpl;
 
   factory _AlboradaUser.fromJson(Map<String, dynamic> json) =
       _$AlboradaUserImpl.fromJson;
@@ -361,6 +364,7 @@ abstract class _AlboradaUser implements AlboradaUser {
   @override
   bool? get onboardingComplete;
   @override
+  @JsonKey(name: 'profile_image_url')
   String? get profileImage;
 
   /// Create a copy of AlboradaUser

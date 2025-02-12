@@ -119,7 +119,7 @@ class _ImageAndName extends StatelessWidget {
             //   ),
             // ),
             ProfileImageWidget(
-              imageUrl: null,
+              imageUrl: userState?.profileImage,
             )
           ],
         ),

@@ -44,7 +44,7 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
             : (widget.imageUrl != null && widget.imageUrl!.isNotEmpty
                 ? NetworkImage(widget.imageUrl!) as ImageProvider
                 : AssetImage(
-                    // TODO: change default profile image
+                    // TODO: change default profile image fromo backend
                     'assets/images/png/star.png')), // Imagen predeterminada
         child: _selectedImage == null &&
                 (widget.imageUrl == null || widget.imageUrl!.isEmpty)

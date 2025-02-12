@@ -15,7 +15,7 @@ class AlboradaUser with _$AlboradaUser {
     @JsonKey(name: 'total_points') @Default(0) int totalPoints,
     String? createdAt,
     bool? onboardingComplete,
-    String? profileImage,
+    @JsonKey(name: 'profile_image_url') String? profileImage,
     // String? country,
     // String? city,
     // String? confirmationSentAt,

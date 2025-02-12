@@ -92,7 +92,7 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     try {
       // Subir imagen al repositorio
       final imageUrl = await _useCase.updateUserImage(
-        state.user?.id ?? '',
+        userId,
         image,
       );
 

@@ -24,7 +24,17 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<AlboradaUser> getUser(String id) async {
     final response = await supaClient.from('a_users').select().eq('id', id);
     final dataSetted = response.map((json) => AlboradaUser.fromJson(json));
-    return dataSetted.first;
+
+    String signedUrl = '';
+    if (dataSetted.first.profileImage != null &&
+        dataSetted.first.profileImage!.isNotEmpty) {
+      final imagePath = getFilePathFromUrl(dataSetted.first.profileImage!);
+      signedUrl = await supaClient.storage
+          .from('user_avatars/avatars')
+          .createSignedUrl(imagePath, 3600);
+      print('SIGNED $signedUrl');
+    }
+    return dataSetted.first.copyWith(profileImage: signedUrl);
   }
 
   @override
@@ -77,5 +87,15 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       print('Error al subir imagen: $e');
     }
     return null;
+  }
+
+  String getFilePathFromUrl(String url) {
+    Uri uri = Uri.parse(url);
+    List<String> segments = uri.pathSegments;
+
+    // Omitimos las 3 primeras partes de la URL y reconstruimos la ruta
+    var path = segments.skip(6).join('/');
+    print('PATH $path');
+    return path;
   }
 }
