@@ -5,6 +5,7 @@ const gap2 = SizedBox(height: 2);
 const gap4 = SizedBox(height: 4);
 const gap8 = SizedBox(height: 8);
 const gap10 = SizedBox(height: 10);
+const gap18 = SizedBox(height: 18);
 const gap12 = SizedBox(height: 12);
 const gap15 = SizedBox(height: 15);
 const gap16 = SizedBox(height: 16);

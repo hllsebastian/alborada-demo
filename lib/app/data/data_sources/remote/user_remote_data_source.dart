@@ -32,7 +32,6 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       signedUrl = await supaClient.storage
           .from('user_avatars/avatars')
           .createSignedUrl(imagePath, 3600);
-      print('SIGNED $signedUrl');
     }
     return dataSetted.first.copyWith(profileImage: signedUrl);
   }
@@ -92,10 +91,6 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   String getFilePathFromUrl(String url) {
     Uri uri = Uri.parse(url);
     List<String> segments = uri.pathSegments;
-
-    // Omitimos las 3 primeras partes de la URL y reconstruimos la ruta
-    var path = segments.skip(6).join('/');
-    print('PATH $path');
-    return path;
+    return segments.skip(6).join('/');
   }
 }

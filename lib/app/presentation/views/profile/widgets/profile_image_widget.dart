@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileImageWidget extends StatefulWidget {
-  final String? imageUrl; // URL de la imagen en Supabase
+  final String? imageUrl;
 
   const ProfileImageWidget({super.key, required this.imageUrl});
 
@@ -25,8 +25,6 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
       setState(() {
         _selectedImage = File(pickedFile.path);
       });
-
-      // Subir la imagen al backend a través del Cubit
       context.read<EditProfileCubit>().updateImageState(_selectedImage!);
     }
   }
@@ -35,26 +33,37 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _showImageSourceDialog(),
-      child: CircleAvatar(
-        radius: 50,
-        backgroundColor: Colors.grey[300],
-        backgroundImage: _selectedImage != null
-            ? FileImage(
-                _selectedImage!) // Si el usuario ya seleccionó una imagen, mostrarla
-            : (widget.imageUrl != null && widget.imageUrl!.isNotEmpty
-                ? NetworkImage(widget.imageUrl!) as ImageProvider
-                : AssetImage(
-                    // TODO: change default profile image fromo backend
-                    'assets/images/png/star.png')), // Imagen predeterminada
-        child: _selectedImage == null &&
-                (widget.imageUrl == null || widget.imageUrl!.isEmpty)
-            ? Icon(Icons.camera_alt, color: Colors.white, size: 30)
-            : null, // Ícono si no hay imagen
+      child: Stack(
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundColor: Colors.grey[300],
+            backgroundImage: _selectedImage != null
+                ? FileImage(
+                    _selectedImage!) // Si el usuario ya seleccionó una imagen, mostrarla
+                : (widget.imageUrl != null && widget.imageUrl!.isNotEmpty
+                    ? NetworkImage(widget.imageUrl!) as ImageProvider
+                    : AssetImage(
+                        // TODO: change default profile image fromo backend
+                        'assets/images/png/profile3.png')), // Imagen predeterminada
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: GestureDetector(
+              onTap: () => _showImageSourceDialog(),
+              child: CircleAvatar(
+                radius: 18, // Tamaño del botón de la cámara
+                backgroundColor: Colors.transparent,
+                child: Icon(Icons.camera_alt, size: 18, color: Colors.white),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  // Muestra un diálogo para elegir entre cámara o galería
   void _showImageSourceDialog() {
     showModalBottomSheet(
       context: context,

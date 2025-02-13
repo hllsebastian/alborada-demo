@@ -2,7 +2,7 @@ import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/routes/routes.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/views/edit_profile_view.dart';
+import 'package:alborada_demo/app/presentation/views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -63,14 +63,12 @@ class ProfileView extends StatelessWidget {
                 Row(
                   children: [
                     _ProfileImage(),
-                    // Name lastname and city
                     _NameAndCity(),
-                    SizedBox(width: 20),
+                    Spacer(),
                     _EditeButton(),
                   ],
                 ),
-                SizedBox(height: 18),
-                // Byo
+                gap18,
                 Text(userState?.biography ?? '',
                     style: AlboradaTextStyle.bodyText),
                 // Text(
@@ -94,13 +92,14 @@ class _ProfileImage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: CircleAvatar(
-          radius: 40,
-          backgroundImage: userState != null &&
-                  userState.profileImage != null &&
-                  userState.profileImage!.isNotEmpty
-              ? NetworkImage(userState.profileImage!) as ImageProvider
+        radius: 40,
+        backgroundImage: userState != null &&
+                userState.profileImage != null &&
+                userState.profileImage!.isNotEmpty
+            ? NetworkImage(userState.profileImage!) as ImageProvider
 // TODO: change default profile image fromo backend
-              : AssetImage('assets/images/png/star.png')),
+            : AssetImage('assets/images/png/profile3.png'),
+      ),
     );
     // return Container(
     //   width: 80,
