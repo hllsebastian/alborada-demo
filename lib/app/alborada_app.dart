@@ -32,49 +32,51 @@ class AlboradaApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             appBarTheme: AppBarTheme(
-              backgroundColor:
-                  Colors.white, // Color constante para todo el AppBar
-              elevation: 0, // Elimina la sombra en todos los AppBar
+              backgroundColor: Colors.white,
+              elevation: 0,
             ),
           ),
           initialRoute: currentUser != null ? Routes.pageView : Routes.signIn,
           onGenerateRoute: (settings) {
-            switch (settings.name) {
-              case Routes.pageView:
-                return MaterialPageRoute(
-                    builder: (context) => const AlboradaPageView());
-              case Routes.login:
-                return MaterialPageRoute(
-                  builder: (context) => const LoginView(),
-                );
-              case Routes.createAccount:
-                return MaterialPageRoute(
-                    builder: (context) => const CreateAccountView());
-              case Routes.forgotPassword:
-                return MaterialPageRoute(
-                    builder: (context) => const ForgotPassword());
-              case Routes.onboarding:
-                return MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                          create: (context) => GetIt.I.get<OnboardingCubit>(),
-                          child: const OnboardingView(),
-                        ));
-              case Routes.initiativeDetails:
-                return MaterialPageRoute(
-                    builder: (context) => const EventDetailsView(null));
-              case Routes.profile:
-                return MaterialPageRoute(
-                    builder: (context) => const ProfileView());
-              case Routes.editProfile:
-                return MaterialPageRoute(
-                    builder: (context) => const EditProfileView());
-              default:
-                return MaterialPageRoute(
-                    builder: (context) => const SignInView());
-            }
+            return _alboradaRoutes(settings);
           },
         ),
       ),
     );
+  }
+
+  MaterialPageRoute<dynamic> _alboradaRoutes(RouteSettings settings) {
+    return switch (settings.name) {
+      Routes.pageView => MaterialPageRoute(
+          builder: (context) => const AlboradaPageView(),
+        ),
+      Routes.login => MaterialPageRoute(
+          builder: (context) => const LoginView(),
+        ),
+      Routes.createAccount => MaterialPageRoute(
+          builder: (context) => const CreateAccountView(),
+        ),
+      Routes.forgotPassword => MaterialPageRoute(
+          builder: (context) => const ForgotPassword(),
+        ),
+      Routes.onboarding => MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => GetIt.I.get<OnboardingCubit>(),
+            child: const OnboardingView(),
+          ),
+        ),
+      Routes.initiativeDetails => MaterialPageRoute(
+          builder: (context) => const EventDetailsView(null),
+        ),
+      Routes.profile => MaterialPageRoute(
+          builder: (context) => const ProfileView(),
+        ),
+      Routes.editProfile => MaterialPageRoute(
+          builder: (context) => const EditProfileView(),
+        ),
+      _ => MaterialPageRoute(
+          builder: (context) => const SignInView(),
+        )
+    };
   }
 }
