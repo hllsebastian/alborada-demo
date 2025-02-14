@@ -1,0 +1,4 @@
+#include "Pods/Target Support Files/Pods-Runner-stg/Pods-Runner-stg.debug.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.alborada-demo.stg
+APP_ENV = stg
