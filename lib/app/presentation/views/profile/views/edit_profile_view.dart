@@ -1,7 +1,7 @@
 import 'package:alborada_demo/app/presentation/alborada_ui/alborada_ui.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:alborada_demo/app/presentation/views/profile/widgets/profile_image_widget.dart';
+import 'package:alborada_demo/app/presentation/views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -78,16 +78,13 @@ class EditProfileView extends StatelessWidget {
 }
 
 class _ImageAndName extends StatelessWidget {
-  const _ImageAndName({
-    super.key,
-  });
+  const _ImageAndName();
 
   @override
   Widget build(BuildContext context) {
     final userState = context.read<UserCubit>().state;
     return Row(
       children: [
-        // Image profile
         Column(
           children: [
             // ElevatedButton(
@@ -119,7 +116,7 @@ class _ImageAndName extends StatelessWidget {
             //   ),
             // ),
             ProfileImageWidget(
-              imageUrl: null,
+              imageUrl: userState?.profileImage,
             )
           ],
         ),

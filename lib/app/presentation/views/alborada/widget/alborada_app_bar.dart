@@ -17,6 +17,7 @@ class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, AlboradaUser?>(
       builder: (context, state) {
+        final userState = context.watch<UserCubit>().state;
         return AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Palette.white,
@@ -34,24 +35,19 @@ class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
                   imagePath: 'deseos.svg'),
             ),
             Spacer(),
+            // ProfileImageWidget(
+            //   imageUrl: context.watch<UserCubit>().state?.profileImage,
+            // ),
             GestureDetector(
               onTap: () => Navigator.pushNamed(context, Routes.profile),
-              child: Container(
-                width: 46,
-                height: 46,
-                margin: EdgeInsets.only(right: 20),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: const DecorationImage(
-                    image:
-                        AssetImage('assets/images/png/saitama_poker_face.png'),
-                    fit: BoxFit.cover,
-                  ),
-                  border: Border.all(
-                    color: Colors.black12,
-                    width: 1.0,
-                  ),
-                ),
+              child: CircleAvatar(
+                radius: 40,
+                backgroundImage: userState != null &&
+                        userState.profileImage != null &&
+                        userState.profileImage!.isNotEmpty
+                    ? NetworkImage(userState.profileImage!) as ImageProvider
+// TODO: change default profile image from backend
+                    : AssetImage('assets/images/png/profile3.png'),
               ),
             ),
           ],
