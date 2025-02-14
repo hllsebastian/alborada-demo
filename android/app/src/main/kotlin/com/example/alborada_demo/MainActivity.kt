@@ -1,4 +1,4 @@
-package com.example.alborada_demo
+package com.alborada_demo
 
 import io.flutter.embedding.android.FlutterActivity
 
