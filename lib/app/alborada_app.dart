@@ -17,7 +17,8 @@ import 'presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'presentation/views/event_details/event_details_view.dart';
 
 class AlboradaApp extends StatelessWidget {
-  const AlboradaApp({super.key});
+  const AlboradaApp({super.key, this.flavor = 'env'});
+  final String flavor;
 
   @override
   Widget build(BuildContext context) {
