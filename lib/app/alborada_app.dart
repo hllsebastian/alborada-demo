@@ -22,8 +22,8 @@ class AlboradaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: try to "currentUser" from UserCubit
     final currentUser = Supabase.instance.client.auth.currentUser;
-    // final sessionActive = Supabase.instance.client.auth.currentSession != null;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: BlocProvider(

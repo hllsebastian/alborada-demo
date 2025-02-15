@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -52,9 +53,10 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
             child: GestureDetector(
               onTap: () => _showImageSourceDialog(),
               child: CircleAvatar(
-                radius: 18, // Tamaño del botón de la cámara
-                backgroundColor: Colors.transparent,
-                child: Icon(Icons.camera_alt, size: 18, color: Colors.white),
+                radius: 16, // Tamaño del botón de la cámara
+                backgroundColor: Palette.lightGrey.withAlpha(200),
+                child: Icon(Icons.camera_alt_outlined,
+                    size: 20, color: Colors.black),
               ),
             ),
           ),
