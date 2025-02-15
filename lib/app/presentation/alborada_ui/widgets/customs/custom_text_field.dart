@@ -26,6 +26,7 @@ class CustomTextField extends StatelessWidget {
       height: 1.3,
     ),
     this.maxLines,
+    this.textCapitalization,
   });
 
   final ValueChanged<String>? onChanged;
@@ -45,6 +46,7 @@ class CustomTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextStyle textStyle;
   final int? maxLines;
+  final TextCapitalization? textCapitalization;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +92,7 @@ class CustomTextField extends StatelessWidget {
           initialValue: initialValue,
           controller: textEditingController,
           validator: validatorText,
+          textCapitalization: textCapitalization ?? TextCapitalization.none,
           // validator: (String? value) {
           //   if (value != null && value.isEmpty) {
           //     return validatorText;
