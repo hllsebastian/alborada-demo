@@ -31,7 +31,15 @@ class UserUseCases {
     );
   }
 
-  Future<String?> updateUserImage(String userId, File image) {
-    return repo.updateUserImage(userId, image);
+  Future<String?> updateUserImage({
+    required String userId,
+    required File newimage,
+    String? urlOldImage,
+  }) {
+    return repo.updateUserImage(
+      userId: userId,
+      newimage: newimage,
+      urlOldImage: urlOldImage,
+    );
   }
 }
