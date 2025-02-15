@@ -63,7 +63,6 @@ class _Body extends StatelessWidget {
                 textCapitalization: TextCapitalization.sentences,
                 textStyle: AlboradaTextStyle.tagText.copyWith(fontSize: 12),
                 initialValue: userState?.biography ?? '',
-                // 'Apasionada por el cambio social y el trabajo comunitario. Creyente de que cada pequq;a acción puede transformar vidas. 🌎✨',
                 onChanged: (a) {
                   if (userState != null) {
                     context.read<EditProfileCubit>().updateFields(biography: a);
