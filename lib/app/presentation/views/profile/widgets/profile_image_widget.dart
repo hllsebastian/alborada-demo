@@ -1,14 +1,13 @@
 import 'dart:io';
 
+import 'package:alborada_demo/app/presentation/views/cubit/user_cubit/user_cubit.dart';
 import 'package:alborada_demo/app/presentation/views/profile/cubits/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileImageWidget extends StatefulWidget {
-  final String? imageUrl;
-
-  const ProfileImageWidget({super.key, required this.imageUrl});
+  const ProfileImageWidget({super.key});
 
   @override
   _ProfileImageWidgetState createState() => _ProfileImageWidgetState();
@@ -31,6 +30,7 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = context.watch<UserCubit>().state?.profileImage ?? '';
     return GestureDetector(
       onTap: () => _showImageSourceDialog(),
       child: Stack(
@@ -39,10 +39,9 @@ class _ProfileImageWidgetState extends State<ProfileImageWidget> {
             radius: 50,
             backgroundColor: Colors.grey[300],
             backgroundImage: _selectedImage != null
-                ? FileImage(
-                    _selectedImage!) // Si el usuario ya seleccionó una imagen, mostrarla
-                : (widget.imageUrl != null && widget.imageUrl!.isNotEmpty
-                    ? NetworkImage(widget.imageUrl!) as ImageProvider
+                ? FileImage(_selectedImage!)
+                : (imageUrl.isNotEmpty
+                    ? NetworkImage(imageUrl) as ImageProvider
                     : AssetImage(
                         // TODO: change default profile image fromo backend
                         'assets/images/png/profile3.png')), // Imagen predeterminada
