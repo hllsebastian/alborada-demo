@@ -12,5 +12,9 @@ abstract class IUserRepository {
     String? lastName,
     String? imageUrl,
   });
-  Future<String?> updateUserImage(String userId, File image);
+  Future<String?> updateUserImage({
+    required String userId,
+    required File newimage,
+    String? urlOldImage,
+  });
 }

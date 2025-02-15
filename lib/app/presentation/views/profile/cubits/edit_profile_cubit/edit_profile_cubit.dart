@@ -4,7 +4,6 @@ import 'package:alborada_demo/app/domain/entities/alborada_user.dart';
 import 'package:alborada_demo/app/domain/use_cases/use_cases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
 part 'edit_profile_cubit.freezed.dart';
@@ -16,20 +15,19 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
   final UserUseCases _useCase;
 
   Future<void> updateUserProfile(AlboradaUser user) async {
-    // emit(EditProfiletState.loading());
     try {
-      // final image =
-      //     state.maybeMap(updated: (u) => u.selectedImage, orElse: () => null);
-      String? imageUrl = '';
-      // if (state.selectedImage != null) {
-      imageUrl = await updateUserImage();
-      // }
+      final oldUser = state.user;
+      String imageUrl = '';
+      if (state.selectedImage != null) {
+        imageUrl = await updateUserImage() ?? '';
+      }
+      emit(EditProfiletState.loading());
       final response = await _useCase.editProfileUser(
         userId: user.id,
         biography: user.biography,
         name: user.name,
         lastName: user.lastName,
-        imageUrl: imageUrl,
+        imageUrl: imageUrl.isEmpty ? oldUser?.profileImage : imageUrl,
       );
       emit(EditProfiletState.updated(response, true));
       return;
@@ -58,7 +56,6 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     String? name,
     String? lastName,
     String? biography,
-    ImageSource? image,
   }) async {
     final user = state.mapOrNull(updated: (a) => a.user);
     if (user == null) {
@@ -66,23 +63,24 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
       return;
     }
 
-    // if (image != null) pickImage(image);
-
-    emit(EditProfiletState.updated(
-      user.copyWith(
-        biography: biography ?? user.biography,
-        name: name ?? user.name,
-        lastName: lastName ?? user.lastName,
+    emit(
+      EditProfiletState.updated(
+        user.copyWith(
+          biography: biography ?? user.biography,
+          name: name ?? user.name,
+          lastName: lastName ?? user.lastName,
+        ),
+        false,
+        selectedImage: state.selectedImage,
       ),
-      false,
-    ));
+    );
   }
 
   Future<String?> updateUserImage() async {
-    final userId = state.user?.id;
+    final stateUser = state.user;
     final image =
         state.maybeMap(updated: (u) => u.selectedImage, orElse: () => null);
-    if (userId == null || image == null) {
+    if (stateUser?.id == null || image == null) {
       emit(EditProfiletState.error('Something went wrong uploading the image'));
       return null;
     }
@@ -90,10 +88,10 @@ class EditProfileCubit extends Cubit<EditProfiletState> {
     emit(EditProfiletState.loading());
 
     try {
-      // Subir imagen al repositorio
       final imageUrl = await _useCase.updateUserImage(
-        userId,
-        image,
+        userId: stateUser!.id,
+        newimage: image,
+        urlOldImage: stateUser.profileImage,
       );
 
       if (imageUrl == null) {

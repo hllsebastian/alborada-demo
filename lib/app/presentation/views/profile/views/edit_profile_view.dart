@@ -10,8 +10,7 @@ class EditProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userState = context.read<UserCubit>().state;
-    return BlocListener<EditProfileCubit, EditProfiletState>(
+    return BlocConsumer<EditProfileCubit, EditProfiletState>(
       listener: (context, state) {
         state.maybeWhen(
           updated: (user, isUpdated, selectedImage) {
@@ -27,52 +26,67 @@ class EditProfileView extends StatelessWidget {
           orElse: () {},
         );
       },
-      child: Column(
-        children: [
-          SizedBox(height: 40),
-          _AppBar(),
-          SizedBox(
-            width: double.infinity,
-            height: 10,
-            child: ColoredBox(color: Palette.white),
+      builder: (context, state) {
+        return state.maybeWhen(
+          loading: () => AlboradaLoader(),
+          orElse: () => SizedBox.shrink(),
+          updated: (user, isUserUpdated, selectedImage) => _Body(),
+        );
+      },
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context) {
+    final userState = context.read<UserCubit>().state;
+    return Column(
+      children: [
+        SizedBox(height: 40),
+        _AppBar(),
+        SizedBox(
+          width: double.infinity,
+          height: 10,
+          child: ColoredBox(color: Palette.white),
+        ),
+        Padding(
+          padding: edgeInsetsH26,
+          child: Column(
+            children: [
+              _ImageAndName(),
+              CustomTextField(
+                maxLines: 4,
+                hintText: 'Espacio para hablar de ti',
+                textCapitalization: TextCapitalization.sentences,
+                textStyle: AlboradaTextStyle.tagText.copyWith(fontSize: 12),
+                initialValue: userState?.biography ?? '',
+                // 'Apasionada por el cambio social y el trabajo comunitario. Creyente de que cada pequq;a acción puede transformar vidas. 🌎✨',
+                onChanged: (a) {
+                  if (userState != null) {
+                    context.read<EditProfileCubit>().updateFields(biography: a);
+                  }
+                },
+              ),
+              CustomTextField(
+                hintText: 'Ciudad de residencia',
+                textStyle: AlboradaTextStyle.bodyText,
+                initialValue: 'Medellín',
+                onChanged: (a) {},
+              ),
+              CustomTextField(
+                hintText: 'Pais de residencia',
+                textStyle: AlboradaTextStyle.bodyText,
+                initialValue: 'Colombia',
+                onChanged: (a) {},
+              ),
+            ],
           ),
-          Padding(
-            padding: edgeInsetsH26,
-            child: Column(
-              children: [
-                _ImageAndName(),
-                CustomTextField(
-                  maxLines: 4,
-                  hintText: 'Espacio para hablar de ti',
-                  textStyle: AlboradaTextStyle.tagText.copyWith(fontSize: 12),
-                  initialValue: userState?.biography ?? '',
-                  // 'Apasionada por el cambio social y el trabajo comunitario. Creyente de que cada pequq;a acción puede transformar vidas. 🌎✨',
-                  onChanged: (a) {
-                    if (userState != null) {
-                      context
-                          .read<EditProfileCubit>()
-                          .updateFields(biography: a);
-                    }
-                  },
-                ),
-                CustomTextField(
-                  hintText: 'Ciudad de residencia',
-                  textStyle: AlboradaTextStyle.bodyText,
-                  initialValue: 'Medellín',
-                  onChanged: (a) {},
-                ),
-                CustomTextField(
-                  hintText: 'Pais de residencia',
-                  textStyle: AlboradaTextStyle.bodyText,
-                  initialValue: 'Colombia',
-                  onChanged: (a) {},
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 20),
-        ],
-      ),
+        ),
+        SizedBox(height: 20),
+      ],
     );
   }
 }
@@ -82,49 +96,17 @@ class _ImageAndName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userState = context.read<UserCubit>().state;
+    final userState = context.watch<UserCubit>().state;
     return Row(
       children: [
-        Column(
-          children: [
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     final image = await context
-            //         .read<EditProfileCubit>()
-            //         .pickImage(ImageSource.gallery);
-            //     if (image != null) {
-            //       print('IMAGGEENNNN');
-            //       // context.read<EditProfileCubit>().updateUserImage(image);
-            //     }
-            //   },
-            //   child: Text("Seleccionar Imagen"),
-            // ),
-            // Container(
-            //   width: 80,
-            //   height: 80,
-            //   margin: EdgeInsets.only(right: 20),
-            //   decoration: BoxDecoration(
-            //     shape: BoxShape.circle,
-            //     image: const DecorationImage(
-            //       image: AssetImage('assets/images/png/saitama_poker_face.png'),
-            //       fit: BoxFit.cover,
-            //     ),
-            //     border: Border.all(
-            //       color: Colors.black12,
-            //       width: 1.0,
-            //     ),
-            //   ),
-            // ),
-            ProfileImageWidget(
-              imageUrl: userState?.profileImage,
-            )
-          ],
-        ),
+        ProfileImageWidget(),
+        space8,
         Flexible(
           child: Column(
             children: [
               CustomTextField(
                 hintText: 'Igresa acá tu nombre',
+                textCapitalization: TextCapitalization.words,
                 initialValue: userState?.name ?? '',
                 textStyle: AlboradaTextStyle.bodyText.copyWith(
                   color: Palette.black,
@@ -138,6 +120,7 @@ class _ImageAndName extends StatelessWidget {
               ),
               CustomTextField(
                 hintText: 'Ingresa aca tu apellido',
+                textCapitalization: TextCapitalization.words,
                 initialValue: userState?.lastName ?? '',
                 textStyle: AlboradaTextStyle.bodyText.copyWith(
                   color: Palette.black,

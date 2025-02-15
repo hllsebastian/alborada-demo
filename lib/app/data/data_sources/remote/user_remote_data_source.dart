@@ -13,7 +13,11 @@ abstract class UserRemoteDataSource {
     String? lastName,
     String? imageUrl,
   });
-  Future<String?> updateUserImage(String userId, File image);
+  Future<String?> updateUserImage({
+    required String userId,
+    required File newimage,
+    String? urlOldImage,
+  });
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -30,7 +34,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         dataSetted.first.profileImage!.isNotEmpty) {
       final imagePath = getFilePathFromUrl(dataSetted.first.profileImage!);
       signedUrl = await supaClient.storage
-          .from('user_avatars/avatars')
+          .from('user_avatars/avatars/$id')
           .createSignedUrl(imagePath, 3600);
     }
     return dataSetted.first.copyWith(profileImage: signedUrl);
@@ -63,7 +67,15 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         .select();
     final dataSetted = response.map((json) => AlboradaUser.fromJson(json));
     print(dataSetted.first);
-    return dataSetted.first;
+
+    String signedUrlImage = '';
+    if (imageUrl != null && imageUrl.isNotEmpty) {
+      final imagePath = getFilePathFromUrl(dataSetted.first.profileImage!);
+      signedUrlImage = await supaClient.storage
+          .from('user_avatars/avatars/$userId')
+          .createSignedUrl(imagePath, 3600);
+    }
+    return dataSetted.first.copyWith(profileImage: signedUrlImage);
     // TODO: error handling
     // if (response.error != null) {
     //   throw Exception(
@@ -72,25 +84,56 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<String?> updateUserImage(String userId, File image) async {
+  Future<String?> updateUserImage({
+    required String userId,
+    required File newimage,
+    String? urlOldImage,
+  }) async {
     try {
       final filePath =
-          'avatars/$userId-${DateTime.now().millisecondsSinceEpoch}.jpg';
+          'avatars/$userId/profile-${DateTime.now().millisecondsSinceEpoch}.jpg';
       await supaClient.storage.from('user_avatars').upload(
             filePath,
-            image,
+            newimage,
             fileOptions: FileOptions(upsert: true),
           );
-      return supaClient.storage.from('user_avatars').getPublicUrl(filePath);
+      final urlImage =
+          supaClient.storage.from('user_avatars').getPublicUrl(filePath);
+      if (urlOldImage != null && urlOldImage.isNotEmpty) {
+        _deleteImage(userId, urlOldImage);
+      }
+      return urlImage;
     } catch (e) {
       print('Error al subir imagen: $e');
+      return null;
     }
-    return null;
+  }
+
+  Future<List<FileObject>> _deleteImage(
+      String userId, String oldFileName) async {
+    try {
+      final fileName = getFilePathFromUrl(oldFileName);
+      final a = supaClient.storage.from('user_avatars/avatars/$fileName').url;
+      print('OBJECCTT: $a');
+      return await supaClient.storage
+          .from('user_avatars/avatars/$fileName')
+          .remove([fileName]);
+    } catch (e) {
+      print('OLD IMAGE ERROR: $e');
+      return [];
+    }
+  }
+
+  Future<String> _signedUrlImage(String id, String urlImage) async {
+    final fileName = getFilePathFromUrl(urlImage);
+    return await supaClient.storage
+        .from('user_avatars/avatars/$id/$fileName')
+        .createSignedUrl(fileName, 3600);
   }
 
   String getFilePathFromUrl(String url) {
     Uri uri = Uri.parse(url);
     List<String> segments = uri.pathSegments;
-    return segments.skip(6).join('/');
+    return segments.skip(7).join('/');
   }
 }

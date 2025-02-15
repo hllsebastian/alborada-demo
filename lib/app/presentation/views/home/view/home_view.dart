@@ -24,9 +24,7 @@ class Homeview extends StatelessWidget {
         child: const Column(
           children: [
             SizedBox(height: 10),
-            Divider(
-              thickness: 0.5,
-            ),
+            Divider(thickness: 0.5),
             // TODO: add in next phase
             // _FindInitiative(),
             // Tabs(),

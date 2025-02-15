@@ -40,7 +40,15 @@ class UserRepositoryImpl implements IUserRepository {
   }
 
   @override
-  Future<String?> updateUserImage(String userId, File image) async {
-    return await remoteDataSource.updateUserImage(userId, image);
+  Future<String?> updateUserImage({
+    required String userId,
+    required File newimage,
+    String? urlOldImage,
+  }) async {
+    return await remoteDataSource.updateUserImage(
+      userId: userId,
+      newimage: newimage,
+      urlOldImage: urlOldImage,
+    );
   }
 }

@@ -11,6 +11,7 @@ class EditProfiletState with _$EditProfiletState {
 
 extension EditProfileStateX on EditProfiletState {
   bool get isUserUpdated => this is _Updated;
+  bool get isLoading => this is _Updated;
 
   AlboradaUser? get user => switch (this) {
         _Updated(user: final user) => user,
