@@ -18,6 +18,7 @@ _$AlboradaUserImpl _$$AlboradaUserImplFromJson(Map<String, dynamic> json) =>
       createdAt: json['createdAt'] as String?,
       onboardingComplete: json['onboardingComplete'] as bool?,
       profileImage: json['profile_image_url'] as String?,
+      emailConfirmedAt: json['email_confirmed_at'] as String?,
     );
 
 Map<String, dynamic> _$$AlboradaUserImplToJson(_$AlboradaUserImpl instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$AlboradaUserImplToJson(_$AlboradaUserImpl instance) =>
       'createdAt': instance.createdAt,
       'onboardingComplete': instance.onboardingComplete,
       'profile_image_url': instance.profileImage,
+      'email_confirmed_at': instance.emailConfirmedAt,
     };

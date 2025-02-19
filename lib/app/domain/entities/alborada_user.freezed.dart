@@ -33,6 +33,8 @@ mixin _$AlboradaUser {
   bool? get onboardingComplete => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image_url')
   String? get profileImage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email_confirmed_at')
+  String? get emailConfirmedAt => throw _privateConstructorUsedError;
 
   /// Serializes this AlboradaUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,7 +62,8 @@ abstract class $AlboradaUserCopyWith<$Res> {
       @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
       bool? onboardingComplete,
-      @JsonKey(name: 'profile_image_url') String? profileImage});
+      @JsonKey(name: 'profile_image_url') String? profileImage,
+      @JsonKey(name: 'email_confirmed_at') String? emailConfirmedAt});
 }
 
 /// @nodoc
@@ -88,6 +91,7 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
     Object? profileImage = freezed,
+    Object? emailConfirmedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -130,6 +134,10 @@ class _$AlboradaUserCopyWithImpl<$Res, $Val extends AlboradaUser>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailConfirmedAt: freezed == emailConfirmedAt
+          ? _value.emailConfirmedAt
+          : emailConfirmedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -152,7 +160,8 @@ abstract class _$$AlboradaUserImplCopyWith<$Res>
       @JsonKey(name: 'total_points') int totalPoints,
       String? createdAt,
       bool? onboardingComplete,
-      @JsonKey(name: 'profile_image_url') String? profileImage});
+      @JsonKey(name: 'profile_image_url') String? profileImage,
+      @JsonKey(name: 'email_confirmed_at') String? emailConfirmedAt});
 }
 
 /// @nodoc
@@ -178,6 +187,7 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? onboardingComplete = freezed,
     Object? profileImage = freezed,
+    Object? emailConfirmedAt = freezed,
   }) {
     return _then(_$AlboradaUserImpl(
       id: null == id
@@ -220,6 +230,10 @@ class __$$AlboradaUserImplCopyWithImpl<$Res>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailConfirmedAt: freezed == emailConfirmedAt
+          ? _value.emailConfirmedAt
+          : emailConfirmedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -237,7 +251,8 @@ class _$AlboradaUserImpl implements _AlboradaUser {
       @JsonKey(name: 'total_points') this.totalPoints = 0,
       this.createdAt,
       this.onboardingComplete,
-      @JsonKey(name: 'profile_image_url') this.profileImage});
+      @JsonKey(name: 'profile_image_url') this.profileImage,
+      @JsonKey(name: 'email_confirmed_at') this.emailConfirmedAt});
 
   factory _$AlboradaUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$AlboradaUserImplFromJson(json);
@@ -265,10 +280,13 @@ class _$AlboradaUserImpl implements _AlboradaUser {
   @override
   @JsonKey(name: 'profile_image_url')
   final String? profileImage;
+  @override
+  @JsonKey(name: 'email_confirmed_at')
+  final String? emailConfirmedAt;
 
   @override
   String toString() {
-    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, biography: $biography, interests: $interests, totalPoints: $totalPoints, createdAt: $createdAt, onboardingComplete: $onboardingComplete, profileImage: $profileImage)';
+    return 'AlboradaUser(id: $id, email: $email, name: $name, lastName: $lastName, biography: $biography, interests: $interests, totalPoints: $totalPoints, createdAt: $createdAt, onboardingComplete: $onboardingComplete, profileImage: $profileImage, emailConfirmedAt: $emailConfirmedAt)';
   }
 
   @override
@@ -292,7 +310,9 @@ class _$AlboradaUserImpl implements _AlboradaUser {
             (identical(other.onboardingComplete, onboardingComplete) ||
                 other.onboardingComplete == onboardingComplete) &&
             (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage));
+                other.profileImage == profileImage) &&
+            (identical(other.emailConfirmedAt, emailConfirmedAt) ||
+                other.emailConfirmedAt == emailConfirmedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -308,7 +328,8 @@ class _$AlboradaUserImpl implements _AlboradaUser {
       totalPoints,
       createdAt,
       onboardingComplete,
-      profileImage);
+      profileImage,
+      emailConfirmedAt);
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.
@@ -328,17 +349,18 @@ class _$AlboradaUserImpl implements _AlboradaUser {
 
 abstract class _AlboradaUser implements AlboradaUser {
   factory _AlboradaUser(
-          {required final String id,
-          required final String email,
-          final String? name,
-          @JsonKey(name: 'last_name') final String? lastName,
-          final String? biography,
-          final String? interests,
-          @JsonKey(name: 'total_points') final int totalPoints,
-          final String? createdAt,
-          final bool? onboardingComplete,
-          @JsonKey(name: 'profile_image_url') final String? profileImage}) =
-      _$AlboradaUserImpl;
+      {required final String id,
+      required final String email,
+      final String? name,
+      @JsonKey(name: 'last_name') final String? lastName,
+      final String? biography,
+      final String? interests,
+      @JsonKey(name: 'total_points') final int totalPoints,
+      final String? createdAt,
+      final bool? onboardingComplete,
+      @JsonKey(name: 'profile_image_url') final String? profileImage,
+      @JsonKey(name: 'email_confirmed_at')
+      final String? emailConfirmedAt}) = _$AlboradaUserImpl;
 
   factory _AlboradaUser.fromJson(Map<String, dynamic> json) =
       _$AlboradaUserImpl.fromJson;
@@ -366,6 +388,9 @@ abstract class _AlboradaUser implements AlboradaUser {
   @override
   @JsonKey(name: 'profile_image_url')
   String? get profileImage;
+  @override
+  @JsonKey(name: 'email_confirmed_at')
+  String? get emailConfirmedAt;
 
   /// Create a copy of AlboradaUser
   /// with the given fields replaced by the non-null parameter values.

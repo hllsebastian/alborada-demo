@@ -25,7 +25,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         final userData = AlboradaUser(
           email: email,
           id: response.user!.id,
-          // confirmationSentAt: response.user!.confirmationSentAt,
+          emailConfirmedAt: response.user!.confirmationSentAt,
         );
         final formattedData = JsonEncoder.withIndent(' ').convert(userData);
         Logger.info('Status code $response');
