@@ -16,9 +16,9 @@ class AlboradaUser with _$AlboradaUser {
     String? createdAt,
     bool? onboardingComplete,
     @JsonKey(name: 'profile_image_url') String? profileImage,
+    @JsonKey(name: 'email_confirmed_at') String? emailConfirmedAt,
     // String? country,
-    // String? city,
-    // String? confirmationSentAt,
+    // String? cixty,
     // bool? appFirstLogin,
   }) = _AlboradaUser;
 

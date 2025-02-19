@@ -8,26 +8,18 @@ class SignInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
-
     return AlboradaScaffoldWidget(
-      body: _LoginBody(screenSize: screenSize),
+      body: _LoginBody(),
     );
   }
 }
 
 class _LoginBody extends StatelessWidget {
-  const _LoginBody({
-    required this.screenSize,
-  });
-
-  final Size screenSize;
+  const _LoginBody();
 
   @override
   Widget build(BuildContext context) {
-    // void goTo() {
-    //   Navigator.pushReplacementNamed(context, Routes.pageView);
-    // }
+    final screenSize = MediaQuery.sizeOf(context);
     void goTo(String route) {
       Navigator.pushNamed(context, route);
     }

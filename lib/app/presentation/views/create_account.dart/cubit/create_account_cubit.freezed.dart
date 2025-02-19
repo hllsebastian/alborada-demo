@@ -20,7 +20,8 @@ mixin _$CreateAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, LoginType sucessType)
+    required TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)
         createAccountSuccess,
     required TResult Function(String error) error,
   }) =>
@@ -29,7 +30,8 @@ mixin _$CreateAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, LoginType sucessType)?
+    TResult? Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult? Function(String error)? error,
   }) =>
@@ -38,7 +40,8 @@ mixin _$CreateAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, LoginType sucessType)?
+    TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -135,7 +138,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, LoginType sucessType)
+    required TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)
         createAccountSuccess,
     required TResult Function(String error) error,
   }) {
@@ -147,7 +151,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, LoginType sucessType)?
+    TResult? Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult? Function(String error)? error,
   }) {
@@ -159,7 +164,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, LoginType sucessType)?
+    TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -255,7 +261,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, LoginType sucessType)
+    required TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)
         createAccountSuccess,
     required TResult Function(String error) error,
   }) {
@@ -267,7 +274,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, LoginType sucessType)?
+    TResult? Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult? Function(String error)? error,
   }) {
@@ -279,7 +287,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, LoginType sucessType)?
+    TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -338,7 +347,10 @@ abstract class _$$CreateAccountSuccessImplCopyWith<$Res> {
           $Res Function(_$CreateAccountSuccessImpl) then) =
       __$$CreateAccountSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlboradaUser user, LoginType sucessType});
+  $Res call(
+      {AlboradaUser user,
+      LoginType sucessType,
+      bool termsAndConditionsAccepted});
 
   $AlboradaUserCopyWith<$Res> get user;
 }
@@ -358,6 +370,7 @@ class __$$CreateAccountSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? sucessType = null,
+    Object? termsAndConditionsAccepted = null,
   }) {
     return _then(_$CreateAccountSuccessImpl(
       null == user
@@ -368,6 +381,10 @@ class __$$CreateAccountSuccessImplCopyWithImpl<$Res>
           ? _value.sucessType
           : sucessType // ignore: cast_nullable_to_non_nullable
               as LoginType,
+      termsAndConditionsAccepted: null == termsAndConditionsAccepted
+          ? _value.termsAndConditionsAccepted
+          : termsAndConditionsAccepted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -385,16 +402,20 @@ class __$$CreateAccountSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
-  const _$CreateAccountSuccessImpl(this.user, this.sucessType);
+  const _$CreateAccountSuccessImpl(this.user, this.sucessType,
+      {this.termsAndConditionsAccepted = false});
 
   @override
   final AlboradaUser user;
   @override
   final LoginType sucessType;
+  @override
+  @JsonKey()
+  final bool termsAndConditionsAccepted;
 
   @override
   String toString() {
-    return 'CreateAccountState.createAccountSuccess(user: $user, sucessType: $sucessType)';
+    return 'CreateAccountState.createAccountSuccess(user: $user, sucessType: $sucessType, termsAndConditionsAccepted: $termsAndConditionsAccepted)';
   }
 
   @override
@@ -404,11 +425,16 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
             other is _$CreateAccountSuccessImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.sucessType, sucessType) ||
-                other.sucessType == sucessType));
+                other.sucessType == sucessType) &&
+            (identical(other.termsAndConditionsAccepted,
+                    termsAndConditionsAccepted) ||
+                other.termsAndConditionsAccepted ==
+                    termsAndConditionsAccepted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, sucessType);
+  int get hashCode =>
+      Object.hash(runtimeType, user, sucessType, termsAndConditionsAccepted);
 
   /// Create a copy of CreateAccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -425,11 +451,12 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, LoginType sucessType)
+    required TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)
         createAccountSuccess,
     required TResult Function(String error) error,
   }) {
-    return createAccountSuccess(user, sucessType);
+    return createAccountSuccess(user, sucessType, termsAndConditionsAccepted);
   }
 
   @override
@@ -437,11 +464,13 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, LoginType sucessType)?
+    TResult? Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult? Function(String error)? error,
   }) {
-    return createAccountSuccess?.call(user, sucessType);
+    return createAccountSuccess?.call(
+        user, sucessType, termsAndConditionsAccepted);
   }
 
   @override
@@ -449,13 +478,14 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, LoginType sucessType)?
+    TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (createAccountSuccess != null) {
-      return createAccountSuccess(user, sucessType);
+      return createAccountSuccess(user, sucessType, termsAndConditionsAccepted);
     }
     return orElse();
   }
@@ -500,11 +530,12 @@ class _$CreateAccountSuccessImpl implements _CreateAccountSuccess {
 
 abstract class _CreateAccountSuccess implements CreateAccountState {
   const factory _CreateAccountSuccess(
-          final AlboradaUser user, final LoginType sucessType) =
-      _$CreateAccountSuccessImpl;
+      final AlboradaUser user, final LoginType sucessType,
+      {final bool termsAndConditionsAccepted}) = _$CreateAccountSuccessImpl;
 
   AlboradaUser get user;
   LoginType get sucessType;
+  bool get termsAndConditionsAccepted;
 
   /// Create a copy of CreateAccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -583,7 +614,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlboradaUser user, LoginType sucessType)
+    required TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)
         createAccountSuccess,
     required TResult Function(String error) error,
   }) {
@@ -595,7 +627,8 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlboradaUser user, LoginType sucessType)?
+    TResult? Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult? Function(String error)? error,
   }) {
@@ -607,7 +640,8 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlboradaUser user, LoginType sucessType)?
+    TResult Function(AlboradaUser user, LoginType sucessType,
+            bool termsAndConditionsAccepted)?
         createAccountSuccess,
     TResult Function(String error)? error,
     required TResult orElse(),

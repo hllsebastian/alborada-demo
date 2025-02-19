@@ -15,7 +15,7 @@ class SimpleButton extends StatelessWidget {
     this.isLoading = false,
   });
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isDarkButton;
   final String? imagePath;
   final Color? buttonColor;
@@ -33,8 +33,9 @@ class SimpleButton extends StatelessWidget {
         width: screenSize.width * 0.9,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor:
-                isDarkButton ? Colors.black.withOpacity(0.85) : buttonColor,
+            backgroundColor: isDarkButton
+                ? Colors.black.withValues(alpha: 0.85)
+                : buttonColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
