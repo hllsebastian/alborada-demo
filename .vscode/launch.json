@@ -23,10 +23,10 @@
                 "stg"
             ]
         },
-        {
-            "name": "alborada_demo",
-            "request": "launch",
-            "type": "dart"
-        }
+        // {
+        //     "name": "alborada_demo",
+        //     "request": "launch",
+        //     "type": "dart"
+        // }
     ]
 }

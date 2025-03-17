@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
     this.text,
     this.obscureText = false,
     this.readOnly = false,
+    this.enabled = true,
     this.icon,
     this.subText,
     this.errorText,
@@ -34,6 +35,7 @@ class CustomTextField extends StatelessWidget {
   final String? text;
   final bool obscureText;
   final bool readOnly;
+  final bool enabled;
   final Widget? icon;
   final String? subText;
   final String? errorText;
@@ -83,6 +85,7 @@ class CustomTextField extends StatelessWidget {
           ),
         const SizedBox(height: 12),
         TextFormField(
+          enabled: enabled,
           readOnly: readOnly,
           maxLines: maxLines,
           keyboardType: keyboardType,

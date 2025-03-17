@@ -1,6 +1,8 @@
 import 'package:alborada_demo/app/domain/entities/entities.dart';
 import 'package:alborada_demo/app/presentation/alborada_ui/icons/svg_icon.dart';
+import 'package:alborada_demo/app/presentation/presentation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class EventActionCard extends StatelessWidget {
@@ -32,11 +34,13 @@ class EventActionCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: Palette.grey1,
             borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
+            image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/images/png/arbolito.jpg'),
+              image: event.imageUrl != null && event.imageUrl!.isNotEmpty
+                  ? NetworkImage(event.imageUrl ?? '') as ImageProvider
+                  : AssetImage('assets/images/png/holder_image_black.png'),
             ),
           ),
           child: Column(
@@ -48,9 +52,9 @@ class EventActionCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // TODO: display distance
-                  _buildIconWidget('pin.svg', '100m'),
+                  _buildIconWidget('pin.svg', event.neighborhood),
                   _buildIconWidget('calendar.svg', eventDate),
-                  _buildIconWidget('deseos.svg', event.points.toString()),
+                  _buildIconWidget('deseos.svg', '+${event.points.toString()}'),
                 ],
               ),
             ],
@@ -106,8 +110,9 @@ class EventActionCard extends StatelessWidget {
           const SizedBox(width: 1),
           Text(
             text,
-            style: const TextStyle(
-              color: Colors.white,
+            style: GoogleFonts.outfit(
+              fontSize: 14,
+              color: Palette.white,
             ),
           ),
         ],
