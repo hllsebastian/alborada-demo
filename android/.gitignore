@@ -14,3 +14,20 @@ key.properties
 
 /app/google-services.json
 
+# Archivos de compilación y configuración de CMake
+app/cxx/**
+app/.cxx/**
+app/cxx/Debug**/
+app/cxx/Release**/
+
+# Archivos generados de Gradle
+gradle-build/**
+
+# Archivos temporales y caches
+app/.externalNativeBuild/
+app/build/
+.gradle/
+local.properties
+app/cmake_build.json
+app/CMakeCache.txt
+app/CMakeFiles/

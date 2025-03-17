@@ -41,7 +41,7 @@ class AlboradaAppbar extends StatelessWidget implements PreferredSizeWidget {
             GestureDetector(
               onTap: () => Navigator.pushNamed(context, Routes.profile),
               child: CircleAvatar(
-                radius: 40,
+                radius: 34,
                 backgroundImage: userState != null &&
                         userState.profileImage != null &&
                         userState.profileImage!.isNotEmpty

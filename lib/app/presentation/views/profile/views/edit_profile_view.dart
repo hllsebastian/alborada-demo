@@ -70,12 +70,14 @@ class _Body extends StatelessWidget {
                 },
               ),
               CustomTextField(
+                enabled: false,
                 hintText: 'Ciudad de residencia',
                 textStyle: AlboradaTextStyle.bodyText,
                 initialValue: 'Medellín',
                 onChanged: (a) {},
               ),
               CustomTextField(
+                enabled: false,
                 hintText: 'Pais de residencia',
                 textStyle: AlboradaTextStyle.bodyText,
                 initialValue: 'Colombia',

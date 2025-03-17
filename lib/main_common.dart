@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'app/alborada_app.dart';
 import 'app/di/service_locator.dart';
 
+// TODO: add runZonedGuarded
 Future<void> mainCommon({required String flavor}) async {
   WidgetsFlutterBinding.ensureInitialized();
 

@@ -52,7 +52,7 @@ class ButtonIconWidget extends StatelessWidget {
         child: Row(
           children: [
             SvgIcon(imagePath),
-            const SizedBox(width: 1),
+            const SizedBox(width: 4),
             Text(
               text,
               style: textStyle ??

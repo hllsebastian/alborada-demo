@@ -44,7 +44,28 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<List<Event>> getEvents() async {
     final response = await supaClient.rest.from('event').select();
     final dataSetted = response.map((json) => Event.fromJson(json)).toList();
-    return dataSetted;
+
+    final dataSigned = await Future.wait(
+      dataSetted.map((x) async {
+        String signedUrlImage = '';
+        String signedUrlIcon = '';
+        if (x.imageUrl != null && x.imageUrl!.isNotEmpty) {
+          final imagePath = getFilePathFromUrl(x.imageUrl!);
+          signedUrlImage = await supaClient.storage
+              .from('user_avatars/events/${x.id}')
+              .createSignedUrl(imagePath, 3600);
+        }
+        if (x.urlIcon != null && x.urlIcon!.isNotEmpty) {
+          final iconPath = getFilePathFromUrl(x.urlIcon!);
+          signedUrlIcon = await supaClient.storage
+              .from('user_avatars/events/${x.id}')
+              .createSignedUrl(iconPath, 3600);
+        }
+        return x.copyWith(imageUrl: signedUrlImage, urlIcon: signedUrlIcon);
+      }),
+    );
+
+    return dataSigned;
   }
 
   @override
@@ -131,9 +152,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         .createSignedUrl(fileName, 3600);
   }
 
-  String getFilePathFromUrl(String url) {
+  String getFilePathFromUrl(String url, {bool isEvent = false}) {
     Uri uri = Uri.parse(url);
     List<String> segments = uri.pathSegments;
-    return segments.skip(7).join('/');
+    final segment = segments.skip(isEvent ? 6 : 7).join('/');
+    return segment;
   }
 }

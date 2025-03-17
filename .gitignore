@@ -50,3 +50,12 @@ app.*.map.json
 
 keys.properties
 ios/Runner/Keys.plist
+
+# Archivos de logs y configuraciones temporales
+*.ninja
+*.so
+*.o
+*.d
+*.bin
+*.json
+*.lock

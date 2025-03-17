@@ -24,6 +24,14 @@ mixin _$Event {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  String get place => throw _privateConstructorUsedError;
+  String get neighborhood => throw _privateConstructorUsedError;
+  @JsonKey(name: 'url_image')
+  String? get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'how_works')
+  String? get howWorks => throw _privateConstructorUsedError;
+  @JsonKey(name: 'url_icon')
+  String? get urlIcon => throw _privateConstructorUsedError;
   int get points => throw _privateConstructorUsedError;
   DateTime? get date => throw _privateConstructorUsedError;
 
@@ -46,6 +54,11 @@ abstract class $EventCopyWith<$Res> {
       String name,
       String description,
       String address,
+      String place,
+      String neighborhood,
+      @JsonKey(name: 'url_image') String? imageUrl,
+      @JsonKey(name: 'how_works') String? howWorks,
+      @JsonKey(name: 'url_icon') String? urlIcon,
       int points,
       DateTime? date});
 }
@@ -69,6 +82,11 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? name = null,
     Object? description = null,
     Object? address = null,
+    Object? place = null,
+    Object? neighborhood = null,
+    Object? imageUrl = freezed,
+    Object? howWorks = freezed,
+    Object? urlIcon = freezed,
     Object? points = null,
     Object? date = freezed,
   }) {
@@ -89,6 +107,26 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      place: null == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as String,
+      neighborhood: null == neighborhood
+          ? _value.neighborhood
+          : neighborhood // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      howWorks: freezed == howWorks
+          ? _value.howWorks
+          : howWorks // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlIcon: freezed == urlIcon
+          ? _value.urlIcon
+          : urlIcon // ignore: cast_nullable_to_non_nullable
+              as String?,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -113,6 +151,11 @@ abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
       String name,
       String description,
       String address,
+      String place,
+      String neighborhood,
+      @JsonKey(name: 'url_image') String? imageUrl,
+      @JsonKey(name: 'how_works') String? howWorks,
+      @JsonKey(name: 'url_icon') String? urlIcon,
       int points,
       DateTime? date});
 }
@@ -134,6 +177,11 @@ class __$$EventImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? address = null,
+    Object? place = null,
+    Object? neighborhood = null,
+    Object? imageUrl = freezed,
+    Object? howWorks = freezed,
+    Object? urlIcon = freezed,
     Object? points = null,
     Object? date = freezed,
   }) {
@@ -154,6 +202,26 @@ class __$$EventImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      place: null == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as String,
+      neighborhood: null == neighborhood
+          ? _value.neighborhood
+          : neighborhood // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      howWorks: freezed == howWorks
+          ? _value.howWorks
+          : howWorks // ignore: cast_nullable_to_non_nullable
+              as String?,
+      urlIcon: freezed == urlIcon
+          ? _value.urlIcon
+          : urlIcon // ignore: cast_nullable_to_non_nullable
+              as String?,
       points: null == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -174,6 +242,11 @@ class _$EventImpl implements _Event {
       this.name = '',
       this.description = '',
       this.address = '',
+      this.place = '',
+      this.neighborhood = '',
+      @JsonKey(name: 'url_image') this.imageUrl,
+      @JsonKey(name: 'how_works') this.howWorks,
+      @JsonKey(name: 'url_icon') this.urlIcon,
       this.points = 0,
       this.date});
 
@@ -194,13 +267,28 @@ class _$EventImpl implements _Event {
   final String address;
   @override
   @JsonKey()
+  final String place;
+  @override
+  @JsonKey()
+  final String neighborhood;
+  @override
+  @JsonKey(name: 'url_image')
+  final String? imageUrl;
+  @override
+  @JsonKey(name: 'how_works')
+  final String? howWorks;
+  @override
+  @JsonKey(name: 'url_icon')
+  final String? urlIcon;
+  @override
+  @JsonKey()
   final int points;
   @override
   final DateTime? date;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, description: $description, address: $address, points: $points, date: $date)';
+    return 'Event(id: $id, name: $name, description: $description, address: $address, place: $place, neighborhood: $neighborhood, imageUrl: $imageUrl, howWorks: $howWorks, urlIcon: $urlIcon, points: $points, date: $date)';
   }
 
   @override
@@ -213,14 +301,22 @@ class _$EventImpl implements _Event {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.place, place) || other.place == place) &&
+            (identical(other.neighborhood, neighborhood) ||
+                other.neighborhood == neighborhood) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.howWorks, howWorks) ||
+                other.howWorks == howWorks) &&
+            (identical(other.urlIcon, urlIcon) || other.urlIcon == urlIcon) &&
             (identical(other.points, points) || other.points == points) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, description, address, points, date);
+  int get hashCode => Object.hash(runtimeType, id, name, description, address,
+      place, neighborhood, imageUrl, howWorks, urlIcon, points, date);
 
   /// Create a copy of Event
   /// with the given fields replaced by the non-null parameter values.
@@ -244,6 +340,11 @@ abstract class _Event implements Event {
       final String name,
       final String description,
       final String address,
+      final String place,
+      final String neighborhood,
+      @JsonKey(name: 'url_image') final String? imageUrl,
+      @JsonKey(name: 'how_works') final String? howWorks,
+      @JsonKey(name: 'url_icon') final String? urlIcon,
       final int points,
       final DateTime? date}) = _$EventImpl;
 
@@ -257,6 +358,19 @@ abstract class _Event implements Event {
   String get description;
   @override
   String get address;
+  @override
+  String get place;
+  @override
+  String get neighborhood;
+  @override
+  @JsonKey(name: 'url_image')
+  String? get imageUrl;
+  @override
+  @JsonKey(name: 'how_works')
+  String? get howWorks;
+  @override
+  @JsonKey(name: 'url_icon')
+  String? get urlIcon;
   @override
   int get points;
   @override
