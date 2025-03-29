@@ -82,7 +82,6 @@ class _LoginBody extends StatelessWidget {
                     gap10,
                     _LoginForm(isLoading: state.isLoading),
                     gap20,
-                    _FogotPasswordTextButton(),
                     const Spacer(),
                     _CreateAccountButton(),
                   ],
@@ -102,16 +101,26 @@ class _FogotPasswordTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        padding: EdgeInsets.zero,
-        minimumSize: const Size(0, 0),
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      ),
-      onPressed: () => goTo(context, Routes.forgotPassword),
-      child: Text(
-        'Mot de passe oublié ?',
-        style: GoogleFonts.outfit(fontSize: 16, color: Colors.black),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.zero,
+          minimumSize: const Size(0, 0),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        onPressed: () => goTo(context, Routes.forgotPassword),
+        child: Text(
+          'Mot de passe oublié ?',
+          style: GoogleFonts.outfit(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Palette.yellow100,
+            decoration: TextDecoration.underline,
+            decorationColor: Palette.yellow100,
+            decorationThickness: 2,
+          ),
+        ),
       ),
     );
   }
@@ -213,6 +222,8 @@ class _LoginFormState extends State<_LoginForm> {
             onChanged: (value) {},
           ),
           gap10,
+          _FogotPasswordTextButton(),
+          // gap10,
           CustomTextField(
             maxLines: 1,
             readOnly: widget.isLoading,

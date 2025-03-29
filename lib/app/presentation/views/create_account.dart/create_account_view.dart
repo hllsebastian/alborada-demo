@@ -222,10 +222,6 @@ class _LoginBodyState extends State<_LoginBody> {
                     onPressed: () =>
                         _enableButton() ? _onSubmit(context) : () {},
                   ),
-                  // Text(
-                  //   'En cliquant sur “Créer un compte, vous acceptez les conditions d’utilisation d’Alborada.',
-                  //   style: GoogleFonts.outfit(fontSize: 16),
-                  // ),
                   const Spacer(),
                   _LoginTextButton(state.isLoading),
                 ],
